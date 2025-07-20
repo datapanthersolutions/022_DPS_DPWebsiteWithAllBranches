@@ -437,7 +437,7 @@ export default function FancyWhatWeDo() {
               Let's discuss how our AI solutions can accelerate your growth and innovation.
             </p>
             <motion.button
-              className="bg-gradient-to-r from-green-900 to-green-800 hover:from-blue-600  text-white font-bold py-4 px-8 rounded-xl shadow-lg"
+              className="bg-slate-500 hover:shadow-2xl   text-white font-bold py-4 px-8 rounded-xl shadow-lg"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(9, 48, 8, 0.4)"

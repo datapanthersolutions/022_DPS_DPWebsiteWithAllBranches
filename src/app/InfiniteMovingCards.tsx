@@ -5,8 +5,8 @@ import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
 
 export function InfiniteMovingCardsDemo() {
   return (
-    <div className="h-[20rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-      <h1 className="text-7xl font-bold mb-8 text-center">
+    <div className="h-[20rem] mt-2 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      <h1 className="text-4xl font-bold mb-8 text-center mt-2">
       What People Are Saying
       </h1>
       <div className="mb-8" /> {/* Adds extra gap */}

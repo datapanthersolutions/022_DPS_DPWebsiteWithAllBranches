@@ -39,7 +39,7 @@ export default function OurOfferings() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4"
+          className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
         >
           Our Offerings
         </motion.h2>

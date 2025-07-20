@@ -133,15 +133,15 @@ const BlogPage: React.FC = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap gap-2 justify-center">
+      <section className="px-4  sm:px-6 lg:px-8 mb-12 ">
+        <div className="max-w-6xl mx-auto ">
+          <div className="flex flex-wrap gap-2 justify-center ">
             {categories.map((category) => (
               <button
                 key={category}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   category === 'All'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-green-500 text-white'
                     : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
                 }`}
               >
@@ -167,7 +167,7 @@ const BlogPage: React.FC = () => {
                 </div>
                 <div className="md:w-1/2 p-8">
                   <div className="flex items-center space-x-4 mb-4">
-                    <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                       Featured
                     </span>
                     <span className="text-purple-300 text-sm">{featuredPost.category}</span>
@@ -279,54 +279,7 @@ const BlogPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black/20 backdrop-blur-md border-t border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <Database className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-white">Data Panther</span>
-              </div>
-              <p className="text-gray-400">
-                Empowering businesses with data-driven insights and analytics solutions.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Whitepapers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Tutorials</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">GitHub</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Discord</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-purple-500/20 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Data Panther. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+     
     </div>
   );
 };
