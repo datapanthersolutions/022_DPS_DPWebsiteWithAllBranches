@@ -16,6 +16,7 @@ export default function LandingPage() {
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
+        
         <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
             {/* <span className="text-green-500">Data Panther</span> is a */}
             <ColourfulText text="Data Panther" /><br />
