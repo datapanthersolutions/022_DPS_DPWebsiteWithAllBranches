@@ -17,8 +17,7 @@ export default function LandingPage() {
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
         
-        <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-            {/* <span className="text-green-500">Data Panther</span> is a */}
+        <div className="text-3xl md:text-7xl font-serif dark:text-white text-center">
             <ColourfulText text="Data Panther" /><br />
             A
             <span className="text-green-500"> Data</span> platform that
@@ -28,7 +27,7 @@ export default function LandingPage() {
           And this, is Chemical Burn.
         </div>
         <button
-          className="bg-transparent border-2 border-green-500 rounded-full px-8 py-3 text-lg font-bold text-green-500 shadow-lg hover:bg-green-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300 cursor-pointer font-mono"
+          className="bg-transparent border-2 border-green-500 rounded-full px-8 py-3 text-lg font-serif text-green-500 shadow-lg hover:bg-green-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300 cursor-pointer font-mono"
           style={{ letterSpacing: "0.08em" }}
           onClick={() => {
             alert("Get Started clicked!");

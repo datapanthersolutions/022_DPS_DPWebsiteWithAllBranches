@@ -1,0 +1,17 @@
+{
+  "slug": "edge-computing-data-processing",
+  "title": "The Rise of Edge Computing in Data Processing",
+  "author": "Shoaib Asim",
+  "date": "July 22, 2025",
+  "readTime": "7 min read",
+  "likes": 0,
+  "comments": 0,
+  "sections": [
+    {
+      "id": "overview",
+      "heading": "The Rise of Edge Computing in Data Processing",
+      "content": "Explore how edge computing is transforming data processing by bringing computation closer to data sources. Learn about reduced latency, improved privacy, and new possibilities for IoT and real-time applications.",
+      "bullets": ["Edge Computing", "IoT", "Processing"]
+    }
+  ]
+}

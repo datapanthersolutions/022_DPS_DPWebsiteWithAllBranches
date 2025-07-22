@@ -56,7 +56,7 @@ export default function IndustryUseCases() {
   return (
     <div className="min-h-screen bg-white py-20 px-6 md:px-12">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+        <h2 className="text-4xl md:text-5xl font-serif text-gray-800 mb-6">
           Industry Use Cases for IT Enterprises
         </h2>
         <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -70,7 +70,7 @@ export default function IndustryUseCases() {
               className="rounded-2xl p-6 text-left bg-white transform transition-all duration-300 hover:shadow-xl hover:border hover:border-purple-200"
             >
               <div className="mb-4">{useCase.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semiserif text-gray-800 mb-2">
                 {useCase.title}
               </h3>
               <p className="text-gray-600">{useCase.description}</p>

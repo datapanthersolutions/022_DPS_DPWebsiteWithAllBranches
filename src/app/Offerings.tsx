@@ -39,7 +39,7 @@ export default function OurOfferings() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+          className="text-4xl md:text-5xl font-serif text-gray-900 dark:text-white mb-4"
         >
           Our Offerings
         </motion.h2>
@@ -64,7 +64,7 @@ export default function OurOfferings() {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
             >
               <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-xl font-semiserif text-gray-900 dark:text-white mb-2">
                 {item.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">{item.description}</p>

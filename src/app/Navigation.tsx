@@ -49,7 +49,6 @@ const ModernNavbar = () => {
     },
     { name: "Platforms", href: "/platforms" },
     { name: "Contact", href: "/Contact" },
-    { name: "Blogs", href: "/Blog" },
   ];
 
   const handleDropdown = (index: number) => {
@@ -73,13 +72,13 @@ const ModernNavbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <img
-              src="/Adobe Express-file.png" // Replace with your logo path
-              alt="Data Panther Logo"
-              className="w-40 h-30 rounded-xl object-cover"
-            />
-          </Link>
+           <Link href="/" className="flex items-center space-x-3">
+    <img
+      src="/resetdatapanther-removebg-preview.png"
+      alt="Data Panther Logo"
+      className="h-40 w-auto object-contain" 
+    />
+  </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">
@@ -123,7 +122,7 @@ const ModernNavbar = () => {
                     href={item.href}
                     className={`px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
                       pathname === item.href
-                        ? "text-green-600 font-semibold"
+                        ? "text-green-600 font-semiserif"
                         : scrolled
                         ? "text-gray-950 hover:text-green-600 hover:bg-green-50"
                         : "text-gray-950 hover:text-green-300 hover:bg-white/10"

@@ -142,7 +142,7 @@ const ServiceCard = ({ service, index, isActive, onHover }: ServiceCardProps) =>
         {/* Service Content */}
         <div className="text-center space-y-6">
           <motion.h3
-            className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-500"
+            className="text-2xl font-serif text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-500"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
@@ -248,7 +248,7 @@ const StatsCounter = ({ end, duration = 2, suffix = "" }: StatsCounterProps) => 
   }, [isInView, end, duration]);
 
   return (
-    <span ref={ref} className="text-4xl font-bold">
+    <span ref={ref} className="text-4xl font-serif">
       {count}{suffix}
     </span>
   );
@@ -335,7 +335,7 @@ export default function FancyWhatWeDo() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              className="text-5xl md:text-7xl font-serif text-white mb-6"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -395,7 +395,7 @@ export default function FancyWhatWeDo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Our Core Services</h2>
+            <h2 className="text-4xl font-serif text-white mb-4">Our Core Services</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               Discover how our AI-powered solutions can revolutionize your business operations
             </p>
@@ -430,14 +430,14 @@ export default function FancyWhatWeDo() {
               y: -10
             }}
           >
-            <h3 className="text-3xl font-bold text-white mb-4">
+            <h3 className="text-3xl font-serif text-white mb-4">
               Ready to Transform Your Business?
             </h3>
             <p className="text-gray-300 mb-8 text-lg">
               Let's discuss how our AI solutions can accelerate your growth and innovation.
             </p>
             <motion.button
-              className="bg-slate-500 hover:shadow-2xl   text-white font-bold py-4 px-8 rounded-xl shadow-lg"
+              className="bg-slate-500 hover:shadow-2xl   text-white font-serif py-4 px-8 rounded-xl shadow-lg"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 20px 40px rgba(9, 48, 8, 0.4)"

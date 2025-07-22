@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function ColourfulText({ text }: { text: string }) {
   const colors = [
-    "rgb(34 197 94)",
+"rgba(249, 115, 22, 1) "  // fully opaque
     
   ];
 

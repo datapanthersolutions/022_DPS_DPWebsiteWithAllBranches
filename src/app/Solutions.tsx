@@ -267,7 +267,7 @@ const SolutionsPage = () => {
               <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                 <Database className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">Data Panther</span>
+              <span className="text-xl font-serif text-white">Data Panther</span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
@@ -283,7 +283,7 @@ const SolutionsPage = () => {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+          <h1 className="text-5xl md:text-6xl font-serif text-white mb-6">
             Transform Your Business with
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Data Intelligence</span>
           </h1>
@@ -312,7 +312,7 @@ const SolutionsPage = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full mb-4">
                   <stat.icon className="w-8 h-8 text-purple-400" />
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-3xl font-serif text-white mb-2">{stat.value}</div>
                 <div className="text-gray-300">{stat.label}</div>
               </div>
             ))}
@@ -324,7 +324,7 @@ const SolutionsPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Our Solutions</h2>
+            <h2 className="text-4xl font-serif text-white mb-4">Our Solutions</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Comprehensive data solutions designed to meet your organization's unique needs and drive measurable results
             </p>
@@ -338,7 +338,7 @@ const SolutionsPage = () => {
                     <solution.icon className="w-8 h-8 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{solution.title}</h3>
+                    <h3 className="text-2xl font-serif text-white mb-2">{solution.title}</h3>
                     <p className="text-purple-300 font-medium">{solution.subtitle}</p>
                   </div>
                 </div>
@@ -347,7 +347,7 @@ const SolutionsPage = () => {
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h4 className="text-white font-semibold mb-3">Key Features</h4>
+                    <h4 className="text-white font-semiserif mb-3">Key Features</h4>
                     <ul className="space-y-2">
                       {solution.features.slice(0, 4).map((feature, index) => (
                         <li key={index} className="flex items-center space-x-2 text-gray-300 text-sm">
@@ -358,7 +358,7 @@ const SolutionsPage = () => {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold mb-3">Benefits</h4>
+                    <h4 className="text-white font-semiserif mb-3">Benefits</h4>
                     <ul className="space-y-2">
                       {solution.benefits.slice(0, 3).map((benefit, index) => (
                         <li key={index} className="flex items-center space-x-2 text-gray-300 text-sm">
@@ -371,7 +371,7 @@ const SolutionsPage = () => {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <div className="text-2xl font-bold text-white">{solution.pricing}</div>
+                  <div className="text-2xl font-serif text-white">{solution.pricing}</div>
                   <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-700 hover:to-pink-700 transition-all flex items-center space-x-2">
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4" />
@@ -387,7 +387,7 @@ const SolutionsPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Industry Solutions</h2>
+            <h2 className="text-4xl font-serif text-white mb-4">Industry Solutions</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Tailored data solutions for specific industry challenges and requirements
             </p>
@@ -400,7 +400,7 @@ const SolutionsPage = () => {
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-lg flex items-center justify-center group-hover:from-purple-600/30 group-hover:to-pink-600/30 transition-all">
                     <industry.icon className="w-6 h-6 text-purple-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">{industry.name}</h3>
+                  <h3 className="text-xl font-serif text-white">{industry.name}</h3>
                 </div>
                 <p className="text-gray-300 mb-4">{industry.description}</p>
                 <div className="space-y-2">
@@ -423,7 +423,7 @@ const SolutionsPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
+            <h2 className="text-4xl font-serif text-white mb-4">What Our Clients Say</h2>
             <p className="text-xl text-gray-300">Trusted by leading organizations worldwide</p>
           </div>
 
@@ -459,7 +459,7 @@ const SolutionsPage = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm rounded-2xl p-12 border border-purple-500/20 text-center">
             <Rocket className="w-16 h-16 text-purple-400 mx-auto mb-6" />
-            <h2 className="text-4xl font-bold text-white mb-4">Ready to Transform Your Data?</h2>
+            <h2 className="text-4xl font-serif text-white mb-4">Ready to Transform Your Data?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Join hundreds of organizations that have already revolutionized their data operations with Data Panther
             </p>
@@ -486,14 +486,14 @@ const SolutionsPage = () => {
                 <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                   <Database className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">Data Panther</span>
+                <span className="text-xl font-serif text-white">Data Panther</span>
               </div>
               <p className="text-gray-400">
                 Empowering businesses with intelligent data solutions and advanced analytics.
               </p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Solutions</h4>
+              <h4 className="text-white font-semiserif mb-4">Solutions</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">Analytics Platform</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Machine Learning</a></li>
@@ -502,7 +502,7 @@ const SolutionsPage = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Industries</h4>
+              <h4 className="text-white font-semiserif mb-4">Industries</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">Financial Services</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Healthcare</a></li>
@@ -511,7 +511,7 @@ const SolutionsPage = () => {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
+              <h4 className="text-white font-semiserif mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>

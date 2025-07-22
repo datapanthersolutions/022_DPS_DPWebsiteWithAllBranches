@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Data Panther",
   description: "Your AI-powered data analysis platform",
   icons: {
-    icon: "/dataPantherLogo-removebg-preview.png", // ✅ Correct favicon path
+    icon: "/resetdatapanther-removebg-preview.png", // ✅ Correct favicon path
   },
 };
 

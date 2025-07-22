@@ -2,9 +2,12 @@
 "use client";
 import React from "react";
 import { BrainCircuit, ArrowRight } from "lucide-react";
-import Link from "next/link"; // ✅ Correct import for navigation
+import Link from "next/link";
 
 export default function GenerativeAIImpact() {
+  // Hardcoded slug — this should match the JSON filename in /data/articles
+  const articleSlug = "generative-ai";
+
   return (
     <section className="bg-white py-20 border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-6 sm:px-12">
@@ -16,7 +19,7 @@ export default function GenerativeAIImpact() {
 
           {/* Content */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-serif text-gray-900 mb-4">
               Generative AI Can Transform Business
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-6 max-w-2xl">
@@ -26,9 +29,9 @@ export default function GenerativeAIImpact() {
               adopting AI to stay competitive.
             </p>
 
-            {/* ✅ Correct usage of Link with button inside */}
-            <Link href="/articles/ReadArticle" >
-              <button className="inline-flex items-center text-green-600 font-semibold hover:underline group">
+            {/* ✅ Dynamic routing with slug */}
+            <Link href={`/article/${articleSlug}`}>
+              <button className="inline-flex items-center text-green-600 font-semiserif hover:underline group">
                 Learn More
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </button>

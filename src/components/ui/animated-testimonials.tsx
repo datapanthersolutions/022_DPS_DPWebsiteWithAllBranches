@@ -46,7 +46,7 @@ export const AnimatedTestimonials = ({
         {/* Left Box - Heading */}
         <div className="w-full md:w-1/3 flex items-start justify-start">
         <div className="flex flex-col gap-6">
-            <h2 className="text-7xl font-extrabold text-black dark:text-white">
+            <h2 className="text-7xl font-extraserif text-black dark:text-white">
                 Meet Our Experts
             </h2>
             <p className="text-lg text-gray-600 dark:text-neutral-400">
@@ -109,7 +109,7 @@ export const AnimatedTestimonials = ({
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <h3 className="text-2xl font-bold text-black dark:text-white">
+                <h3 className="text-2xl font-serif text-black dark:text-white">
                   {testimonials[active].name}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-neutral-500">
@@ -161,8 +161,3 @@ export const AnimatedTestimonials = ({
     </div>
   );
 };
-//       <h1 className="text-5xl">Work with us now!</h1>
-//       <p className="text-2xl">Automating routine tasks, enabling smarter decision-making and unlocking <br/> new possibilities every single day</p>
-//     </div>
-//   );
-// };

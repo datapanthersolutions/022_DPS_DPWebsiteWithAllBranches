@@ -99,10 +99,10 @@ export default function ServicesPage() {
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
             <Play className="w-4 h-4 text-blue-100" />
-            <span className="text-blue-100">Our Services</span>
+            <span className="text-blue-100 ">Our Services</span>
           </div>
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-          <span className="text-white">Services</span>
+          <h1 className="text-6xl font-serif mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+          <span className="text-white font-in">Services</span>
             <span className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 w-70  h-1 bg-red-500 rounded"></span>
 
           </h1>
@@ -116,22 +116,22 @@ export default function ServicesPage() {
     <section className="py-20 bg-gray-50 text-gray-900">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold mb-4 relative inline-block">
+      <h2 className="text-4xl font-serif mb-4 relative inline-block">
         Why Choose Data Panther?
   <span className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 w-70  h-1 bg-red-500 rounded"></span>
       </h2>
       <p className="text-gray-700 text-lg max-w-2xl mx-auto my-5">
-        At <span className="font-semibold text-black">Data Panther</span>, we specialize in delivering cutting-edge solutions in <strong>Data Science</strong>, <strong>Analytics</strong>, and <strong>Generative AI</strong>. From building intelligent automation systems to unlocking valuable insights through advanced analytics, our solutions are engineered to drive innovation and success in your business.
+        At <span className="font-semiserif text-black">Data Panther</span>, we specialize in delivering cutting-edge solutions in <strong>Data Science</strong>, <strong>Analytics</strong>, and <strong>Generative AI</strong>. From building intelligent automation systems to unlocking valuable insights through advanced analytics, our solutions are engineered to drive innovation and success in your business.
       </p>
     </div>
 
     <div className="grid md:grid-cols-4 gap-8">
       {stats.map((stat, index) => (
         <div key={index} className="flex flex-col items-center text-center">
-          <div className="text-4xl font-bold text-green-600 mb-2">
+          <div className="text-4xl font-serif text-green-600 mb-2">
             {stat.icon}
           </div>
-          <h3 className="text-2xl font-semibold mb-1">{stat.value}</h3>
+          <h3 className="text-2xl font-semiserif mb-1">{stat.value}</h3>
           <p className="text-gray-700">{stat.label}</p>
         </div>
       ))}
@@ -143,7 +143,7 @@ export default function ServicesPage() {
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
     {/* Text Content */}
     <div>
-      <h2 className="text-4xl font-bold text-gray-800 mb-6">
+      <h2 className="text-4xl font-serif text-gray-800 mb-6">
         What You Get When You Work With Us
       </h2>
       <p className="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -174,7 +174,7 @@ export default function ServicesPage() {
 
 <section className="py-16 bg-gray-800">
   <div className="max-w-6xl mx-auto px-4 text-center relative">
-    <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block mb-2 relative">
+    <h2 className="text-3xl sm:text-4xl font-serif text-white inline-block mb-2 relative">
       Industries We Serve
       <span className="block mt-2 mx-auto w-32 h-1 bg-green-500 rounded"></span>
     </h2>
@@ -188,7 +188,7 @@ export default function ServicesPage() {
 
 <section className="py-16 bg-gray-50">
   <div className=" mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Technologies We Excel At</h2>
+    <h2 className="text-3xl font-serif text-gray-800 text-center mb-8">Technologies We Excel At</h2>
     <p className="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-8">
       Our team is fluent in full-stack web development, cloud infrastructure, and scalable APIs. We work with bleeding-edge
       tech to deliver lasting solutions.
@@ -213,7 +213,7 @@ export default function ServicesPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">What We Offer</h2>
+            <h2 className="text-4xl font-serif mb-4">What We Offer</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               From strategy to execution—empowering your team with data-driven capabilities.
             </p>
@@ -229,7 +229,7 @@ export default function ServicesPage() {
               >
                 {service.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    <div className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semiserif">
                       Most Popular
                     </div>
                   </div>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <h3 className="text-xl font-serif mb-3">{service.title}</h3>
                   <p className="text-gray-600 mb-6">{service.description}</p>
 
                   <div className="space-y-3 mb-8">
@@ -254,7 +254,7 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition duration-300 flex items-center justify-center group">
+                  <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semiserif hover:shadow-lg transition duration-300 flex items-center justify-center group">
                     Get Started
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -277,7 +277,7 @@ export default function ServicesPage() {
   }}
 >
 <div className="relative bg-white/80 backdrop-blur-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center rounded-xl py-10">
-  <h2 className="text-4xl font-bold mb-4 inline-block relative">
+  <h2 className="text-4xl font-serif mb-4 inline-block relative">
     Our Process
     <span className="absolute left-1/2 -bottom-2 transform -translate-x-1/2 w-46 h-1 bg-red-500 rounded"></span>
   </h2>
@@ -297,10 +297,10 @@ export default function ServicesPage() {
       key={index}
       className="group text-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
     >
-      <div className="w-16 h-16 mx-auto mb-6 bg-gray-900 rounded-full flex items-center justify-center text-green-500 text-2xl font-bold group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.6)] transition-all duration-300">
+      <div className="w-16 h-16 mx-auto mb-6 bg-gray-900 rounded-full flex items-center justify-center text-green-500 text-2xl font-serif group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.6)] transition-all duration-300">
         {item.step}
       </div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
+      <h3 className="text-xl font-semiserif text-gray-800 mb-2">{item.title}</h3>
       <p className="text-gray-600 text-sm">{item.description}</p>
     </div>
   ))}
@@ -313,15 +313,15 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+          <h2 className="text-4xl font-serif mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-gray-600 mb-8">
             Let’s talk about how Data Panther can help you scale with confidence.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg">
+            <button className="bg-green-600 text-white px-8 py-4 rounded-full font-semiserif hover:scale-105 transition-transform shadow-lg">
               Start Your Project
             </button>
-            <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+            <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semiserif hover:bg-gray-100 transition-colors">
               Schedule a Call
             </button>
           </div>

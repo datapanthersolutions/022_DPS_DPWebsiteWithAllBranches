@@ -3,13 +3,13 @@ import { HoverEffect } from "../components/ui/card-hover-effect";
 export function CardHoverEffectDemo() {
   return (
     <div className=" max-w-7xl mx-auto px-4 my-5">
-      <h1 className="font-bold text-4xl md:text-5xl text-black py-10 mb-4 text-center tracking-tight drop-shadow-lg">
+      <h1 className="font-serif text-4xl md:text-5xl text-black py-10 mb-4 text-center tracking-tight drop-shadow-lg">
         Our Solutions
       </h1>
       <p className="text-lg text-center mb-3">
         Discover our range of AI-powered products and solutions <br/>designed to help you get more from your data.
       </p>
-      <HoverEffect items={projects} />
+      <HoverEffect items={projects} className={undefined} />
     </div>
   );
 }

@@ -27,9 +27,13 @@ import {
   Bell,
   ChevronDown
 } from 'lucide-react';
+import Link from 'next/link';
+import { article } from 'framer-motion/client';
+
 
 interface Insight {
   id: string;
+  articleSlug?: string; // Optional for articles that may not have a slug
   title: string;
   category: string;
   description: string;
@@ -47,6 +51,7 @@ interface Insight {
 const insights: Insight[] = [
   {
     id: '1',
+    articleSlug: 'real-time-analytics',
     title: 'The Future of Real-Time Analytics in Enterprise',
     category: 'Technology',
     description: 'Explore how real-time analytics is revolutionizing enterprise decision-making by enabling instant data insights, smarter forecasting, and faster response times. From financial services to manufacturing, see how companies are gaining competitive advantages through real-time intelligence.',
@@ -62,12 +67,13 @@ const insights: Insight[] = [
   },
   {
     id: '2',
+    articleSlug: 'ml-model-deployment',
     title: 'Machine Learning Model Deployment at Scale',
     category: 'AI/ML',
     description: 'Learn the key challenges and proven strategies for deploying machine learning models across large-scale production environments. This guide covers CI/CD for ML, model versioning, monitoring, and ensuring model performance and reliability post-deployment.',
     readTime: '12 min read',
     date: '2025-07-08',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop',
+    image: 'https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww',
     views: 8900,
     likes: 189,
     author: 'Mujeeb ur Rehman',
@@ -75,6 +81,7 @@ const insights: Insight[] = [
   },
   {
     id: '3',
+    articleSlug: 'data-privacy-regulations',
     title: 'Data Privacy Regulations: What Businesses Need to Know',
     category: 'Compliance',
     description: 'A deep dive into global data privacy regulations like GDPR, CCPA, and other emerging frameworks. Understand how to stay compliant, protect customer data, and build trust in an era of increasing regulatory scrutiny and consumer awareness.',
@@ -89,6 +96,7 @@ const insights: Insight[] = [
   },
   {
     id: '4',
+    articleSlug: 'customer-analytics',
     title: 'Customer Analytics: Beyond Traditional Metrics',
     category: 'Strategy',
     description: 'Discover how modern businesses are using advanced customer analytics — including behavioral modeling, sentiment analysis, and predictive segmentation — to go beyond basic KPIs and drive long-term growth, loyalty, and personalized engagement.',
@@ -102,12 +110,13 @@ const insights: Insight[] = [
   },
   {
     id: '5',
+    articleSlug: 'edge-computing-data-processing',
     title: 'The Rise of Edge Computing in Data Processing',
     category: 'Technology',
     description: 'Explore how edge computing is transforming data processing by bringing computation closer to data sources. Learn about reduced latency, improved privacy, and new possibilities for IoT and real-time applications.',
     readTime: '7 min read',
     date: '2025-06-28',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=400&fit=crop',
+    image: 'https://5ghub.us/wp-content/uploads/2023/11/edge-computing-graphic-jpg.webp',
     views: 6700,
     likes: 98,
     author: 'Abdul Rehman',
@@ -115,6 +124,7 @@ const insights: Insight[] = [
   },
   {
     id: '6',
+    articleSlug: 'ethical-ai',
     title: 'Ethical AI: Building Responsible Machine Learning Systems',
     category: 'AI/ML',
     description: 'Navigate the complex landscape of ethical AI development. Learn about bias detection, fairness metrics, transparency requirements, and best practices for building responsible AI systems that benefit everyone.',
@@ -130,36 +140,6 @@ const insights: Insight[] = [
 
 const categories = ['All', 'Technology', 'AI/ML', 'Strategy', 'Compliance'];
 
-// const metrics = [
-//   { 
-//     icon: <BarChart3 className="w-6 h-6 text-emerald-600" />, 
-//     value: '2.5M+', 
-//     label: 'Data Points Processed', 
-//     change: '+23%',
-//     color: 'emerald'
-//   },
-//   { 
-//     icon: <Users className="w-6 h-6 text-emerald-600" />, 
-//     value: '500+', 
-//     label: 'Enterprise Clients', 
-//     change: '+15%',
-//     color: 'blue'
-//   },
-//   { 
-//     icon: <Target className="w-6 h-6 text-emerald-600" />, 
-//     value: '99.9%', 
-//     label: 'Accuracy Rate', 
-//     change: '+2%',
-//     color: 'purple'
-//   },
-//   { 
-//     icon: <Globe className="w-6 h-6 text-emerald-600" />, 
-//     value: '50+', 
-//     label: 'Countries Served', 
-//     change: '+8%',
-//     color: 'orange'
-//   }
-// ];
 
 const trendingTopics = [
   { name: 'Real-time Analytics', count: 45 },
@@ -176,6 +156,7 @@ export default function EnhancedInsightsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [likedInsights, setLikedInsights] = useState(new Set());
   const [showFilters, setShowFilters] = useState(false);
+
 
   useEffect(() => {
     // Simulate loading
@@ -254,18 +235,18 @@ export default function EnhancedInsightsPage() {
             <Sparkles className="w-4 h-4" />
             Latest Insights & Trends
           </div>
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+          <h1 className="text-6xl font-serif mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
             Data Insights Hub
           </h1>
           <p className="text-xl max-w-3xl mx-auto text-blue-100 mb-8 leading-relaxed">
             Discover cutting-edge trends, strategies, and innovations shaping the future of data analytics and artificial intelligence.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-red-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <button className="bg-white text-red-600 px-8 py-3 rounded-full font-semiserif hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               <Play className="w-5 h-5 inline mr-2" />
               Watch Demo
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semiserif hover:bg-white hover:text-blue-600 transition-all duration-300">
               <Download className="w-5 h-5 inline mr-2" />
               Download Report
             </button>
@@ -283,7 +264,7 @@ export default function EnhancedInsightsPage() {
                 <Award className="w-4 h-4" />
                 Featured Insight
               </div>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Editor's Pick</h2>
+              <h2 className="text-4xl font-serif text-gray-800 mb-4">Editor's Pick</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Our most popular and impactful insight this week
               </p>
@@ -306,16 +287,16 @@ export default function EnhancedInsightsPage() {
                 
                 <div>
                   <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semiserif">
                       {featuredInsight.category}
                     </span>
-                    <span className="flex items-center text-orange-600 font-semibold">
+                    <span className="flex items-center text-green-600 font-semiserif">
                       <TrendingUp className="w-4 h-4 mr-1" />
                       Trending
                     </span>
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-gray-800 mb-4 leading-tight">
+                  <h3 className="text-3xl font-serif text-gray-800 mb-4 leading-tight">
                     {featuredInsight.title}
                   </h3>
                   
@@ -343,10 +324,13 @@ export default function EnhancedInsightsPage() {
                   </div>
                   
                   <div className="flex items-center gap-4">
-                    <button className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
+                    <Link href={`/article/${featuredInsight.articleSlug}`} passHref>
+
+                    <button className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semiserif hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2">
                       Read Full Article
                       <ArrowRight className="w-5 h-5" />
                     </button>
+                    </Link>
                     <button 
                       onClick={() => handleLike(featuredInsight.id)}
                       className={`p-3 rounded-xl border-2 transition-all duration-300 ${
@@ -427,7 +411,7 @@ export default function EnhancedInsightsPage() {
             <div className="mt-6 p-6 bg-gray-50 rounded-xl border animate-fadeIn">
               <div className="grid md:grid-cols-3 gap-6">
                 <div>
-                  <h4 className="font-semibold mb-3">Reading Time</h4>
+                  <h4 className="font-semiserif mb-3">Reading Time</h4>
                   <div className="space-y-2">
                     {['< 5 min', '5-10 min', '10+ min'].map(time => (
                       <label key={time} className="flex items-center gap-2">
@@ -438,7 +422,7 @@ export default function EnhancedInsightsPage() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-3">Date Range</h4>
+                  <h4 className="font-semiserif mb-3">Date Range</h4>
                   <div className="space-y-2">
                     {['Last week', 'Last month', 'Last 3 months'].map(range => (
                       <label key={range} className="flex items-center gap-2">
@@ -449,7 +433,7 @@ export default function EnhancedInsightsPage() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-3">Trending Topics</h4>
+                  <h4 className="font-semiserif mb-3">Trending Topics</h4>
                   <div className="flex flex-wrap gap-2">
                     {trendingTopics.map(topic => (
                       <button key={topic.name} className="bg-white px-3 py-1 rounded-full text-sm border hover:bg-blue-50 transition-colors">
@@ -482,11 +466,11 @@ export default function EnhancedInsightsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semiserif">
                       {insight.category}
                     </span>
                     {insight.trending && (
-                      <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semiserif flex items-center gap-1">
                         <TrendingUp className="w-3 h-3" />
                         Trending
                       </span>
@@ -517,7 +501,7 @@ export default function EnhancedInsightsPage() {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-serif text-gray-800 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
                     {insight.title}
                   </h3>
                   
@@ -555,10 +539,12 @@ export default function EnhancedInsightsPage() {
                       <button className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-blue-400 transition-all duration-300">
                         <Share2 className="w-4 h-4" />
                       </button>
-                      <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all duration-300">
+                      <Link href={`/article/${insight.articleSlug}`} passHref>
+                      <button className="text-blue-600 hover:text-blue-700 font-semiserif text-sm flex items-center gap-1 hover:gap-2 transition-all duration-300">
                         Read More
                         <ChevronRight className="w-4 h-4" />
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -573,7 +559,7 @@ export default function EnhancedInsightsPage() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Join Our Global Community</h2>
+            <h2 className="text-4xl font-serif text-gray-800 mb-4">Join Our Global Community</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Connect with 50,000+ data professionals, share insights, and collaborate on the future of analytics.
             </p>
@@ -584,7 +570,7 @@ export default function EnhancedInsightsPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-slate-900 to-blue-400 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Active Discussions</h3>
+              <h3 className="text-xl font-semiserif mb-2">Active Discussions</h3>
               <p className="text-gray-600">Engage in meaningful conversations about data trends, tools, and techniques.</p>
             </div>
             
@@ -592,7 +578,7 @@ export default function EnhancedInsightsPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-slate-900 to-blue-400 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Expert Insights</h3>
+              <h3 className="text-xl font-semiserif mb-2">Expert Insights</h3>
               <p className="text-gray-600">Learn from industry leaders and share your own expertise with the community.</p>
             </div>
             
@@ -600,7 +586,7 @@ export default function EnhancedInsightsPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-slate-900 to-blue-400 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Real-time Updates</h3>
+              <h3 className="text-xl font-semiserif mb-2">Real-time Updates</h3>
               <p className="text-gray-600">Stay ahead with instant notifications about new insights and trending topics.</p>
             </div>
           </div>
@@ -608,7 +594,7 @@ export default function EnhancedInsightsPage() {
           <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-3xl p-8 shadow-lg">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">Ready to Connect?</h3>
+                <h3 className="text-2xl font-serif text-gray-800 mb-4">Ready to Connect?</h3>
                 <p className="text-gray-600 mb-6">
                   Join thousands of data professionals sharing knowledge, asking questions, and building the future of analytics together.
                 </p>
@@ -617,7 +603,7 @@ export default function EnhancedInsightsPage() {
                     href="https://join.slack.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semiserif transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
                   >
                     Join Slack Community
                   </a>
@@ -625,7 +611,7 @@ export default function EnhancedInsightsPage() {
                     href="https://www.linkedin.com/company"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
+                    className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-xl font-semiserif transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center"
                   >
                     Follow on LinkedIn
                   </a>
@@ -640,7 +626,7 @@ export default function EnhancedInsightsPage() {
                         <Users className="w-4 h-4 text-gray-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-800">25K+</p>
+                        <p className="font-semiserif text-gray-800">25K+</p>
                         <p className="text-xs text-gray-600">Members</p>
                       </div>
                     </div>
@@ -652,7 +638,7 @@ export default function EnhancedInsightsPage() {
                         <Star className="w-4 h-4 text-gray-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-800">4.9/5</p>
+                        <p className="font-semiserif text-gray-800">4.9/5</p>
                         <p className="text-xs text-gray-600">Rating</p>
                       </div>
                     </div>
@@ -664,7 +650,7 @@ export default function EnhancedInsightsPage() {
                         <BookOpen className="w-4 h-4 text-gray-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-800">500+</p>
+                        <p className="font-semiserif text-gray-800">500+</p>
                         <p className="text-xs text-gray-600">Resources</p>
                       </div>
                     </div>
@@ -676,7 +662,7 @@ export default function EnhancedInsightsPage() {
                         <Globe className="w-4 h-4 text-gray-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-800">Global</p>
+                        <p className="font-semiserif text-gray-800">Global</p>
                         <p className="text-xs text-gray-600">Network</p>
                       </div>
                     </div>

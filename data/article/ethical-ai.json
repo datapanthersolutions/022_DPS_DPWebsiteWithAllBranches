@@ -1,0 +1,17 @@
+{
+  "slug": "ethical-ai",
+  "title": "Ethical AI: Building Responsible Machine Learning Systems",
+  "author": "Shoaib Asim",
+  "date": "July 22, 2025",
+  "readTime": "7 min read",
+  "likes": 0,
+  "comments": 0,
+  "sections": [
+    {
+      "id": "overview",
+      "heading": "Ethical AI: Building Responsible Machine Learning Systems",
+      "content": "Navigate the complex landscape of ethical AI development. Learn about bias detection, fairness metrics, transparency requirements, and best practices for building responsible AI systems that benefit everyone.",
+      "bullets": ["Ethics", "AI", "Responsibility"]
+    }
+  ]
+}

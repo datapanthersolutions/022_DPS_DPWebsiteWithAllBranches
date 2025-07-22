@@ -17,7 +17,7 @@ export default function AIML() {
       />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center mb-16">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-sans leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
           Leveraging AI & ML Solutions for Process Automation and Smart Decision Making
         </h1>
       </div>

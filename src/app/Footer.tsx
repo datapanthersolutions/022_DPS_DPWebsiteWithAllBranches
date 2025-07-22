@@ -46,7 +46,7 @@ export default function ResponsiveFooter() {
           viewport={{ once: false }}
           className="mx-auto max-w-screen-md sm:text-center"
         >
-          <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl dark:text-white">
+          <h2 className="mb-4 text-3xl tracking-tight font-extraserif text-gray-900 sm:text-4xl dark:text-white">
             Sign up for our newsletter
           </h2>
           <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
@@ -136,7 +136,7 @@ export default function ResponsiveFooter() {
                 alt="Data Panther Logo" 
                 className="h-30 w-40 mr-3"
               /> */}
-              <Typography as="h3" className="text-5xl font-bold text-white">
+              <Typography as="h3" className="text-5xl font-serif text-white">
                 DATA <br/> PANTHER
               </Typography>
             </div>
@@ -171,7 +171,7 @@ export default function ResponsiveFooter() {
 
           {/* Quick Links */}
           <div>
-            <Typography as="h4" className="text-lg font-semibold mb-4">
+            <Typography as="h4" className="text-lg font-semiserif mb-4">
               Quick Links
             </Typography>
             <ul className="space-y-2">
@@ -225,7 +225,7 @@ export default function ResponsiveFooter() {
 
           {/* Services */}
           <div>
-            <Typography as="h4" className="text-lg font-semibold mb-4">
+            <Typography as="h4" className="text-lg font-semiserif mb-4">
               Services
             </Typography>
             <ul className="space-y-2">
@@ -279,7 +279,7 @@ export default function ResponsiveFooter() {
 
           {/* Contact Info */}
           <div>
-            <Typography as="h4" className="text-lg font-semibold mb-4">
+            <Typography as="h4" className="text-lg font-semiserif mb-4">
               Contact Info
             </Typography>
             <div className="space-y-3">
