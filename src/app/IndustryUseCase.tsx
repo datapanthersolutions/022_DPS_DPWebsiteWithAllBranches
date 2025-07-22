@@ -10,10 +10,12 @@ import {
   Zap,
   Users,
 } from "lucide-react";
+import { img } from "framer-motion/client";
 
 const useCases = [
  {
   icon: <Cpu className="w-8 h-8 text-green-600" />,
+  img: "https://cdn-daalo.nitrocdn.com/AcwLRqcfPhPNHtkdEVVwGPZVsUuLCgMM/assets/images/optimized/rev-3a79db4/www.sonassystems.com/wp-content/uploads/2023/02/Untitled-design-1.webp",
   title: "Automated IT Operations (AIOps)",
   description:
     "AIOps leverages artificial intelligence and machine learning to streamline IT operations by analyzing real-time data, detecting anomalies, and automating responses. It helps predict incidents, reduce downtime, and improve service performance across complex digital infrastructures.",
@@ -21,30 +23,35 @@ const useCases = [
 
 {
   icon: <ShieldCheck className="w-8 h-8 text-green-600" />,
+  img: "https://bostoninstituteofanalytics.b-cdn.net/wp-content/uploads/2024/11/Untitled-design-5.jpg",
   title: "Intelligent Threat Detection",
   description:
     "Leverage machine learning-based security systems to detect threats, analyze anomalies, and respond to potential breaches in real time. Ensure continuous protection and compliance across your entire IT infrastructure.",
 },
 {
   icon: <Activity className="w-8 h-8 text-green-600" />,
+  img: "https://www.jadeglobal.com/sites/default/files/styles/webp/public/2019-07/Performanace-Analytics-for-IT-Operation-management---Banner.jpg.webp?itok=EQGZzhym",
   title: "Performance Analytics",
   description:
     "Gain deep visibility into application and infrastructure performance using predictive analytics. Identify trends, prevent slowdowns, and proactively optimize systems to ensure seamless user experiences and operational efficiency.",
 },
 {
   icon: <BarChart3 className="w-8 h-8 text-green-600" />,
+  img: "https://media.licdn.com/dms/image/v2/D4D12AQGaTtHH2mBmFQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710747151903?e=2147483647&v=beta&t=-Z6DTFmzOuIga4Sqi2xnsh_jEmCtJNtde85yhn1l5bk",
   title: "Data-Driven Decision Making",
   description:
     "Transform operational data into actionable insights with advanced analytics and interactive dashboards. Improve IT budgeting, resource planning, and capacity forecasting through smarter, data-informed decisions.",
 },
 {
   icon: <Zap className="w-8 h-8 text-green-600" />,
+  img: "https://cloudwars.com/wp-content/uploads/2023/08/Generative-AI-DevOps-DataOps.jpg",
   title: "Generative AI in DevOps",
   description:
     "Empower your DevOps teams with generative AI that streamlines development workflows—auto-generating documentation, test cases, and context-aware code suggestions. Enhance productivity and accelerate delivery cycles with AI-tailored to your stack.",
 },
 {
   icon: <Users className="w-8 h-8 text-green-600" />,
+  img: "https://media.licdn.com/dms/image/v2/D4D12AQEv2RHPhA4bhg/article-cover_image-shrink_720_1280/B4DZX1hVb_HsBI-/0/1743580913103?e=2147483647&v=beta&t=hBNjIVyi7UoH7eUjPLr1WZNc1DKRyUSv9QbTIRtzQH4",
   title: "Personalized IT Support",
   description:
     "Deliver faster, smarter IT support using conversational AI trained on historical tickets and user behavior. Provide personalized resolutions, reduce response times, and enable self-service for a better end-user experience.",
@@ -67,12 +74,17 @@ export default function IndustryUseCases() {
           {useCases.map((useCase, idx) => (
             <div
               key={idx}
-              className="rounded-2xl p-6 text-left bg-white transform transition-all duration-300 hover:shadow-xl hover:border hover:border-purple-200"
+              className=" p-6 text-left bg-white transform transition-all duration-300 hover:shadow-xl hover:border hover:border-purple-200"
             >
               <div className="mb-4">{useCase.icon}</div>
               <h3 className="text-xl font-semiserif text-gray-800 mb-2">
                 {useCase.title}
               </h3>
+              <img
+                src={useCase.img}
+                alt={useCase.title}
+                className="w-full h-80 object-cover mb-4 "
+              />
               <p className="text-gray-600">{useCase.description}</p>
             </div>
           ))}

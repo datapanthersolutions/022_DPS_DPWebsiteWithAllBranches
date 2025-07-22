@@ -14,7 +14,8 @@ export default function GenerativeAIImpact() {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Icon/Visual */}
           <div className="flex-shrink-0 bg-gray-100 rounded-2xl p-8 shadow-md">
-            <BrainCircuit className="w-16 h-16 text-indigo-600" />
+            {/* <BrainCircuit className="w-16 h-16 text-indigo-600" /> */}
+            <img src="https://so-development.org/wp-content/uploads/2024/05/1710642350647.png" alt="GenAi" className="h-80 w-max"/>
           </div>
 
           {/* Content */}
