@@ -35,7 +35,7 @@ export default function AIML() {
 
         <div className="flex justify-center">
           <img
-            src="https://aitsrajampet.ac.in/images/pdf/ai/Artificial-Intelligence-and-Machine-Learning.png" // Replace with actual image path
+          src="/3.jpg"
             alt="AI ML Illustration"
             className="w-full max-w-sm md:max-w-md lg:max-w-lg"
             

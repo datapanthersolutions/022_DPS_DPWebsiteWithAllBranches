@@ -56,3 +56,32 @@ body {
     }
   }
 }
+/* globals.css */
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+}
+/* Apply Poppins to entire body */
+body {
+  font-family: var(--font-poppins);
+}
+
+/* Apply Poppins to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins);
+}
+
+/* Optional utility class */
+.heading-font {
+  font-family: var(--font-poppins);
+}
+.montserrat-font {
+  font-family: var(--font-montserrat);
+}
+
+.geist-font {
+  font-family: var(--font-geist-sans);
+}
+body {
+  font-family: var(--font-poppins);
+}

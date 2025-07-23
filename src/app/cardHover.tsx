@@ -1,53 +1,177 @@
 import { HoverEffect } from "../components/ui/card-hover-effect";
+import { 
+  Brain, 
+  MessageSquare, 
+  Eye, 
+  Globe, 
+  Sparkles, 
+  Database,
+  Zap,
+  Target
+} from "lucide-react";
 
 export function CardHoverEffectDemo() {
   return (
-    <div className=" max-w-7xl mx-auto px-4 my-5">
-      <h1 className="font-serif text-4xl md:text-5xl text-black py-10 mb-4 text-center tracking-tight drop-shadow-lg">
-        Our Solutions
-      </h1>
-      <p className="text-lg text-center mb-3">
-        Discover our range of AI-powered products and solutions <br/>designed to help you get more from your data.
-      </p>
-      <HoverEffect items={projects} className={undefined} />
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.05),transparent_70%)]" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-green-500/10 backdrop-blur-sm border border-green-500/20 rounded-full px-6 py-2 mb-6">
+            <Sparkles className="w-4 h-4 text-green-400" />
+            <span className="text-sm font-medium text-white/90">AI-Powered Solutions</span>
+          </div>
+          
+          <h1 className="font-bold text-5xl md:text-7xl text-white py-4 mb-6 tracking-tight leading-tight">
+            Our Solutions
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-8">
+            Discover our range of{" "}
+            <span className="text-green-400 font-semibold">AI-powered products</span>{" "}
+            and solutions designed to help you{" "}
+            <span className="text-green-300 font-semibold">unlock the full potential</span>{" "}
+            of your data.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-white/60">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span>Enterprise Ready</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-300" />
+              <span>99.9% Uptime</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse delay-700" />
+              <span>Advanced AI</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Cards Section */}
+        <HoverEffect 
+          items={projects} 
+          variant="default"
+          enableParallax={true}
+          columns={{ sm: 1, md: 2, lg: 2, xl: 2 }}
+          animationDelay={0.15}
+        />
+
+        {/* Stats Section */}
+        <div className="mt-24 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <div key={index} className="group">
+                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {stat.value}
+                </div>
+                <div className="text-white/70 text-sm md:text-base">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-20 text-center">
+          <div className="bg-green-500/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to Transform Your Data?
+            </h3>
+            <p className="text-white/70 mb-6">
+              Join thousands of companies already using our AI solutions to drive growth and innovation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25">
+                Get Started Free
+              </button>
+              <button className="border border-green-500/30 hover:border-green-500/60 text-green-400 hover:text-green-300 font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-green-500/5">
+                Schedule Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
+
 export const projects = [
   {
-    title: "Rag Chatbot",
+    title: "Retrieval-Augmented Generation",
     description:
-      "it fetches data from the documents and breakdown into chunks and forms the embeddings and stores them in the vector database. It then uses the embeddings to answer the questions asked by the user.",
-    link: "https://stripe.com",
+      "Advanced RAG system that intelligently fetches data from documents, creates semantic embeddings, and stores them in optimized vector databases. Our solution provides contextually accurate answers by combining the power of large language models with your proprietary data, ensuring responses are both relevant and grounded in your specific information.",
+    badge: "Most Popular",
+    icon: <Brain className="w-6 h-6" />,
+    tags: ["RAG", "Vector DB", "LLM", "Embeddings", "AI"],
+    featured: true,
+    date: "Latest Release",
+    author: "AI Research Team",
+    stats: {
+      views: 15420,
+      likes: 892,
+      comments: 156
+    },
+    href: "#rag-solution"
   },
   {
-    title: "chat with data",
+    title: "Conversational Data Analytics",
     description:
-      "chatwithdata is a platform that allows you to chat with your data. It uses the power of AI to answer your questions about your data.",
-    link: "https://netflix.com",
+      "Transform your data exploration experience with our intelligent chat interface. Simply ask questions in natural language and get instant insights, visualizations, and reports. Our platform understands context, maintains conversation history, and can handle complex multi-step analytical queries across diverse data sources.",
+    badge: "Enterprise",
+    icon: <MessageSquare className="w-6 h-6" />,
+    tags: ["Chat", "Analytics", "NLP", "Business Intelligence", "Insights"],
+    date: "Updated Dec 2024",
+    author: "Data Science Team",
+    stats: {
+      views: 12350,
+      likes: 743,
+      comments: 98
+    },
+    href: "#chat-analytics"
   },
   {
-    title: "Image Analysis",
+    title: "Computer Vision Intelligence",
     description:
-      "A platform that allows you to analyze images and extract information from them. It uses the power of AI to answer your questions about your images.",
-    link: "https://google.com",
+      "See beyond pixels with our advanced computer vision platform. Extract meaningful insights from images, videos, and visual content using state-of-the-art AI models. From object detection and classification to optical character recognition and scene understanding, unlock the hidden value in your visual data.",
+    badge: "AI-Powered",
+    icon: <Eye className="w-6 h-6" />,
+    tags: ["Computer Vision", "OCR", "Object Detection", "Image Analysis", "ML"],
+    date: "New Features",
+    author: "Vision AI Team",
+    stats: {
+      views: 9876,
+      likes: 567,
+      comments: 89
+    },
+    href: "#vision-ai"
   },
   {
-    title: "website analysis",
+    title: "Web Intelligence Platform",
     description:
-      "A platform that allows you to analyze websites and extract information from them. It uses the power of AI to answer your questions about your websites.",
-    link: "https://meta.com",
-  },
-  {
-    title: "Amazon",
-    description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-    link: "https://amazon.com",
-  },
-  {
-    title: "Microsoft",
-    description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-    link: "https://microsoft.com",
-  },
+      "Gain comprehensive insights into web presence and digital performance. Our platform crawls, analyzes, and extracts actionable intelligence from websites, providing competitive analysis, content optimization suggestions, and market trend identification. Stay ahead with data-driven web strategies.",
+    badge: "Enterprise+",
+    icon: <Globe className="w-6 h-6" />,
+    tags: ["Web Scraping", "SEO", "Analytics", "Competitive Intelligence", "Automation"],
+    date: "Beta Access",
+    author: "Web Analytics Team",
+    stats: {
+      views: 7234,
+      likes: 445,
+      comments: 67
+    },
+    href: "#web-intelligence"
+  }
+];
+
+const stats = [
+  { value: "50K+", label: "Active Users" },
+  { value: "99.9%", label: "Uptime" },
+  { value: "2.5M+", label: "Queries Processed" },
+  { value: "150+", label: "Enterprise Clients" }
 ];

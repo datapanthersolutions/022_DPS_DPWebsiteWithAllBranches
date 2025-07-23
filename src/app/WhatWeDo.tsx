@@ -16,7 +16,7 @@ const FloatingParticles = () => {
         return (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-green-400/30 rounded-full"
             initial={{
               x: Math.random() * width,
               y: Math.random() * height,
@@ -270,7 +270,7 @@ export default function FancyWhatWeDo() {
     {
       title: "Automate Customer Support",
       icon: "🤖",
-      color: "#3B82F6",
+      color: "#4CAF50",
       description: "Transform your customer service with AI-powered automation that provides instant, accurate responses 24/7.",
       features: [
         "Intelligent chatbots with natural language processing",
@@ -283,7 +283,7 @@ export default function FancyWhatWeDo() {
     {
       title: "Accelerate Decision Making",
       icon: "⚡",
-      color: "#10B981",
+      color: "#4CAF50",
       description: "Leverage real-time data analytics and AI insights to make faster, more informed business decisions.",
       features: [
         "Real-time data visualization dashboards",
@@ -296,7 +296,7 @@ export default function FancyWhatWeDo() {
     {
       title: "Integrate Advanced LLMs",
       icon: "🧠",
-      color: "#8B5CF6",
+      color: "#4CAF50",
       description: "Seamlessly integrate cutting-edge Large Language Models to enhance your applications and workflows.",
       features: [
         "Custom model fine-tuning and training",
@@ -309,7 +309,7 @@ export default function FancyWhatWeDo() {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-950 to-white-800 relative overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-green-900 via-black to-white-800 relative overflow-hidden">
       {/* Floating Particles */}
       <FloatingParticles />
       
@@ -318,8 +318,8 @@ export default function FancyWhatWeDo() {
         className="absolute inset-0 opacity-30"
         style={{ y: backgroundY }}
       >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
       </motion.div>
 
@@ -376,7 +376,7 @@ export default function FancyWhatWeDo() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.2 }}
               >
-                <div className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+                <div className="text-transparent bg-gradient-to-r from-green-400 to-green-500 bg-clip-text">
                   <StatsCounter end={stat.number} suffix={stat.suffix} />
                 </div>
                 <p className="text-gray-400 mt-2">{stat.label}</p>
@@ -395,7 +395,7 @@ export default function FancyWhatWeDo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-4xl font-serif text-white mb-4">Our Core Services</h2>
+            <h2 className="text-4xl font-serif text-green-500 mb-4">Our Core Services</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               Discover how our AI-powered solutions can revolutionize your business operations
             </p>

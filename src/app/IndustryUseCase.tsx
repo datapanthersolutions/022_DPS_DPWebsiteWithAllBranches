@@ -15,7 +15,7 @@ import { img } from "framer-motion/client";
 const useCases = [
  {
   icon: <Cpu className="w-8 h-8 text-green-600" />,
-  img: "https://cdn-daalo.nitrocdn.com/AcwLRqcfPhPNHtkdEVVwGPZVsUuLCgMM/assets/images/optimized/rev-3a79db4/www.sonassystems.com/wp-content/uploads/2023/02/Untitled-design-1.webp",
+  img: "1.jpg",
   title: "Automated IT Operations (AIOps)",
   description:
     "AIOps leverages artificial intelligence and machine learning to streamline IT operations by analyzing real-time data, detecting anomalies, and automating responses. It helps predict incidents, reduce downtime, and improve service performance across complex digital infrastructures.",
@@ -23,21 +23,21 @@ const useCases = [
 
 {
   icon: <ShieldCheck className="w-8 h-8 text-green-600" />,
-  img: "https://bostoninstituteofanalytics.b-cdn.net/wp-content/uploads/2024/11/Untitled-design-5.jpg",
+  img: "/8.jpg",
   title: "Intelligent Threat Detection",
   description:
     "Leverage machine learning-based security systems to detect threats, analyze anomalies, and respond to potential breaches in real time. Ensure continuous protection and compliance across your entire IT infrastructure.",
 },
 {
   icon: <Activity className="w-8 h-8 text-green-600" />,
-  img: "https://www.jadeglobal.com/sites/default/files/styles/webp/public/2019-07/Performanace-Analytics-for-IT-Operation-management---Banner.jpg.webp?itok=EQGZzhym",
+  img: "performance.png",
   title: "Performance Analytics",
   description:
     "Gain deep visibility into application and infrastructure performance using predictive analytics. Identify trends, prevent slowdowns, and proactively optimize systems to ensure seamless user experiences and operational efficiency.",
 },
 {
   icon: <BarChart3 className="w-8 h-8 text-green-600" />,
-  img: "https://media.licdn.com/dms/image/v2/D4D12AQGaTtHH2mBmFQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710747151903?e=2147483647&v=beta&t=-Z6DTFmzOuIga4Sqi2xnsh_jEmCtJNtde85yhn1l5bk",
+  img: "decision.png",
   title: "Data-Driven Decision Making",
   description:
     "Transform operational data into actionable insights with advanced analytics and interactive dashboards. Improve IT budgeting, resource planning, and capacity forecasting through smarter, data-informed decisions.",
