@@ -44,14 +44,14 @@ const useCases = [
 },
 {
   icon: <Zap className="w-8 h-8 text-green-600" />,
-  img: "https://cloudwars.com/wp-content/uploads/2023/08/Generative-AI-DevOps-DataOps.jpg",
+  img: "/DevOpsAI1.png",
   title: "Generative AI in DevOps",
   description:
     "Empower your DevOps teams with generative AI that streamlines development workflows—auto-generating documentation, test cases, and context-aware code suggestions. Enhance productivity and accelerate delivery cycles with AI-tailored to your stack.",
 },
 {
   icon: <Users className="w-8 h-8 text-green-600" />,
-  img: "https://media.licdn.com/dms/image/v2/D4D12AQEv2RHPhA4bhg/article-cover_image-shrink_720_1280/B4DZX1hVb_HsBI-/0/1743580913103?e=2147483647&v=beta&t=hBNjIVyi7UoH7eUjPLr1WZNc1DKRyUSv9QbTIRtzQH4",
+  img: "/AIChatBotCS.png",
   title: "Personalized IT Support",
   description:
     "Deliver faster, smarter IT support using conversational AI trained on historical tickets and user behavior. Provide personalized resolutions, reduce response times, and enable self-service for a better end-user experience.",

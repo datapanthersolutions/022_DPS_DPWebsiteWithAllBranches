@@ -68,24 +68,24 @@ export default function ContactPage() {
                 <div className="mt-8">
                   <h3 className="text-gray-300">Follow us</h3>
                   <div className="flex mt-4 gap-4">
-                    <a
+                    {/* <a
                       href="#"
                       className="text-white hover:text-green-400 transition-colors"
                     >
                       <i className="fab fa-twitter text-2xl">X</i>
-                    </a>
+                    </a> */}
                     <a
-                      href="#"
+                      href="https://linkedin.com/company/data-panther"
                       className="text-white hover:text-green-400 transition-colors"
                     >
                       <i className="fab fa-linkedin text-2xl">in</i>
                     </a>
-                    <a
+                    {/* <a
                       href="#"
                       className="text-white hover:text-green-400 transition-colors"
                     >
                       <i className="fab fa-facebook text-2xl">f</i>
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>

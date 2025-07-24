@@ -76,7 +76,7 @@ const ModernNavbar = () => {
     <img
       src="/resetdatapanther-removebg-preview.png"
       alt="Data Panther Logo"
-      className="h-40 w-auto object-contain" 
+      className="h-60 w-auto object-contain" 
     />
   </Link>
 

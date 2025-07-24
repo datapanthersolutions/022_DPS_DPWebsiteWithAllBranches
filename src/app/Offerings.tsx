@@ -6,25 +6,41 @@ import { IconCpu, IconRobot, IconDatabase, IconChartLine } from "@tabler/icons-r
 const offerings = [
   {
     title: "AI Development",
-    icon: <IconRobot size={32} className="text-primary-600" />,
+    icon: (
+    <div className="flex justify-center mb-2">
+      <IconRobot size={32} className="text-green-500" />
+    </div>
+    ),
     description:
       "Custom AI solutions using natural language processing, computer vision, and intelligent automation.",
   },
   {
     title: "Machine Learning Models",
-    icon: <IconCpu size={32} className="text-primary-600" />,
+    icon: (
+    <div className="flex justify-center mb-2">
+    <IconCpu size={32} className="text-green-500" />
+    </div>
+    ),
     description:
       "Deploy predictive models trained on your data to optimize performance and forecasting.",
   },
   {
     title: "Data Engineering",
-    icon: <IconDatabase size={32} className="text-primary-600" />,
+    icon: (
+    <div className="flex justify-center mb-2">
+    <IconDatabase size={32} className="text-green-500" />
+    </div>
+	),
     description:
       "Design and manage scalable data pipelines and storage systems for real-time analytics.",
   },
   {
     title: "Business Intelligence",
-    icon: <IconChartLine size={32} className="text-primary-600" />,
+    icon: (
+    <div className="flex justify-center mb-2">
+    <IconChartLine size={32} className="text-green-500" />
+    </div>
+	),
     description:
       "Interactive dashboards, KPI tracking, and visual analytics to drive informed decisions.",
   },
@@ -39,7 +55,7 @@ export default function OurOfferings() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-serif text-gray-900 dark:text-white mb-4"
+          className="text-4xl md:text-5xl font-serif text-green-600 dark:text-white mb-4"
         >
           Our Offerings
         </motion.h2>

@@ -70,7 +70,8 @@ const AnimatedIcon = ({ children, delay = 0 }: AnimatedIconProps) => {
 // Service Card Component
 type Service = {
   title: string;
-  icon: React.ReactNode;
+  // icon: React.ReactNode;
+  icon:string;
   color: string;
   description: string;
   features: string[];
@@ -134,7 +135,12 @@ const ServiceCard = ({ service, index, isActive, onHover }: ServiceCardProps) =>
             }}
           >
             <AnimatedIcon delay={index * 0.3}>
-              {service.icon}
+              {/* {service.icon} */}
+               <img
+    src={service.icon}
+    alt={service.title + " icon"}
+    className="w-12 h-12 object-contain"
+  />
             </AnimatedIcon>
           </motion.div>
         </div>
@@ -269,7 +275,7 @@ export default function FancyWhatWeDo() {
   const services = [
     {
       title: "Automate Customer Support",
-      icon: "🤖",
+      icon: "/ai-support.svg",
       color: "#4CAF50",
       description: "Transform your customer service with AI-powered automation that provides instant, accurate responses 24/7.",
       features: [
@@ -282,7 +288,7 @@ export default function FancyWhatWeDo() {
     },
     {
       title: "Accelerate Decision Making",
-      icon: "⚡",
+      icon: "/noun-power-6798387.svg",
       color: "#4CAF50",
       description: "Leverage real-time data analytics and AI insights to make faster, more informed business decisions.",
       features: [
@@ -295,7 +301,7 @@ export default function FancyWhatWeDo() {
     },
     {
       title: "Integrate Advanced LLMs",
-      icon: "🧠",
+      icon: "/noun-artificial-intelligence-6498786.svg",
       color: "#4CAF50",
       description: "Seamlessly integrate cutting-edge Large Language Models to enhance your applications and workflows.",
       features: [
@@ -430,7 +436,7 @@ export default function FancyWhatWeDo() {
               y: -10
             }}
           >
-            <h3 className="text-3xl font-serif text-white mb-4">
+            <h3 className="text-3xl text-green-500 font-serif mb-4">
               Ready to Transform Your Business?
             </h3>
             <p className="text-gray-300 mb-8 text-lg">
