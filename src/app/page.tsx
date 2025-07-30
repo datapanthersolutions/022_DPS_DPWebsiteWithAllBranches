@@ -10,19 +10,20 @@ import AIML from "./AIML";
 import OurOfferings from "./Offerings";
 import GenerativeAIImpact from "./GenAi";
 import IndustryUseCases from "./IndustryUseCase";
+import LLMWeAreExcelAt from "./LLMWeAreExcelAt";
 
 export default function Home() {
   return (
     <>
     <section><LandingPage /></section>
     <section> <AIML/></section>
+    <section><LLMWeAreExcelAt/></section>
     <section><GenerativeAIImpact/></section>
     <section><FancyWhatWeDo/></section>
     <section><OurOfferings/></section>
-    <section><CardHoverEffectDemo/></section>
-    <section><IndustryUseCases/></section>
+    {/* <section><IndustryUseCases/></section> */}
     <section> <FeaturesSectionDemo/></section>
-    <section> <InfiniteMovingCardsDemo/></section>
+    {/* <section> <InfiniteMovingCardsDemo/></section> */}
     </>
   );
 }

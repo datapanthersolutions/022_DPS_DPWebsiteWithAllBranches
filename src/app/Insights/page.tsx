@@ -59,7 +59,7 @@ const insights: Insight[] = [
     date: '2025-07-10',
     featured: true,
     trending: true,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+    image: '/Realtimeanalytics.png',
     views: 12500,
     likes: 245,
     author: 'Shoaib Asim',
@@ -73,7 +73,7 @@ const insights: Insight[] = [
     description: 'Learn the key challenges and proven strategies for deploying machine learning models across large-scale production environments. This guide covers CI/CD for ML, model versioning, monitoring, and ensuring model performance and reliability post-deployment.',
     readTime: '12 min read',
     date: '2025-07-08',
-    image: 'https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww',
+    image: '/ModelEvaluation.png',
     views: 8900,
     likes: 189,
     author: 'Mujeeb ur Rehman',
@@ -88,7 +88,7 @@ const insights: Insight[] = [
     readTime: '6 min read',
     date: '2025-07-05',
     trending: true,
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop',
+    image: '/BusinessSecurity.png',
     views: 15200,
     likes: 312,
     author: 'Tauseef ur rahman',
@@ -102,7 +102,7 @@ const insights: Insight[] = [
     description: 'Discover how modern businesses are using advanced customer analytics — including behavioral modeling, sentiment analysis, and predictive segmentation — to go beyond basic KPIs and drive long-term growth, loyalty, and personalized engagement.',
     readTime: '10 min read',
     date: '2025-07-02',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
+    image: '/CustomerAnalytics.png',
     views: 9800,
     likes: 156,
     author: '',
@@ -116,7 +116,7 @@ const insights: Insight[] = [
     description: 'Explore how edge computing is transforming data processing by bringing computation closer to data sources. Learn about reduced latency, improved privacy, and new possibilities for IoT and real-time applications.',
     readTime: '7 min read',
     date: '2025-06-28',
-    image: 'https://5ghub.us/wp-content/uploads/2023/11/edge-computing-graphic-jpg.webp',
+    image: '/EdgeComputing.png',
     views: 6700,
     likes: 98,
     author: 'Abdul Rehman',
@@ -130,7 +130,7 @@ const insights: Insight[] = [
     description: 'Navigate the complex landscape of ethical AI development. Learn about bias detection, fairness metrics, transparency requirements, and best practices for building responsible AI systems that benefit everyone.',
     readTime: '9 min read',
     date: '2025-06-25',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
+    image: '/EthicalAi.png',
     views: 11400,
     likes: 203,
     author: 'Abdul Malik',
@@ -221,9 +221,12 @@ export default function EnhancedInsightsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 mt-11">
       {/* Animated Header */}
-      <header className="relative py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/80 to-gray-400/80"></div>
+      {/* <header className="relative py-32 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white overflow-hidden"> */}
+        {/* <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/80 to-gray-400/80"></div> */}
+         <header className="relative py-32 bg-black">
+        {/* <div className="absolute inset-0 bg-black/20"></div> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/8 to-black-600/80"></div>
         
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-sm animate-pulse"></div>
@@ -231,18 +234,23 @@ export default function EnhancedInsightsPage() {
         <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-white/10 rounded-full blur-sm animate-pulse delay-500"></div>
         
         <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm text-white">
             <Sparkles className="w-4 h-4" />
             Latest Insights & Trends
           </div>
-          <h1 className="text-6xl font-serif mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+          {/* <h1 className="text-6xl font-serif mb-6 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent text-green-500"> */}
+          {/* <h1 className='text-6xl font-serif mb-6 text-green-500 bg-clip-text text-transparent'>
             Data Insights Hub
-          </h1>
+          </h1> */}
+          <h1 className="text-6xl font-serif mb-6 text-transparent bg-gradient-to-r from-green-400 to-green-600 bg-clip-text">
+  Data Insights Hub
+</h1>
+
           <p className="text-xl max-w-3xl mx-auto text-blue-100 mb-8 leading-relaxed">
             Discover cutting-edge trends, strategies, and innovations shaping the future of data analytics and artificial intelligence.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-red-600 px-8 py-3 rounded-full font-semiserif hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <button className="bg-white text-green-600 px-8 py-3 rounded-full font-semiserif hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               <Play className="w-5 h-5 inline mr-2" />
               Watch Demo
             </button>
@@ -260,7 +268,7 @@ export default function EnhancedInsightsPage() {
         <section className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-slate-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-black to-green-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
                 <Award className="w-4 h-4" />
                 Featured Insight
               </div>
@@ -276,7 +284,7 @@ export default function EnhancedInsightsPage() {
                   <img 
                     src={featuredInsight.image} 
                     alt={featuredInsight.title}
-                    className="w-full h-64 object-cover rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300"
+                    className="w-full  object-cover rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
@@ -462,7 +470,7 @@ export default function EnhancedInsightsPage() {
                   <img 
                     src={insight.image} 
                     alt={insight.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full  object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 left-4 flex gap-2">

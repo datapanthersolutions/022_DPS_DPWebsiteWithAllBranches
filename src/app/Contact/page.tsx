@@ -5,44 +5,41 @@ import React, { useState } from "react";
 export default function ContactPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
-  const faqs = [
-    {
-      question: "How can I pay for my appointment?",
-      answer:
-        "You can pay using credit/debit cards, UPI, net banking, or cash upon visit. We also support certain insurance reimbursements.",
-    },
-    {
-      question: "What can I expect at my first consultation?",
-      answer:
-        "Your first consultation will include a comprehensive discussion of your goals, medical history, and tailored solutions.",
-    },
-    {
-      question: "What are your opening hours?",
-      answer:
-        "We are open Monday to Saturday, 9:00 AM to 6:00 PM IST. Sunday closed.",
-    },
-    {
-      question: "Do I need a referral?",
-      answer:
-        "No referral is required. You can book directly through our website or contact form.",
-    },
-    {
-      question:
-        "Is the cost of the appointment covered by private health insurance?",
-      answer:
-        "Coverage depends on your provider and plan. We can provide documentation for claims.",
-    },
-  ];
+ const faqs = [
+  {
+    question: "What services does DataPantherSolutions offer?",
+    answer:
+      "We provide end-to-end data solutions including data analytics, AI integration, cloud infrastructure, and business intelligence consulting tailored to your industry needs.",
+  },
+  {
+    question: "How do I get started with your services?",
+    answer:
+      "You can reach out through our contact form, email, or schedule a free consultation to discuss your goals and how we can support your business.",
+  },
+  {
+    question: "Do you offer customized solutions for businesses?",
+    answer:
+      "Yes, all our solutions are fully customized based on your business requirements, industry challenges, and data maturity level.",
+  },
+  {
+    question: "Is my data secure with DataPantherSolutions?",
+    answer:
+      "Absolutely. We follow strict data privacy protocols and comply with GDPR and other international standards to ensure your data is protected.",
+  },
+  {
+    question: "What are your working hours and support availability?",
+    answer:
+      "Our team is available Monday to Friday, 9:00 AM to 7:00 PM IST. For critical issues, we provide 24/7 support for enterprise clients.",
+  },
+];
+
 
   return (
     <>
       {/* Hero Section */}
       <section
-        className="min-h-screen bg-cover mt-12"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80')",
-        }}
+        className="min-h-screen bg-cover mt-12 bg-[url('/ContactPage.png')] bg-cover"
+      
       >
         <div className="flex flex-col min-h-screen bg-black/60">
           <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
@@ -64,30 +61,47 @@ export default function ContactPage() {
                   Get in Touch
                 </button>
 
-                {/* Social Links */}
+               
                 <div className="mt-8">
-                  <h3 className="text-gray-300">Follow us</h3>
-                  <div className="flex mt-4 gap-4">
-                    {/* <a
-                      href="#"
-                      className="text-white hover:text-green-400 transition-colors"
-                    >
-                      <i className="fab fa-twitter text-2xl">X</i>
-                    </a> */}
-                    <a
-                      href="https://linkedin.com/company/data-panther"
-                      className="text-white hover:text-green-400 transition-colors"
-                    >
-                      <i className="fab fa-linkedin text-2xl">in</i>
-                    </a>
-                    {/* <a
-                      href="#"
-                      className="text-white hover:text-green-400 transition-colors"
-                    >
-                      <i className="fab fa-facebook text-2xl">f</i>
-                    </a> */}
-                  </div>
-                </div>
+  <h3 className="text-gray-300 text-sm uppercase tracking-wide">Follow us</h3>
+  <div className="flex mt-4 gap-6">
+    {/* LinkedIn */}
+    <a
+      href="https://linkedin.com/company/data-panther"
+      className="text-white hover:text-green-400 transition-colors"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="LinkedIn"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        className="w-6 h-6"
+      >
+        <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 8.98h4v12H3zM9.5 8.98h3.8v1.64h.05c.53-.99 1.84-2.04 3.78-2.04 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.2c0-1.24-.03-2.84-1.73-2.84-1.74 0-2 1.36-2 2.75V21h-4z" />
+      </svg>
+    </a>
+
+    {/* Email */}
+    <a
+      href="mailto:info@datapanther.com"
+      className="text-white hover:text-green-400 transition-colors"
+      aria-label="Email"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        className="w-6 h-6"
+      >
+        <path d="M20 4H4a2 2 0 0 0-2 2v12c0 1.103.897 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.511l-8 5.333-8-5.333V6h16ZM4 18V8.489l8 5.333 8-5.333V18H4Z" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+
               </div>
 
               {/* Right Form Section */}
@@ -146,7 +160,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-white dark:bg-gray-900">
+      {/* <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-12 mx-auto">
           <h1 className="text-2xl font-semiserif text-gray-800 dark:text-white lg:text-3xl">
             FAQs
@@ -191,7 +205,7 @@ export default function ContactPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

@@ -34,10 +34,10 @@ export default function ResponsiveFooter() {
   
 
       {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-9">
 
         
-    <section className=" dark:bg-gray-900">
+    {/* <section className=" dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -117,7 +117,7 @@ export default function ResponsiveFooter() {
           </form>
         </motion.div>
       </div>
-    </section>
+    </section> */}
 
 
 
@@ -178,7 +178,7 @@ export default function ResponsiveFooter() {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/AboutUs"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   About Us
@@ -187,13 +187,13 @@ export default function ResponsiveFooter() {
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/Services"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
                   Our Services
                 </Typography>
               </li>
-              <li>
+              {/* <li>
                 <Typography
                   as="a"
                   href="#"
@@ -201,14 +201,14 @@ export default function ResponsiveFooter() {
                 >
                   Case Studies
                 </Typography>
-              </li>
+              </li> */}
               <li>
                 <Typography
                   as="a"
-                  href="#"
+                  href="/Insights"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  Blog
+                  Insights
                 </Typography>
               </li>
               <li>
@@ -304,7 +304,7 @@ export default function ResponsiveFooter() {
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
                 <Typography className="text-gray-300 text-sm">
-                  data.sage.ltd@gmail.com
+                  info@datapanthersolutions.com
                 </Typography>
               </div>
             </div>

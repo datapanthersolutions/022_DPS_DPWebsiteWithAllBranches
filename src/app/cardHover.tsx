@@ -63,39 +63,9 @@ export function CardHoverEffectDemo() {
           animationDelay={0.15}
         />
 
-        {/* Stats Section */}
-        <div className="mt-24 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
-              <div key={index} className="group">
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {stat.value}
-                </div>
-                <div className="text-white/70 text-sm md:text-base">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+       
 
-        {/* CTA Section */}
-        <div className="mt-20 text-center">
-          <div className="bg-green-500/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Ready to Transform Your Data?
-            </h3>
-            <p className="text-white/70 mb-6">
-              Join thousands of companies already using our AI solutions to drive growth and innovation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25">
-                Get Started Free
-              </button>
-              <button className="border border-green-500/30 hover:border-green-500/60 text-green-400 hover:text-green-300 font-semibold px-8 py-3 rounded-xl transition-all duration-300 hover:bg-green-500/5">
-                Schedule Demo
-              </button>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );
@@ -169,9 +139,3 @@ export const projects = [
   }
 ];
 
-const stats = [
-  { value: "50K+", label: "Active Users" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "2.5M+", label: "Queries Processed" },
-  { value: "150+", label: "Enterprise Clients" }
-];

@@ -371,7 +371,7 @@ export default function FancyWhatWeDo() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             {[
-              { number: 500, suffix: "+", label: "Projects Completed" },
+              { number: 50, suffix: "+", label: "Projects Completed" },
               { number: 99, suffix: "%", label: "Client Satisfaction" },
               { number: 24, suffix: "/7", label: "Support Available" }
             ].map((stat, index) => (
@@ -428,7 +428,7 @@ export default function FancyWhatWeDo() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             className="bg-black/3 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
             whileHover={{
@@ -453,7 +453,7 @@ export default function FancyWhatWeDo() {
               Get Started Today
             </motion.button>
           </motion.div>
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );
