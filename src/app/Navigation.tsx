@@ -26,7 +26,7 @@ const ModernNavbar = () => {
     // { name: "Insights", href: "/Insights" },
     // { name: "Platforms", href: "/platforms" },
     {name: "Solutions", href:"/Solutions"},
-    { name: "Contact Us", href: "/Contact" },
+    { name: "Contact Us", href: "/ContactUs" },
   ];
 
   return (

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 export default function LLMWeAreExcelAt() {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const llms = [
     { name: 'ChatGPT', description: "OpenAI's versatile conversational AI model", tag: 'General Purpose', icon: 'https://accountpro.store/wp-content/uploads/2025/07/stsmall507x507-pad600x600f8f8f8.jpg' },

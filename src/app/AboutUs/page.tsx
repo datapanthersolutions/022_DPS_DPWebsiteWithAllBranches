@@ -27,7 +27,7 @@ interface ServiceCardProps {
 }
 
 interface ValueCardProps {
-  icon: React.ReactElement;
+  icon: React.ReactElement<{ className?: string }>;
   title: string;
   description: string;
   delay: number;
