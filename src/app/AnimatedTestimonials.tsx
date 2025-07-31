@@ -5,7 +5,7 @@ export function AnimatedTestimonialsDemo() {
     {
       quote:
         "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Mohammed Shoaib Asim",
+      name: "hasan",
       designation: "Software Developer at DataPanther",
       src: "https://media.licdn.com/dms/image/v2/D5603AQEMFytVezS8fA/profile-displayphoto-shrink_200_200/B56ZYWLFEVHoAg-/0/1744128726660?e=2147483647&v=beta&t=_4VPyr_N5nlYSWZoZVYV3yeMgMqLr-bTKLWU_umUaws",
     },

@@ -62,7 +62,7 @@ const insights: Insight[] = [
     image: '/Realtimeanalytics.png',
     views: 12500,
     likes: 245,
-    author: 'Shoaib Asim',
+    author: 'Ali Hassan',
     tags: ['Real-time', 'Analytics', 'Enterprise', 'AI']
   },
   {

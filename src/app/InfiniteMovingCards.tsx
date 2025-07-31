@@ -29,7 +29,7 @@ const testimonials = [
   {
     quote:
       "Data is the new oil; when refined, it has the power to transform industries, societies, and the world.",
-    name: "Mohammed Shoaib Asim",
+    name: "Talib",
     title: "Data can change the world",
   },
   {
