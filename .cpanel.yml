@@ -1,5 +1,10 @@
----
 deployment:
-  tasks:
-    - export DEPLOYPATH=/home/datapant/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+  tasks:
+    - /bin/rm -rf public_html/*
+    - curl -fsSL https://get.pnpm.io/install.sh | sh -
+    - export PATH="$HOME/.local/share/pnpm:$PATH"
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm install
+    - pnpm run build
+    - cp -r out/* public_html/
