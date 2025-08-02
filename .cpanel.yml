@@ -1,5 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/datapant/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/datapant/nextjs-app
+    - cd $DEPLOYPATH
+    - chmod +x deploy.sh
+    - ./deploy.sh
