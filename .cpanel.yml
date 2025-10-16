@@ -1,7 +1,17 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/datapant/nextjs-app
-    - cd $DEPLOYPATH
-    - chmod +x deploy.sh
-    - ./deploy.sh
+    - export APPDIR="$(pwd)"
+    - export OUTDIR="$APPDIR/out"
+    - export DEPLOYPATH="/home/datapant/public_html/nextjs-app-new/"
+    - export BASEPATH="/nextjs-app-new"
+
+    # fresh build
+    - /bin/rm -rf "$APPDIR/node_modules" "$OUTDIR"
+    - /bin/npm --prefix "$APPDIR" ci
+    - /usr/bin/env BASEPATH="$BASEPATH" /bin/npm --prefix "$APPDIR" run build
+    - /usr/bin/env BASEPATH="$BASEPATH" /bin/npx --yes --prefix "$APPDIR" next export -o "$OUTDIR"
+
+    # publish
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/rsync -avr --delete "$OUTDIR"/ "$DEPLOYPATH"
