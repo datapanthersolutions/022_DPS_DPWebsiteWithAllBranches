@@ -1,12 +1,16 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // output: 'export',
-  trailingSlash: true,
-  images: {
-    unoptimized: true, // Required for next export
-  },
-  assetPrefix: '',
-  basePath: '',
-}
+const base = process.env.BASEPATH || "";
 
-export default nextConfig
+export default {
+
+  output: "export",
+
+  images: { unoptimized: true },
+
+  basePath: base,
+
+  assetPrefix: base,
+
+  trailingSlash: true,
+
+};
+ 
