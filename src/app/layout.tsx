@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   title: "Data Panther",
   description: "Your AI-powered data analysis platform",
   icons: {
-    icon: "/logodp.png",
+    icon: "/dpnew.png",
   },
 };
 

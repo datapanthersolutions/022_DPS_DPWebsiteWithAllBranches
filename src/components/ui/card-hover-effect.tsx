@@ -376,7 +376,7 @@ const CardBadge: React.FC<{ children: React.ReactNode; variant: string }> = ({ c
 
 const getBadgeClass = (variant: string): string => {
   const classes = {
-    default: "bg-green-500/20 text-green-400 border border-green-500/30",
+    default: "bg-[#06923E]/20 text-green-400 border border-green-500/30",
     glass: "bg-white/20 text-white border border-white/30",
     neon: "bg-purple-500/20 text-purple-300 border border-purple-500/40",
     minimal: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300",
@@ -407,7 +407,7 @@ const CardIcon: React.FC<{ children: React.ReactNode; variant: string }> = ({ ch
 
 const getIconClass = (variant: string): string => {
   const classes = {
-    default: "bg-green-500/20 text-green-400",
+    default: "bg-[#06923E]/20 text-green-400",
     glass: "bg-white/20 text-white",
     neon: "bg-purple-500/20 text-purple-300",
     minimal: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300",
@@ -504,7 +504,7 @@ const getTagClass = (variant: string): string => {
     glass: "bg-white/10 text-white/80",
     neon: "bg-purple-500/10 text-purple-300",
     minimal: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300",
-    gradient: "bg-green-500/10 text-green-300",
+    gradient: "bg-[#06923E]/10 text-green-300",
     modern: "bg-white/10 text-white/80"
   };
   return classes[variant as keyof typeof classes] || classes.default;

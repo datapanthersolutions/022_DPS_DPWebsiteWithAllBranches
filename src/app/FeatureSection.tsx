@@ -15,42 +15,42 @@ export function FeaturesSectionDemo() {
   const features = [
     {
       title: "Engineered for Developers",
-      description: "Data Panther is purpose-built for engineers, thinkers, and innovators.",
+      description: "Data Panther provides the flexibility, scalability, and tools required to develop and implement cutting-edge data and AI solutions, making it ideal for engineers, innovators, and problem-solvers.",
       icon: <IconTerminal2 size={32} />,
     },
     {
       title: "Effortless Usability",
-      description: "As intuitive as it gets — no learning curve, just pure efficiency.",
+      description: "Discover a user-friendly platform built for optimal effectiveness. There is no steep learning curve and only smooth productivity.",
       icon: <IconEaseInOut size={32} />,
     },
     {
       title: "Flexible & Transparent Pricing",
-      description: "No surprises. No hidden fees. Only value.",
+      description: "Experience straightforward, value-driven pricing that scales with your needs and has no unexpected or hidden fees. ",
       icon: <IconCurrencyDollar size={32} />,
     },
     {
       title: "Rock-Solid Uptime",
-      description: "Data Panther never sleeps. Enjoy 100% uptime, always.",
+      description: "Reliability is assured with Data Panther. Take advantage of constant service with almost 100% uptime, wherever you are and at any time. ",
       icon: <IconCloud size={32} />,
     },
     {
       title: "Multi-Tenant Ready",
-      description: "Collaborate freely — one workspace, many teams.",
+      description: "Facilitate smooth collaboration by providing a single workspace that can safely and effectively accommodate several teams. ",
       icon: <IconRouteAltLeft size={32} />,
     },
     {
       title: "24/7 Live Support",
-      description: "Reach out anytime. Our human and AI agents are always ready.",
+      description: "Get assistance whenever you need it. Our team of experts and AI agents are on call 24/7 to guarantee continuous assistance. ",
       icon: <IconHelp size={32} />,
     },
     {
       title: "Risk-Free Guarantee",
-      description: "Try Data Panther, risk-free. We’re confident you’ll stay.",
+      description: "Try Data Panther without taking risks of any kind. We're sure you'll stay. ",
       icon: <IconAdjustmentsBolt size={32} />,
     },
     {
       title: "Constant Innovation",
-      description: "We evolve with your needs — and we're just getting started.",
+      description: "We're just getting started, but we're constantly improving our platform to satisfy your evolving needs. ",
       icon: <IconHeart size={32} />,
     },
   ];
@@ -62,6 +62,8 @@ export function FeaturesSectionDemo() {
         <h2 className="text-4xl  sm:text-5xl font-serif text-neutral-900 dark:text-green-500 tracking-tight">
           Why Choose Data Panther
         </h2>
+                          <div className="w-48 h-1 bg-red-500 mt-4 mx-auto rounded-full"></div>
+
         <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
           Everything you need to build, scale, and automate your data operations.
         </p>
@@ -92,7 +94,7 @@ const FeatureCard = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative group bg-white/80 dark:bg-white/5 backdrop-blur-lg border border-neutral-200 dark:border-neutral-800 p-6 rounded-2xl shadow-md transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+        className="relative group bg-white/80 dark:bg-white/5 backdrop-blur-lg  p-6  shadow-md transition-transform duration-300 hover:-translate-y-2 "
     >
         {/* Icon */}
         <div className="mb-4 text-green-600 dark:text-green-400">{icon}</div>
@@ -107,8 +109,7 @@ const FeatureCard = ({
             {description}
         </p>
 
-        {/* Hover effect */}
-        <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-blue-500 transition duration-300 pointer-events-none" />
+       
     </motion.div>
   );
 };

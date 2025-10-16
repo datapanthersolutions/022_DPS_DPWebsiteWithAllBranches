@@ -12,7 +12,7 @@ const offerings = [
     </div>
     ),
     description:
-      "Custom AI solutions using natural language processing, computer vision, and intelligent automation.",
+      "Design unique AI solutions that use computer vision, intelligent automation, and natural language processing to solve particular business problems and boost innovation.",
   },
   {
     title: "Machine Learning Models",
@@ -22,7 +22,7 @@ const offerings = [
     </div>
     ),
     description:
-      "Deploy predictive models trained on your data to optimize performance and forecasting.",
+      "Use predictive models that have been trained on your data to improve performance, find trends, and facilitate more intelligent, data-driven choices.",
   },
   {
     title: "Data Engineering",
@@ -32,7 +32,7 @@ const offerings = [
     </div>
 	),
     description:
-      "Design and manage scalable data pipelines and storage systems for real-time analytics.",
+      "Develop, build, and oversee scalable data pipelines and storage systems that can handle high-volume data processing and real-time analytics.",
   },
   {
     title: "Business Intelligence",
@@ -42,7 +42,7 @@ const offerings = [
     </div>
 	),
     description:
-      "Interactive dashboards, KPI tracking, and visual analytics to drive informed decisions.",
+      "Apply advanced visual analytics, KPI tracking, and interactive dashboards to enhance decision-making.",
   },
 ];
 
@@ -55,10 +55,12 @@ export default function OurOfferings() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-serif text-green-600 dark:text-white mb-4"
+          className="text-4xl md:text-5xl font-serif text-black-950 dark:text-white mb-4"
         >
           Our Offerings
         </motion.h2>
+                          <div className="w-48 h-1 bg-red-500 mx-auto rounded-full mb-5"></div>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -1,5 +1,4 @@
 
-
 "use client";
 import React, { useState } from "react";
 import {
@@ -12,11 +11,8 @@ import {
   CheckCircle,
   ArrowRight,
   Star,
-  Users,
   Award,
-  Sparkles,
   Play,
-  Download,
   Clock,
   X,
   Calendar,
@@ -33,6 +29,15 @@ interface Service {
   icon: React.ReactNode;
   features: string[];
   popular?: boolean;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  message: string;
+  preferredTime: string;
 }
 
 const services: Service[] = [
@@ -91,7 +96,10 @@ const stats = [
 export default function ServicesPage() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -108,13 +116,7 @@ export default function ServicesPage() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add your form submission logic here
-    alert('Thank you for your interest! We\'ll get back to you soon.');
-    setIsModalOpen(false);
+  const resetForm = () => {
     setFormData({
       name: '',
       email: '',
@@ -125,111 +127,245 @@ export default function ServicesPage() {
     });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim()) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/schedule-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        resetForm();
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setSubmitStatus(null);
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+        console.error('Submission failed:', result.message);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Network error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSubmitStatus(null);
+    if (!isSubmitting) {
+      resetForm();
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white text-gray-800 mt-10">
-      {/* Hero Section */}
-      <header className="relative py-32 bg-black">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-800/8 to-black-600/80"></div>
-        
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-sm animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full blur-md animate-pulse delay-1000"></div>
-        <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-white/10 rounded-full blur-sm animate-pulse delay-500"></div>
-        
-        <div className="relative max-w-6xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-            <Play className="w-4 h-4 text-blue-100" />
-            <span className="text-blue-100">Our Services</span>
-          </div>
-          <h1 className="text-6xl font-serif mb-6 bg-gradient-to-r from-white to-black-100 bg-clip-text text-transparent relative">
-            <span className="text-green-500">Services</span>
-            <span className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 w-70 h-1 bg-green-500 rounded"></span>
+    <div className="min-h-screen bg-white text-gray-800">
+    
+      {/* Hero Section
+      <header className="relative min-h-[80vh] bg-white overflow-hidden flex items-center">
+        <div className="absolute inset-0  pointer-events-none"></div>
+
+        <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
+  <img
+    src="/analyticsdash.png"
+    alt="Data Panther Services"
+    className="w-1/2 h-auto object-cover"
+  />
+</div>
+
+
+        <div className="relative z-20 max-w-4xl px-6 md:px-12 mx-auto text-center md:text-left">
+          
+          <h1 className="text-5xl sm:text-6xl font-montserrat font-semibold text-gray-900 leading-tight mb-6">
+            Empowering Businesses with <span className="text-green-600">Data-Driven</span> Solutions
           </h1>
-          <p className="text-xl max-w-3xl mx-auto text-blue-100 mb-8 leading-relaxed">
-            Data-first solutions designed to empower your business through analytics, automation, and innovation.
+
+          <p className="text-lg text-gray-600 max-w-xl mb-8 leading-relaxed">
+            Intelligent analytics, automation, and AI solutions tailored to drive your business forward — built with precision, performance, and purpose.
           </p>
         </div>
-      </header>
+      </header> */}
+      {/* Hero Section */}
+{/* Hero Section */}
+<header className="relative min-h-[80vh] bg-white overflow-hidden flex flex-col md:flex-row items-center">
+  
+  {/* Left Side - Text Section */}
+  <div className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-12 text-center md:text-left z-20 py-12 md:py-0">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-montserrat font-semibold text-gray-900 leading-tight mb-6">
+      Empowering Businesses with <span className="text-green-600">Data-Driven</span> Solutions
+    </h1>
 
-      <section className="py-20 bg-gray-50 text-gray-900">
+    <p className="text-base sm:text-lg text-gray-600 max-w-xl mb-8 leading-relaxed mx-auto md:mx-0">
+      Intelligent analytics, automation, and AI solutions tailored to drive your business forward — built with precision, performance, and purpose.
+    </p>
+  </div>
+
+  {/* Right Side - Image Section */}
+  <div className="w-full md:w-1/2 h-[60vh] md:h-[60vh] relative">
+    <img
+      src="/infographics.png"
+      alt="Data Panther Services"
+      className="w-full h-full object-cover object-center"
+    />
+  </div>
+</header>
+
+
+
+      {/* Wave Divider */}
+      <div className="relative">
+        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="#212121"/>
+        </svg>
+      </div>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-[#212121] text-gray-900 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full opacity-20 blur-3xl -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-200 rounded-full opacity-20 blur-3xl -z-10"></div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl text-green-500 font-serif mb-4 relative inline-block">
-              Why Choose Data Panther?
-              <span className="absolute left-1/2 -bottom-3 transform -translate-x-1/2 w-70 h-1 bg-black rounded"></span>
+            <h2 className="text-4xl md:text-5xl text-[#D3ECCD] font-montserrat mb-4">
+              Why Choose <span className="text-green-500">Data Panther?</span>
             </h2>
-            <p className="text-gray-700 text-lg max-w-2xl mx-auto my-5">
-              At <span className="font-semibold text-black">Data Panther</span>, we specialize in delivering cutting-edge solutions in <strong>Data Science</strong>, <strong>Analytics</strong>, and <strong>Generative AI</strong>. From building intelligent automation systems to unlocking valuable insights through advanced analytics, our solutions are engineered to drive innovation and success in your business.
+            <div className="w-48 h-1 bg-red-500 mx-auto mb-6"></div>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              We specialize in cutting-edge solutions in <strong>Data Science</strong>, <strong>Analytics</strong>, and <strong>Generative AI</strong>. From automation systems to advanced analytics, we deliver innovation that moves your business forward.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="text-4xl font-serif text-green-600 mb-2">
-                  {stat.icon}
+              <div 
+                key={index} 
+                className="group relative bg-[#EEEEEE]   p-8 shadow-lg hover: transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-600  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10">
+                  <div className="text-green-600 group-hover:text-white mb-4 transition-colors duration-300">
+                    {stat.icon}
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-800 group-hover:text-white mb-2 transition-colors duration-300">
+                    {stat.value}
+                  </h3>
+                  <p className="text-gray-600 group-hover:text-green-50 transition-colors duration-300">
+                    {stat.label}
+                  </p>
                 </div>
-                <h3 className="text-2xl font-semibold mb-1">{stat.value}</h3>
-                <p className="text-gray-700">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      {/* Wave Divider */}
+      <div className="relative">
+        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z" fill="#212121"/>
+        </svg>
+      </div>
+
+      {/* Deliverables Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div>
-            <h2 className="text-4xl font-serif text-green-500 mb-6">
-              What You Get When You Work With Us
+          <div className="relative z-10">
+            
+            <h2 className="text-4xl md:text-5xl font-montserrat font-semibold text-gray-900 mb-6">
+              What You Get When You <span className="text-green-600">Work With Us</span>
             </h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              We don't just deliver code — we deliver complete, production-ready solutions. Our team ensures every project is
-              tailored to your business goals, technically sound, and scalable for the future. From intuitive interfaces to
-              secure backends and performance analytics, you'll walk away with a fully polished product and the peace of mind
-              of post-launch support.
-            </p>
-            <ul className="list-disc list-inside space-y-3 text-gray-700">
-              <li>Complete deployment-ready applications</li>
-              <li>Technical documentation and training (on request)</li>
-              <li>Optimized, secure backend infrastructure</li>
-              <li>Integrated analytics and SEO-ready pages</li>
-              <li>Continuous communication and post-launch support</li>
-            </ul>
+We don't just deliver code — we deliver complete, production-ready solutions. Our team ensures every project is tailored to your business goals, technically sound, and scalable for the future. From intuitive interfaces to secure backends and performance analytics, you'll walk away with a fully polished product and the assurance of post-launch support.             </p>
+            <div className="space-y-4">
+              {[
+                "Complete deployment-ready applications",
+                "Technical documentation and training (on request)",
+                "Optimized, secure backend infrastructure",
+                "Integrated analytics and SEO-ready pages",
+                "Continuous communication and post-launch support"
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3 group hover:translate-x-2 transition-transform duration-300">
+                  <div className="mt-1 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors duration-300">
+                    <CheckCircle className="w-4 h-4 text-green-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="text-gray-700">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Image */}
-          <div className="w-full">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div>
             <img
               src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
               alt="Deliverables preview"
-              className="rounded-xl shadow-lg w-full object-cover"
+              className="relative rounded-2xl shadow-2xl w-full object-cover transform group-hover:-translate-y-2 transition-transform duration-300"
             />
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4 text-center relative">
-          <h2 className="text-3xl sm:text-4xl font-serif text-white inline-block mb-2 relative">
-            Industries We Serve
-            <span className="block mt-2 mx-auto w-32 h-1 bg-green-500 rounded"></span>
-          </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto mt-6 leading-relaxed">
-            We've built transformative solutions across diverse sectors — enabling innovation in healthcare, boosting operational
-            efficiency in logistics, streamlining financial systems, and enhancing user experiences in e-commerce and beyond.
-          </p>
-        </div>
-      </section>
+    
+<div className="w-full h-[120px]  relative overflow-hidden leading-none">
+  <svg
+    className="absolute top-0 left-0 w-full h-full"
+    viewBox="0 0 1440 120"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+  >
+    <path d="M0,0 L1440,60 L1440,120 L0,120 Z" fill="#212121" />
+  </svg>
+</div>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+{/* Industries Section */}
+<section className="py-16 bg-[#212121] relative z-10">
+  <div className="max-w-6xl mx-auto px-4 text-center">
+    <h2 className="text-3xl sm:text-4xl font-montserrat text-[#D3ECCD] mb-6">
+      Industries We Transform
+    </h2>
+    <div className="w-24 h-1 bg-red-500 rounded mx-auto mb-6"></div>
+    <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+We've built transformative solutions across diverse sectors enabling innovation in healthcare, boosting operational efficiency in logistics, streamlining financial systems, and enhancing user experiences in e-commerce and beyond.     </p>
+  </div>
+</section>
+
+
+      {/* Slanted Divider */}
+      <div className="relative bg-[#212121]">
+        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,100 L1440,0 L1440,100 Z" fill="white"/>
+        </svg>
+      </div>
+
+      {/* Services Section */}
+      <section className="py-20 bg-[#212121] relative overflow-hidden">
+       
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif mb-4 text-white">What We Offer</h2>
-            <span className="block mt-2 mx-auto w-32 h-1 bg-green-500 rounded"></span>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto mt-6">
+           
+            <h2 className="text-4xl md:text-5xl font-montserrat mb-4 text-[#D3ECCD]">
+              What We <span className="text-green-400">Offer</span>
+            </h2>
+            <div className="w-24 h-1 bg-red-500 rounded mx-auto mb-6"></div>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               From strategy to execution—empowering your team with data-driven capabilities.
             </p>
           </div>
@@ -240,33 +376,37 @@ export default function ServicesPage() {
                 key={service.id}
                 onMouseEnter={() => setHoveredService(service.id)}
                 onMouseLeave={() => setHoveredService(null)}
-                className="relative group cursor-pointer hover:scale-105 transition-all duration-500"
+                className="group relative cursor-pointer "
               >
-                {service.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </div>
-                  </div>
-                )}
-
-                <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full shadow hover:shadow-lg transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-green-600/20  opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+                
+                <div className="relative  p-8 h-full  border border-gray-700 group-hover:border-green-500/50 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500">
+                 
                   <div className="mb-6">
-                    <div className="p-3 w-fit bg-green-100 rounded-lg text-green-600 group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-4 w-fit bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl text-[#E1FFC2] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       {service.icon}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-serif mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-green-400 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
 
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-3 mb-4">
                     {service.features.map((feature, index) => (
-                      <div key={index} className="flex items-center text-gray-700">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                        <span>{feature}</span>
+                      <div key={index} className="flex items-center text-[#CCEABB] group-hover:translate-x-1 transition-transform duration-300" style={{transitionDelay: `${index * 50}ms`}}>
+                        <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-green-500" />
+                        <span className="text-sm">{feature}</span>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="mt-6 pt-6 border-t border-gray-700">
+                    {/* <button className="text-green-400 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </button> */}
                   </div>
                 </div>
               </div>
@@ -275,47 +415,79 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Curved Divider to White */}
+      <div className="relative bg-[#212121]">
+        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="#212121"/>
+        </svg>
+      </div>
+
       {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-serif mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Let's talk about how Data Panther can help you scale with confidence.
+      <section className="py-20  relative overflow-hidden">
+   
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+         
+          <h2 className="text-4xl md:text-5xl font-montserrat mb-6 text-gray-900">
+            Ready to Transform Your <span className="text-green-600">Data Strategy?</span>
+          </h2>
+          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Let's discuss how Data Panther can help you unlock insights, scale with confidence, and achieve your business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg flex items-center justify-center gap-2"
+className="group border-2 border-green-500 text-green-600 px-8 py-4 font-montserrat hover:bg-green-500 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
             >
-              <Calendar className="w-5 h-5" />
               Schedule a Call
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </div>
+          
+         
         </div>
       </section>
 
       {/* Modal */}
       {isModalOpen && (
-        // <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-
           <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-2xl font-serif text-gray-900">Schedule a Call</h3>
+                  <h3 className="text-2xl font-Mobile text-gray-900">Schedule a Call</h3>
                   <p className="text-gray-600 mt-1">Let's explore how we can address your data challenges and achieve your goals together.</p>
                 </div>
                 <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  onClick={closeModal}
+                  disabled={isSubmitting}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <X className="w-6 h-6 text-gray-400" />
                 </button>
               </div>
             </div>
 
-            <div className="p-6 space-y-6">
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-800 flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <div>
+                    <div className="font-semibold">Success!</div>
+                    <div className="text-sm">Your call has been scheduled successfully! We'll contact you within 24 hours.</div>
+                  </div>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-800 flex items-center gap-3">
+                  <X className="w-5 h-5 text-red-600" />
+                  <div>
+                    <div className="font-semibold">Error</div>
+                    <div className="text-sm">There was an error scheduling your call. Please try again or contact us directly.</div>
+                  </div>
+                </div>
+              )}
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -329,7 +501,8 @@ export default function ServicesPage() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="Your full name"
                   />
                 </div>
@@ -346,7 +519,8 @@ export default function ServicesPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -364,7 +538,8 @@ export default function ServicesPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -380,7 +555,8 @@ export default function ServicesPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                     placeholder="Your company name"
                   />
                 </div>
@@ -396,7 +572,8 @@ export default function ServicesPage() {
                   name="preferredTime"
                   value={formData.preferredTime}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
                   <option value="">Select preferred time</option>
                   <option value="morning">Morning (9 AM - 12 PM)</option>
@@ -415,7 +592,8 @@ export default function ServicesPage() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors resize-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                   placeholder="Describe your data challenges, goals, or any specific requirements..."
                 />
               </div>
@@ -423,20 +601,36 @@ export default function ServicesPage() {
               <div className="flex gap-4 pt-4">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                  onClick={closeModal}
+                  disabled={isSubmitting}
+                  className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
+                  disabled={isSubmitting || submitStatus === 'success'}
+                  className="flex-1 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Calendar className="w-5 h-5" />
-                  Schedule Call
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Scheduling...
+                    </>
+                  ) : submitStatus === 'success' ? (
+                    <>
+                      <CheckCircle className="w-5 h-5" />
+                      Scheduled!
+                    </>
+                  ) : (
+                    <>
+                      <Calendar className="w-5 h-5" />
+                      Schedule Call
+                    </>
+                  )}
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       )}

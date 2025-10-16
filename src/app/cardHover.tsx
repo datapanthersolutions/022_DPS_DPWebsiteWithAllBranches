@@ -15,13 +15,13 @@ export function CardHoverEffectDemo() {
     <div className="min-h-screen bg-black relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.05),transparent_70%)]" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#06923E]/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#06923E]/5 rounded-full blur-3xl animate-pulse delay-1000" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-green-500/10 backdrop-blur-sm border border-green-500/20 rounded-full px-6 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#06923E]/10 backdrop-blur-sm border border-green-500/20 rounded-full px-6 py-2 mb-6">
             <Sparkles className="w-4 h-4 text-green-400" />
             <span className="text-sm font-medium text-white/90">AI-Powered Solutions</span>
           </div>
@@ -44,7 +44,7 @@ export function CardHoverEffectDemo() {
               <span>Enterprise Ready</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-300" />
+              <div className="w-2 h-2 bg-[#06923E] rounded-full animate-pulse delay-300" />
               <span>99.9% Uptime</span>
             </div>
             <div className="flex items-center gap-2">

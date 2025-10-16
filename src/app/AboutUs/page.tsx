@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import {
@@ -16,7 +15,6 @@ import {
   Pause
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
-
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -66,47 +64,49 @@ const Counter: React.FC<CounterProps> = ({ end, duration, suffix = "" }) => {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, delay, image }) => (
   <div 
-    className="group backdrop-blur-sm rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-700 border border-white/20 hover:border-blue-300/50 hover:-translate-y-2 transform bg-white/10"
+    className="group backdrop-blur-sm  shadow-xl p-8 hover:shadow-2xl transition-all duration-500 border border-green-900/30 hover:border-green-500 hover:-translate-y-2 transform bg-zinc-900/80"
     style={{ animationDelay: `${delay}ms` }}
   >
-    <div className="relative overflow-hidden mb-6 h-48 bg-green-500-to-br from-blue-500 to-green-500 rounded-xl">
-      
+    <div className="relative overflow-hidden mb-6 h-48 bg-zinc-800 rounded-lg">
       <img
         src={image}
         alt="Service"
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      <div className="absolute inset-0 bg-black/20"></div>
-      <div className="absolute top-4 left-4 p-3 bg-white/20 backdrop-blur-sm rounded-lg">
-        {icon}
-      </div>
-      <div className="absolute bottom-4 left-4 text-white">
-        <div className="w-16 h-1 bg-white/60 rounded-full mb-2 group-hover:w-24 transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
+    
+      <div className="absolute bottom-4 left-4">
+        <div className="w-16 h-1 bg-[#06923E] rounded-full group-hover:w-24 transition-all duration-500"></div>
       </div>
     </div>
-    <h3 className="text-2xl font-serif text-gray-50 mb-4 group-hover:text-blue-300 transition-colors duration-300">{title}</h3>
-    <p className="text-gray-300 leading-relaxed group-hover:text-gray-100 transition-colors duration-300">{description}</p>
-    <div className="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-      <button className="bg-green-500-to-r from-blue-500 to-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300">
-        Learn More
-      </button>
-    </div>
+    <h3 className="text-2xl font-Mobile text-white mb-4 group-hover:text-green-400 transition-colors duration-300">{title}</h3>
+    <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{description}</p>
+    
   </div>
 );
 
+
 const ValueCard: React.FC<ValueCardProps> = ({ icon, title, description, delay }) => (
   <div
-    className="group text-center p-8 bg-green-500-to-br from-white/10 to-blue-50/20 backdrop-blur-sm rounded-2xl hover:from-blue-50/20 hover:to-indigo-100/30 transition-all duration-700 border border-white/30 hover:border-blue-300/50 hover:scale-105 transform"
+    className="group text-center p-8 bg-zinc-900/80 backdrop-blur-sm rounded-xl hover:bg-zinc-900 transition-all duration-500 border border-green-900/30 hover:border-green-500 hover:scale-105 transform"
     style={{ animationDelay: `${delay}ms` }}
   >
-    <div className="relative inline-flex items-center justify-center w-20 h-20 bg-green-500-to-br from-blue-500 to-green-600 rounded-full mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-      <div className="absolute inset-0 bg-green-500-to-br from-blue-400 to-green-500 rounded-full animate-pulse opacity-75"></div>
-      {React.cloneElement(icon, { className: "w-10 h-10 text-white relative z-10" })}
+    {/* Centered, Large Icon */}
+    <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+      {React.isValidElement(icon)
+        ? React.cloneElement(icon, { className: "w-full h-full" }) // for Lucide icons
+        : icon}
     </div>
-    <h3 className="text-2xl font-serif text-green-500 mb-4 group-hover:text-gray-200 transition-colors duration-300">{title}</h3>
-    <p className="text-gray-300 group-hover:text-gray-600 transition-colors duration-300">{description}</p>
+
+    <h3 className="text-2xl font-Mobile text-white mb-4 group-hover:text-green-400 transition-colors duration-300">
+      {title}
+    </h3>
+    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+      {description}
+    </p>
   </div>
 );
+
 
 const AboutUs: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -137,22 +137,18 @@ const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 overflow-x-hidden">
-
-
-      {/* Animated Background */}
+    <div className="min-h-screen bg-black overflow-x-hidden">
+      {/* Professional Background */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-green-500-to-br from-blue-900 via-green-900 to-indigo-900"></div>
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-0 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute bottom-0 left-0 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '4s'}}></div>
+        <div className="absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-600 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-700 rounded-full filter blur-3xl"></div>
         </div>
       </div>
 
       {/* Hero Section */}
       <div className="relative z-10 min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover z-0"
@@ -162,13 +158,10 @@ const AboutUs: React.FC = () => {
           playsInline
         >
           <source src="/ourStory.mp4" type="video/mp4" />
-          {/* <source src="/your-video.webm" type="video/webm" /> */}
         </video>
         
-        {/* Video Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-1"></div>
+        <div className="absolute inset-0 bg-black/60 z-1"></div>
         
-        {/* Parallax Overlay */}
         <div 
           className="absolute inset-0 bg-black/20 z-2"
           style={{ transform: `translateY(${scrollY * 0.5}px)` }}
@@ -176,38 +169,23 @@ const AboutUs: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="animate-fade-in-up">
-            <h1 className="text-7xl md:text-8xl font-black mb-8 bg-green-500-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-7xl md:text-8xl font-black mb-8 text-white leading-tight">
               DataPanther
             </h1>
-            <p className="text-2xl md:text-3xl text-green-100 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-              Unleashing the <span className="font-serif text-white">Power of Data</span> with 
-              <span className="font-serif text-white"> AI-Driven Analytics</span>
+            <p className="text-2xl md:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
+              Unleashing the <span className="text-green-400 font-semibold">Power of Data</span> with 
+              <span className="text-green-400 font-semibold"> AI-Driven Analytics</span>
             </p>
-            {/* <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button className="group bg-green-500-to-r from-blue-600 to-green-600 text-white px-12 py-4 rounded-full font-serif text-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 transform">
-                <span className="group-hover:mr-2 transition-all duration-300">Explore Our Vision</span>
-                <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </button>
-              <button 
-                className="group flex items-center text-white hover:text-blue-200 transition-colors duration-300"
-                onClick={toggleVideo}
-              >
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mr-4 group-hover:bg-white/30 transition-all duration-300">
-                  {isVideoPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
-                </div>
-                <span className="text-lg font-semibold">{isVideoPlaying ? 'Pause Video' : 'Play Video'}</span>
-              </button>
-            </div> */}
           </div>
           
           <div className="mt-16 animate-bounce">
-            <ChevronDown className="w-8 h-8 text-white/60 mx-auto" />
+            <ChevronDown className="w-8 h-8 text-green-500 mx-auto" />
           </div>
         </div>
       </div>
 
       {/* About DataPanther Section */}
-      <section className="relative z-10 py-32 bg-green-500-to-b from-transparent to-black/20">
+      <section className="relative z-10 py-32 bg-black/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -215,21 +193,20 @@ const AboutUs: React.FC = () => {
                 <h2 className="text-5xl md:text-6xl font-black text-white mb-8 leading-tight">
                   Who We Are
                 </h2>
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-green-500-to-br from-blue-500/30 to-green-500/30 rounded-full blur-xl"></div>
+                <div className="w-24 h-1 bg-red-500 mb-6"></div>
               </div>
-              <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
-                <p className="hover:text-white transition-colors duration-300">
-                  
-                  <span className="text-green-400 font-semibold">Data Panther</span> is a pioneering force in the data revolution, transforming how 
+              <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
+                <p className="hover:text-gray-300 transition-colors duration-300">
+                  <span className="text-green-400 font-semibold">DataPanther</span> is a pioneering force in the data revolution, transforming how 
                   organizations understand and leverage their most valuable asset: <span className="text-green-400 font-semibold">data</span>. 
                   We don't just analyze data—we unleash its potential.
                 </p>
-                <p className="hover:text-white transition-colors duration-300">
+                <p className="hover:text-gray-300 transition-colors duration-300">
                   Our team of visionary data scientists, cutting-edge engineers, and strategic 
                   analysts work in perfect harmony to deliver solutions that don't just meet 
                   expectations—they <span className="text-green-400 font-semibold">exceed imagination</span>.
                 </p>
-                <p className="hover:text-white transition-colors duration-300">
+                <p className="hover:text-gray-300 transition-colors duration-300">
                   From Fortune 500 enterprises to innovative startups, we've established ourselves 
                   as the trusted partner for organizations ready to embrace the future of 
                   <span className="text-green-400 font-semibold"> data-driven excellence</span>.
@@ -238,41 +215,40 @@ const AboutUs: React.FC = () => {
             </div>
             
             <div className="relative">
-              <div className="bg-green-500-to-br from-white/10 to-blue-500/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+              <div className="bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-8 border border-green-900/30">
                 <div className="grid grid-cols-1 gap-8">
                   <div className="text-center group hover:scale-105 transition-transform duration-300">
-                    <div className="text-5xl text-gray-50 mb-3">
+                    <div className="text-5xl text-green-400 mb-3 font-bold">
                       <Counter end={50} duration={2000} suffix="+" />
                     </div>
-                    <div className="text-gray-300 group-hover:text-white transition-colors duration-300">Projects Completed</div>
+                    <div className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Projects Completed</div>
                   </div>
                   <div className="text-center group hover:scale-105 transition-transform duration-300">
-                    <div className="text-5xl text-gray-50 mb-3">
+                    <div className="text-5xl text-green-400 mb-3 font-bold">
                       <Counter end={100} duration={2000} suffix="+" />
                     </div>
-                    <div className="text-gray-300 group-hover:text-white transition-colors duration-300">Happy Clients</div>
+                    <div className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Happy Clients</div>
                   </div>
                   <div className="text-center group hover:scale-105 transition-transform duration-300">
-                    <div className="text-5xl text-gray-50 mb-3">24/7</div>
-                    <div className="text-gray-300 group-hover:text-white transition-colors duration-300">Support</div>
+                    <div className="text-5xl text-green-400 mb-3 font-bold">24/7</div>
+                    <div className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Support</div>
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-green-500-to-br from-blue-500/20 to-green-500/20 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-green-500-to-br from-green-500/20 to-pink-500/20 rounded-full blur-xl"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Client Services Section */}
-      <section className="relative z-10 py-32 bg-green-500-to-b from-black/20 to-transparent">
+      <section className="relative z-10 py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              Client <span className=" text-green-500 px-2 py-1 rounded">Services</span>
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              Client <span className="text-green-500">Services</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <div className="w-24 h-1 bg-red-500 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
               Comprehensive data solutions designed to transform your business and accelerate growth
             </p>
           </div>
@@ -280,229 +256,205 @@ const AboutUs: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard
               delay={0}
-              image="/DataAnalyticsAndPowerBI.png"
+              image="/dabi.png"
               icon={<Target className="w-8 h-8 text-white" />}
               title="Data Analytics & BI"
-              description="Transform raw data into powerful insights with our advanced analytics platform featuring real-time dashboards, predictive modeling, and interactive visualizations that drive strategic decisions."
+              description="Transform raw data into powerful insights with our advanced analytics platform featuring real-time dashboards, predictive modelling, and interactive visualizations that drive strategic business decisions. "
             />
             <ServiceCard
               delay={200}
-                            image="/AiAndMl.png"
-
+              image="/aimlimg.png"
               icon={<Zap className="w-8 h-8 text-white" />}
               title="AI & Machine Learning"
-              description="Harness the power of artificial intelligence with custom ML models, deep learning algorithms, and automated decision systems that learn and adapt to your business needs."
+              description="Leveraging deep learning algorithms, automated decision making systems that learn and adjust to your business needs, and custom machine learning models to fully harness the potential of artificial intelligence."
             />
             <ServiceCard
               delay={400}
-                            image="/DataGovernance.png"
-
+              image="/datagov.png"
               icon={<Shield className="w-8 h-8 text-white" />}
               title="Data Governance"
-              description="Ensure data integrity, compliance, and security with our comprehensive governance framework featuring automated quality checks, privacy controls, and audit trails."
+              description="Ensure data integrity, compliance, and security with our comprehensive data governance framework featuring automated quality checks, privacy controls, and audit trails. "
             />
             <ServiceCard
               delay={600}
-                            image="/CloudTransformation.png"
-
+              image="/cloudTrans.png"
               icon={<Globe className="w-8 h-8 text-white" />}
               title="Cloud Transformation"
-              description="Seamlessly migrate to the cloud with our expert-led transformation services, including architecture design, migration planning, and optimization strategies."
+              description="Seamlessly migrate to the cloud with our expert-led transformation services, including architecture design, migration planning, and optimization strategies. "
             />
             <ServiceCard
               delay={800}
-                            image="/StrategicConsulting.png"
-
+              image="/stconsulting.png"
               icon={<Users className="w-8 h-8 text-white" />}
               title="Strategic Consulting"
-              description="Get personalized guidance from our data strategy experts to develop comprehensive roadmaps that align technology investments with business objectives."
+              description="Get personalized guidance from our data strategy experts to develop comprehensive roadmaps that align technology investments with business objectives. "
             />
             <ServiceCard
               delay={1000}
-                            image="/TAE.png"
-
+              image="/traning.png"
               icon={<Award className="w-8 h-8 text-white" />}
               title="Training & Enablement"
-              description="Empower your team with hands-on training programs, certification paths, and ongoing support to maximize the value of your data investments."
+              description="Empower your team with hands-on training programs, certification pathways, and ongoing support to maximize the value of your data investments. "
             />
           </div>
         </div>
       </section>
 
-      {/* Governance Section */}
-      <section className="relative z-10 py-32 bg-green-500-to-br from-black/30 to-blue-900/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              <span className=" text-green-500 px-4 py-1 rounded">Governance</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              Excellence through accountability, transparency, and unwavering commitment to ethical practices
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div className="space-y-8">
-              <div className="bg-green-500-to-br from-white/10 to-green-500/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:border-green-400/50 transition-colors duration-500">
-                <h3 className="text-3xl font-serif text-white mb-6">Leadership Excellence</h3>
-                <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                  Our leadership team combines decades of experience in data science, technology innovation, 
-                  and strategic business transformation. We operate with clear accountability structures and 
-                  transparent decision-making processes.
+      
+      
+    <section className="relative z-10 py-32 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="text-left mb-20">
+          <h2 className="text-5xl md:text-6xl font-black font-Mobile text-white mb-6">
+            <span className="text-green-500 ">Governance</span>
+          </h2>
+          <div className="w-24 h-1 bg-red-500 mb-6"></div>
+          <p className="text-xl text-gray-400 max-w-4xl">
+Excellence in governance through accountability, transparency, and unwavering commitment to ethical practices           </p>
+        </div>
+
+        {/* First Row: Leadership & Image */}
+        <div className="flex flex-col md:flex-row gap-12 mb-20">
+          {/* Leadership Card */}
+          <div className="md:w-2/3">
+            <div className="bg-zinc-900/80 backdrop-blur-sm rounded-xl p-8 border border-green-900/30 hover:border-green-500/50 transition-colors duration-500">
+              <h3 className="text-3xl font-Mobile text-white mb-6">Leadership Excellence</h3>
+              <p className="text-gray-400 mb-6 text-lg leading-relaxed">
+                Our leadership team combines decades of experience in data science, technology innovation, and strategic business transformation. We operate with clear accountability structures and transparent decision-making processes. 
+              </p>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-900/20">
+                <h4 className="font-Mobile text-white mb-2 text-xl">Executive Board</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                 Our board of directors ensures regulatory compliance, provides strategic oversight and maintains the highest standards of corporate governance across all operations. 
                 </p>
-                <div className="bg-green-500-to-r from-green-500/20 to-blue-500/20 p-6 rounded-xl border border-green-400/30">
-                  <h4 className="font-serif text-white mb-3 text-xl">Executive Board</h4>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    Our board of directors provides strategic oversight, ensures regulatory compliance, 
-                    and maintains the highest standards of corporate governance across all operations.
-                  </p>
-                </div>
               </div>
             </div>
-            
-            <div className="space-y-6">
-              <h3 className="text-3xl font-serif text-white mb-8">Compliance Framework</h3>
-              <div className="space-y-6">
-                <div className="group flex items-start bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-400/50 transition-all duration-500 hover:bg-white/10">
-                  <div className="p-3 bg-green-500-to-br from-blue-500 to-green-600 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
-                    <Lock className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-white mb-3 text-xl">Data Privacy & Security</h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      Full compliance with GDPR, CCPA, HIPAA, and SOX regulations. ISO 27001 certified 
-                      security practices with end-to-end encryption and zero-trust architecture.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="group flex items-start bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-green-400/50 transition-all duration-500 hover:bg-white/10">
-                  <div className="p-3 bg-green-500-to-br from-green-500 to-blue-600 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-white mb-3 text-xl">Quality Assurance</h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      Rigorous testing protocols, continuous monitoring, and automated quality gates 
-                      ensure consistent delivery of enterprise-grade solutions.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="group flex items-start bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-green-400/50 transition-all duration-500 hover:bg-white/10">
-                  <div className="p-3 bg-green-500-to-br from-green-500 to-pink-600 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-white mb-3 text-xl">Industry Standards</h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">
-                      Adherence to industry best practices including COBIT, ITIL, and Agile methodologies 
-                      with continuous improvement and stakeholder feedback integration.
-                    </p>
-                  </div>
-                </div>
-              </div>
+          </div>
+
+          {/* Right: Image */}
+          <div className="md:w-2/3 w-full">
+            <img
+              src="/dg.png"
+              alt="Governance Illustration"
+              className="w-full h-auto object-contain rounded-xl shadow-2xl max-h-[600px]"
+            />
+          </div>
+        </div>
+
+        {/* Second Row: Compliance Framework */}
+        <div className="space-y-6">
+          <h3 className="text-3xl font-Mobile text-white mb-8">Compliance Framework</h3>
+
+          {/* Card 1 */}
+          <div className="group flex items-start bg-zinc-900/50 backdrop-blur-sm p-6 rounded-lg border border-green-900/30 hover:border-green-500 transition-all duration-500">
+            <div className="p-3 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
+              <Lock className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 className="font-Mobile text-white mb-2 text-xl">Data Privacy & Security</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                100% compliance with GDPR, CCPA, HIPAA, and SOX regulations. ISO 27001 certified security practices with end-to-end encryption and zero-trust architecture. 
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="group flex items-start bg-zinc-900/50 backdrop-blur-sm p-6 rounded-lg border border-green-900/30 hover:border-green-500 transition-all duration-500">
+            <div className="p-3 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
+              <Shield className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 className="font-Mobile text-white mb-2 text-xl">Quality Assurance</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Rigorous testing protocols, continuous monitoring, and automated quality controls ensure consistent delivery of enterprise-grade solutions. 
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="group flex items-start bg-zinc-900/50 backdrop-blur-sm p-6 rounded-lg border border-green-900/30 hover:border-green-500 transition-all duration-500">
+            <div className="p-3 rounded-lg mr-6 group-hover:scale-110 transition-transform duration-300">
+              <Award className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 className="font-Mobile text-white mb-2 text-xl">Industry Standards</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Adherence to industry best practices including COBIT, ITIL, and Agile methodologies with continuous improvement and stakeholder feedback integration. 
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+      
 
       {/* Our Values Section */}
-      <section className="relative z-10 py-32 bg-green-500-to-b from-transparent to-black/20">
+      <section className="relative z-10 py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              Our <span className="text-green-500 px-2 py-1 rounded">Values</span>
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              Our <span className="text-green-500">Values</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              The core principles that drive our mission and define our culture of excellence
-            </p>
+            <div className="w-24 h-1 bg-red-500 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-400 max-w-4xl mx-auto">
+The core principles that drive our operations and define our culture of excellence             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <ValueCard
               delay={0}
-              icon={<Heart />}
+              icon={
+                <img
+                  src="/icon1.png"
+                  alt="Integrity Icon"
+                  className="w-10 h-10 object-contain"
+                />
+              }
               title="Integrity"
               description="We build trust through transparency, ethical practices, and unwavering commitment to doing what's right for our clients and communities."
             />
             <ValueCard
               delay={200}
-              icon={<Zap />}
+              icon={
+                <img
+                  src="/integrity.png"
+                  alt="Innovation Icon"
+                  className="w-10 h-10 object-contain"
+                />
+              }
               title="Innovation"
-              description="We push the boundaries of possibility, embracing cutting-edge technologies and creative solutions to solve complex challenges."
+              description="We embrace cutting-edge technologies and innovative approaches to tackle difficult problems, pushing the boundaries of possibility. "
             />
             <ValueCard
               delay={400}
-              icon={<Users />}
+              icon={
+                <img
+                  src="/collaborationnew.png"
+                  alt="Collaboration Icon"
+                  className=" object-contain"
+                />
+              }
               title="Collaboration"
-              description="We believe in the power of partnership, working closely with clients and teams to achieve extraordinary results together."
+              description="We firmly believe in the power of collaboration, working closely with teams and clients to accomplish remarkable outcomes. "
             />
             <ValueCard
               delay={600}
-              icon={<Target />}
+              icon={
+                <img
+                  src="/excellence.png"
+                  alt="Excellence Icon"
+                  className="w-10 h-10 object-contain"
+                />
+              }
               title="Excellence"
-              description="We pursue perfection in every detail, delivering solutions that exceed expectations and set new industry standards."
+              description="We pursue perfection in every detail, delivering solutions that surpass expectations and set new industry standards."
             />
           </div>
         </div>
       </section>
 
-      {/* Global Presence Section */}
-      {/* <section className="relative z-10 py-32 bg-green-500-to-br from-black/40 to-blue-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-8">
-              Global <span className="bg-green-400 text-black px-4 py-1 rounded">Presence</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              Worldwide reach with local expertise, delivering consistent excellence across continents
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                region: "North America",
-                description: "Innovation hub in Silicon Valley with regional centers across the US and Canada, serving Fortune 500 enterprises with cutting-edge data solutions.",
-                delay: 0
-              },
-              {
-                region: "Europe",
-                description: "Strategic operations in London, Berlin, and Amsterdam, providing GDPR-compliant solutions and supporting digital transformation across Europe.",
-                delay: 200
-              },
-              {
-                region: "Asia-Pacific",
-                description: "Expanding presence in Singapore, Tokyo, and Sydney, empowering businesses across APAC with localized data strategies and global standards.",
-                delay: 400
-              }
-            ].map((region, index) => (
-              <div 
-                key={region.region}
-                className="group text-center p-8 bg-green-500-to-br from-white/10 to-blue-500/10 backdrop-blur-sm rounded-2xl hover:from-white/20 hover:to-blue-500/20 transition-all duration-700 border border-white/20 hover:border-blue-400/50 hover:scale-105 transform"
-                style={{ animationDelay: `${region.delay}ms` }}
-              >
-                <div className="relative inline-flex items-center justify-center w-20 h-20 bg-green-500-to-br from-blue-500 to-green-500 rounded-full mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <Globe className="w-10 h-10 text-white" />
-                  <div className="absolute inset-0 bg-green-500-to-br from-blue-400 to-green-400 rounded-full animate-pulse opacity-50"></div>
-                </div>
-                <h3 className="text-2xl font-serif text-white mb-4 group-hover:text-blue-300 transition-colors duration-300">{region.region}</h3>
-                <p className="text-gray-300 group-hover:text-white transition-colors duration-300 leading-relaxed">
-                  {region.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Floating Action Button */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <button className="group w-16 h-16 bg-green-500-to-r from-blue-600 to-green-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 transform flex items-center justify-center">
-          <span className="text-white text-2xl group-hover:rotate-45 transition-transform duration-300">+</span>
-        </button>
-      </div>
+    
 
       <style jsx>{`
         @keyframes fade-in-up {

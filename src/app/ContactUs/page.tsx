@@ -1,198 +1,411 @@
+
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
+import { Mail, Phone, MapPin, Send, Clock, MessageSquare, Globe } from "lucide-react";
+
+declare global {
+  interface Window {
+    grecaptcha: any;
+  }
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    message: ""
+    message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadRecaptcha = () => {
+      if (
+        typeof window !== "undefined" &&
+        !window.grecaptcha &&
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      ) {
+        const script = document.createElement("script");
+        script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => setRecaptchaLoaded(true);
+        script.onerror = () => console.warn("Failed to load reCAPTCHA");
+        document.head.appendChild(script);
+      } else if (window.grecaptcha) {
+        setRecaptchaLoaded(true);
+      }
+    };
+    loadRecaptcha();
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setError(null);
+    setSuccess(null);
   };
 
-  const handleSubmit = () => {
-    if (!formData.fullName || !formData.email || !formData.message) {
-      alert("Please fill in all fields");
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+
+    if (
+      !formData.fullName.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      setError("All fields are required.");
       return;
     }
-    
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({ fullName: "", email: "", message: "" });
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      setError(null);
+      setSuccess(null);
+
+      let recaptchaToken = null;
+      if (
+        recaptchaLoaded &&
+        window.grecaptcha &&
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+      ) {
+        try {
+          recaptchaToken = await window.grecaptcha.execute(
+            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+            { action: "contact_form" }
+          );
+        } catch (err) {
+          console.warn("reCAPTCHA error:", err);
+        }
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        setSuccess(result.message || "Your message was sent successfully.");
+        setFormData({ fullName: "", email: "", message: "" });
+        setTimeout(() => setSuccess(null), 5000);
+      } else {
+        setError(result.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      setError("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <section className="min-h-screen mt-12 relative">
-      <div className="absolute inset-0 z-0">
-        {/* Animated Background */}
-        <div className="w-full h-full bg-gradient-to-br from-black via-emerald-900 to-black relative overflow-hidden">
-          {/* Floating Orbs */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-green-500/20 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 bg-emerald-400/30 rounded-full blur-lg animate-bounce"></div>
-          <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-green-600/15 rounded-full blur-2xl animate-ping"></div>
-          <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-lime-500/25 rounded-full blur-xl animate-pulse"></div>
-          
-          {/* Animated Lines */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent animate-pulse"></div>
-            <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent animate-pulse delay-1000"></div>
-            <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-500/20 to-transparent animate-pulse delay-2000"></div>
-          </div>
-          
-          {/* Moving Particles */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/3 left-10 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-bounce delay-300"></div>
-            <div className="absolute top-2/3 right-16 w-1 h-1 bg-emerald-300 rounded-full opacity-80 animate-ping delay-700"></div>
-            <div className="absolute top-1/2 left-1/3 w-1.5 h-1.5 bg-lime-400 rounded-full opacity-50 animate-pulse delay-1500"></div>
-            <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-green-500 rounded-full opacity-40 animate-bounce delay-2000"></div>
-            <div className="absolute top-20 right-10 w-1 h-1 bg-emerald-400 rounded-full opacity-70 animate-ping delay-500"></div>
-          </div>
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+    <div className="relative min-h-screen overflow-hidden bg-white">
+      <section className="relative h-[50vh] min-h-[400px] bg-gradient-to-br from-[#D3ECCD] via-[#BBF1C8] to-[#41B06E] overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Mail className="absolute top-20 left-10 w-16 h-16 text-white opacity-20 animate-pulse" style={{animationDuration: '3s'}} />
+          <Phone className="absolute top-40 right-20 w-12 h-12 text-white opacity-15 animate-pulse" style={{animationDuration: '4s'}} />
+          <MessageSquare className="absolute bottom-20 left-1/4 w-20 h-20 text-white opacity-10 animate-pulse" style={{animationDuration: '5s'}} />
+          <Send className="absolute top-1/3 right-1/4 w-14 h-14 text-white opacity-15 animate-pulse" style={{animationDuration: '3.5s'}} />
         </div>
-      </div>
-      
-      <div className="relative z-10 flex flex-col min-h-screen">
-        <div className="container flex flex-col flex-1 px-6 py-12 mx-auto">
-          <div className="flex-1 lg:flex lg:items-center lg:-mx-6">
-            <div className="text-white lg:w-1/2 lg:mx-6">
-              <h1 className="text-3xl font-semibold capitalize">
-                Empowering IT with AI-Driven Innovation
+
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,64 C360,100 720,20 1440,64 L1440,120 L0,120 Z"
+            fill="#ffffff"
+          />
+        </svg>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+            {/* Left: Hero Text */}
+            <div>
+              <h1 className="text-5xl lg:text-7xl font-bold text-[#1C352D] mb-6 my-9 leading-tight">
+                Let's Start a<br />
+                <span className="text-[#06923E]">Conversation</span>
               </h1>
-              <p className="max-w-xl mt-6">
-                At{" "}
-                <span className="font-semibold text-green-400">
-                  Data Panther
-                </span>
-                , we help IT companies unlock business potential with advanced
-                analytics, AI solutions, and intelligent automation.
+              <p className="text-lg text-[#342B38] mb-8 max-w-xl">
+                We're here to help and answer any question you might have. We look forward to hearing from you!
               </p>
-              <button className="px-8 py-3 mt-6 text-sm font-medium tracking-wide text-black bg-gradient-to-r from-green-400 to-emerald-500 rounded-md hover:from-green-500 hover:to-emerald-600 focus:outline-none transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25">
-                Get in Touch
-              </button>
-
-              <div className="mt-8">
-                <h3 className="text-sm uppercase text-gray-300 tracking-wide">
-                  Follow us
-                </h3>
-                <div className="flex mt-4 gap-6">
-                  <a
-                    href="https://linkedin.com/company/data-panther"
-                    className="text-white hover:text-green-400 transition-colors duration-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6"
-                    >
-                      <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 8.98h4v12H3zM9.5 8.98h3.8v1.64h.05c.53-.99 1.84-2.04 3.78-2.04 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.2c0-1.24-.03-2.84-1.73-2.84-1.74 0-2 1.36-2 2.75V21h-4z" />
-                    </svg>
-                  </a>
-
-                  <a
-                    href="mailto:info@datapanther.com"
-                    className="text-white hover:text-green-400 transition-colors duration-200"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6"
-                    >
-                      <path d="M20 4H4a2 2 0 0 0-2 2v12c0 1.103.897 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.511l-8 5.333-8-5.333V6h16ZM4 18V8.489l8 5.333 8-5.333V18H4Z" />
-                    </svg>
-                  </a>
-
-                  <a
-                    href="tel:+1234567890"
-                    className="text-white hover:text-green-400 transition-colors duration-200"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6"
-                    >
-                      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                    </svg>
-                  </a>
+              <div className="flex flex-wrap gap-4">
+                <div className="flex items-center gap-3 bg-white/30 backdrop-blur-lg px-5 py-3 rounded-full">
+                  <div className="w-10 h-10 bg-[#06923E] rounded-full flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-[#1C352D] font-medium">info@datapanthersolutions.com</span>
+                </div>
+                <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full">
+                  <div className="w-10 h-10 bg-[#06923E] rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-[#1C352D] font-medium">+91 9121582497</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 lg:w-1/2 lg:mx-6">
-              <div className="w-full px-8 py-10 bg-black/40 backdrop-blur-md border border-green-500/20 rounded-xl shadow-2xl lg:max-w-xl">
-                <h2 className="text-xl font-medium text-white">
-                  Contact Form
-                </h2>
-                <p className="mt-2 text-green-200">
-                  Ask us anything. We would love to hear from you.
-                </p>
+            {/* Right: Hero Image */}
+            {/* <div className="hidden lg:flex justify-center items-center">
+              <div className="relative">
+                <div className="absolute   rounded-full   animate-pulse"></div>
+                <img
+                  src="/contactglobally.png"
+                  alt="Contact Us"
+                  className="relative w-full max-w-2xl  object-cover"
+                />
+              </div>
+            </div> */}
+          </div>
+        </div>
+      </section>
 
-                <div className="mt-6 space-y-6">
-                  <div>
-                    <label className="block text-sm text-green-300">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      placeholder="John Doe"
-                      className="w-full px-4 py-2 mt-1 bg-black/30 backdrop-blur-sm border border-green-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 text-white placeholder-green-200/50 transition-all duration-300"
-                    />
+     
+<section className="relative py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
+            {/* Left Sidebar - Contact Info (No Boxes) */}
+            <div className="lg:col-span-2 space-y-10">
+              <div>
+                <h2 className="text-3xl font-Mobile text-[#1C352D] mb-6">Contact Information</h2>
+                <p className="text-gray-600 leading-relaxed">
+                  We're here to help and answer any question you might have. We look forward to hearing from you.
+                </p>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#FF9595] to-[#ff7b7b] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <Mail className="w-7 h-7 text-white" />
                   </div>
-                  <div>
-                    <label className="block text-sm text-green-300">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="john@example.com"
-                      className="w-full px-4 py-2 mt-1 bg-black/30 backdrop-blur-sm border border-green-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 text-white placeholder-green-200/50 transition-all duration-300"
-                    />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-[#1C352D] mb-1">Email Us</h3>
+                  <p className="text-gray-600 text-sm mb-2">Send us an email anytime</p>
+                  <a href="mailto:contact@company.com" className="text-[#06923E] font-semibold hover:text-[#1C352D] text-sm transition-colors inline-flex items-center gap-1">
+                    info@datapanthersolutions.com
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-start gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 bg-[#1C7293] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <Phone className="w-7 h-7 text-[#F1F2EB]" />
                   </div>
-                  <div>
-                    <label className="block text-sm text-green-300">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={4}
-                      placeholder="Write your message..."
-                      className="w-full px-4 py-2 mt-1 bg-black/30 backdrop-blur-sm border border-green-500/30 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 text-white placeholder-green-200/50 resize-vertical transition-all duration-300"
-                    />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-[#1C352D] mb-1">Call Us</h3>
+                  <p className="text-gray-600 text-sm mb-2">Mon-Fri from 9am to 6pm</p>
+                  <a href="tel:+1234567890" className="text-[#06923E] font-semibold hover:text-[#1C352D] text-sm transition-colors inline-flex items-center gap-1">
+                    +91 9121582497
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-start gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#D3ECCD] to-[#BBF1C8] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <MapPin className="w-7 h-7 text-[#06923E]" />
                   </div>
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full px-4 py-2 text-black font-semibold bg-gradient-to-r from-green-400 to-emerald-500 rounded-md hover:from-green-500 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25"
-                  >
-                    Send Message
-                  </button>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-[#1C352D] mb-1">Visit Us</h3>
+                  <p className="text-gray-600 text-sm mb-2">Come say hello at our office</p>
+                  <p className="text-[#06923E] font-semibold text-sm leading-relaxed">
+                    Hyderabad, Telangana
+                  </p>
+                </div>
+              </div>
+
+              {/* Business Hours */}
+              <div className="flex items-start gap-4 group">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 bg-[#40394A] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                    <Clock className="w-7 h-7 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-[#1C352D] mb-1">Business Hours</h3>
+                  <p className="text-gray-600 text-sm mb-2">Monday - Friday</p>
+                  <p className="text-[#06923E] font-semibold text-sm">9:00 AM - 6:00 PM IST</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Single Form Box with Image */}
+            <div className="lg:col-span-3">
+              <div className="bg-white  overflow-hidden border border-gray-100">
+                <div className="grid lg:grid-cols-2">
+                  {/* Contact Image */}
+                  <div className="hidden lg:block relative h-full min-h-[600px]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#06923E]/90 to-[#1C352D]/90"></div>
+                    <img
+                      src="/C.png"
+                      alt="Customer Support"
+                      className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+                    />
+                    <div className="absolute inset-0 flex flex-col justify-end p-10">
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                          <span className="text-white font-semibold">We're Online</span>
+                        </div>
+                        <p className="text-white/90 text-sm leading-relaxed">
+                          Our team is ready to assist you. Get in touch and we'll respond as soon as possible.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Form */}
+                  <div className="p-10">
+                    <div className="mb-8">
+                      <h2 className="text-3xl font-semibold text-[#1C352D] mb-3">Send us a Message</h2>
+                      <p className="text-gray-600">Fill out the form and we'll be in touch soon!</p>
+                    </div>
+
+                  {success && (
+                    <div className="mb-6 px-4 py-4 rounded-xl bg-green-50 text-green-800 text-sm border border-green-200 flex items-start gap-3">
+                      <div className="w-5 h-5 bg-green-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-green-700" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>{success}</span>
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="mb-6 px-4 py-4 rounded-xl bg-red-50 text-red-800 text-sm border border-red-200 flex items-start gap-3">
+                      <div className="w-5 h-5 bg-red-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg className="w-3 h-3 text-red-700" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>{error}</span>
+                    </div>
+                  )}
+
+                  <div className="space-y-5">
+                    <div>
+                      <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        id="fullName"
+                        name="fullName"
+                        type="text"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        required
+                        disabled={isLoading}
+                        placeholder="Your Name"
+                        className="w-full px-4 py-3 border-2 border-gray-200  focus:ring-2 focus:ring-[#06923E] focus:border-transparent transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        disabled={isLoading}
+                        placeholder="Mail@example.com"
+                        className="w-full px-4 py-3 border-2 border-gray-200 focus:ring-2 focus:ring-[#06923E] focus:border-transparent transition-all duration-200 disabled:bg-gray-50 disabled:cursor-not-allowed"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Your Message *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        disabled={isLoading}
+                        placeholder="Tell us how we can help you..."
+                        className="w-full px-4 py-3 border-2 border-gray-200 focus:ring-2 focus:ring-[#06923E] focus:border-transparent transition-all duration-200 resize-none disabled:bg-gray-50 disabled:cursor-not-allowed"
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                      className="w-full bg-[#06923E] hover:from-[#1C352D] hover:to-[#06923E] text-white font-semibold py-4 px-6  transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                    >
+                      {isLoading ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                        </>
+                      )}
+                    </button>
+
+                    <p className="text-xs text-gray-500 text-center pt-2">
+                      Protected by reCAPTCHA and subject to Google's{" "}
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#06923E] hover:text-[#1C352D] underline">
+                        Privacy Policy
+                      </a>{" "}
+                      and{" "}
+                      <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="text-[#06923E] hover:text-[#1C352D] underline">
+                        Terms of Service
+                      </a>.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    
+    </div>
   );
 }
+

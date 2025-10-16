@@ -11,6 +11,7 @@ import OurOfferings from "./Offerings";
 import GenerativeAIImpact from "./GenAi";
 import IndustryUseCases from "./IndustryUseCase";
 import LLMWeAreExcelAt from "./LLMWeAreExcelAt";
+import CompaniesSection from "./Testimonials";
 
 export default function Home() {
   return (
@@ -20,11 +21,11 @@ export default function Home() {
     <section><LLMWeAreExcelAt/></section>
     <section><GenerativeAIImpact/></section>
     <section><FancyWhatWeDo/></section>
+    <section><CompaniesSection/></section>
     <section><OurOfferings/></section>
-    {/* <section><IndustryUseCases/></section> */}
     <section> <FeaturesSectionDemo/></section>
-    {/* <section> <InfiniteMovingCardsDemo/></section> */}
     </>
+    
   );
 }
 

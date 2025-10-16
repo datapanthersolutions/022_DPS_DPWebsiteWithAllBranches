@@ -1,4 +1,356 @@
 
+// "use client";
+// import React from "react";
+// import { motion } from "framer-motion";
+
+// type TypographyProps<T extends React.ElementType> = {
+//   as?: T;
+//   color?: string;
+//   className?: string;
+//   children: React.ReactNode;
+// } & React.ComponentPropsWithoutRef<T>;
+
+// function Typography<T extends React.ElementType = "span">({
+//   as,
+//   color,
+//   className,
+//   children,
+//   ...rest
+// }: TypographyProps<T>) {
+//   const Component = as || "span";
+//   return (
+//     <Component className={className} {...rest}>
+//       {children}
+//     </Component>
+//   );
+// }
+
+// export default function ResponsiveFooter() {
+//   return (
+//     <footer className="w-full bg-gray-900 text-white">
+  
+
+
+  
+
+//       {/* Main footer content */}
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-9">
+
+        
+//     {/* <section className=" dark:bg-gray-900">
+//       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+//         <motion.div
+//           initial={{ opacity: 0, y: 50 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.6 }}
+//           viewport={{ once: false }}
+//           className="mx-auto max-w-screen-md sm:text-center"
+//         >
+//           <h2 className="mb-4 text-3xl tracking-tight font-extraserif text-gray-900 sm:text-4xl dark:text-white">
+//             Sign up for our newsletter
+//           </h2>
+//           <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
+//             Stay up to date with the roadmap progress, announcements and
+//             exclusive discounts. Feel free to sign up with your email.
+//           </p>
+
+//           <form action="#">
+//             <motion.div
+//               initial={{ opacity: 0, y: 40 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               transition={{ delay: 0.2, duration: 0.5 }}
+//               viewport={{ once: true }}
+//               className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0"
+//             >
+//               <div className="relative w-full">
+//                 <label
+//                   htmlFor="email"
+//                   className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+//                 >
+//                   Email address
+//                 </label>
+//                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+//                   <svg
+//                     className="w-5 h-5 text-gray-500 dark:text-gray-400"
+//                     fill="currentColor"
+//                     viewBox="0 0 20 20"
+//                     xmlns="http://www.w3.org/2000/svg"
+//                   >
+//                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+//                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+//                   </svg>
+//                 </div>
+//                 <input
+//                   className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+//                   placeholder="Enter your email"
+//                   type="email"
+//                   id="email"
+//                   required
+//                 />
+//               </div>
+//               <div>
+//                 <button
+//                   type="submit"
+//                   className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+//                 >
+//                   Subscribe
+//                 </button>
+//               </div>
+//             </motion.div>
+
+//             <motion.div
+//               initial={{ opacity: 0 }}
+//               whileInView={{ opacity: 1 }}
+//               transition={{ delay: 0.4, duration: 0.5 }}
+//               viewport={{ once: true }}
+//               className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300"
+//             >
+//               We care about the protection of your data.{" "}
+//               <a
+//                 href="#"
+//                 className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+//               >
+//                 Read our Privacy Policy
+//               </a>
+//               .
+//             </motion.div>
+//           </form>
+//         </motion.div>
+//       </div>
+//     </section> */}
+
+
+
+        
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+
+
+
+          
+//           {/* Company Info */}
+//           <div className="col-span-1 md:col-span-2 lg:col-span-1">
+//             <div className="flex items-center mb-4">
+//               <img 
+//                 src="/dplogowb3.png" 
+//                 alt="Data Panther Logo" 
+//                 className="h-auto w-auto mr-3"
+//               />
+//               {/* <Typography as="h3" className="text-5xl font-serif text-white">
+//                 DATA <br/> PANTHER
+//               </Typography> */}
+//             </div>
+//             {/* <Typography className="text-gray-300 text-sm leading-relaxed mb-4">
+//               Empowering businesses with intelligent data solutions and analytics 
+//               to drive growth and make informed decisions.
+//             </Typography> */}
+//             {/* Social Links */}
+//             {/* <div className="flex space-x-4">
+//               <a href="#" className="text-gray-400 hover:text-white transition-colors">
+//                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+//                 </svg>
+//               </a>
+//               <a href="#" className="text-gray-400 hover:text-white transition-colors">
+//                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+//                 </svg>
+//               </a>
+//               <a href="#" className="text-gray-400 hover:text-white transition-colors">
+//                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+//                 </svg>
+//               </a>
+//               <a href="#" className="text-gray-400 hover:text-white transition-colors">
+//                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.747.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z"/>
+//                 </svg>
+//               </a>
+//             </div> */}
+//           </div>
+
+//           {/* Quick Links */}
+//           <div>
+//             <Typography as="h4" className="text-lg font-semiserif mb-4">
+//               Quick Links
+//             </Typography>
+//             <ul className="space-y-2">
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="/AboutUs"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   About Us
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="/Services"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Our Services
+//                 </Typography>
+//               </li>
+//               {/* <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Case Studies
+//                 </Typography>
+//               </li> */}
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="/Insights"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Insights
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Careers
+//                 </Typography>
+//               </li>
+//             </ul>
+//           </div>
+
+//           {/* Services */}
+//           <div>
+//             <Typography as="h4" className="text-lg font-semiserif mb-4">
+//               Services
+//             </Typography>
+//             <ul className="space-y-2">
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Data Analytics
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Machine Learning
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Business Intelligence
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Data Visualization
+//                 </Typography>
+//               </li>
+//               <li>
+//                 <Typography
+//                   as="a"
+//                   href="#"
+//                   className="text-gray-300 hover:text-white transition-colors text-sm"
+//                 >
+//                   Consulting
+//                 </Typography>
+//               </li>
+//             </ul>
+//           </div>
+
+//           {/* Contact Info */}
+//           <div>
+//             <Typography as="h4" className="text-lg font-semiserif mb-4">
+//               Contact Info
+//             </Typography>
+//             <div className="space-y-3">
+//               <div className="flex items-start space-x-3">
+//                 <svg className="w-5 h-5 text-gray-400 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+//                 </svg>
+//                 <Typography className="text-gray-300 text-sm">
+//                   Hyderabad, Telangana
+//                 </Typography>
+//               </div>
+//               <div className="flex items-center space-x-3">
+//                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+//                 </svg>
+//                 <Typography className="text-gray-300 text-sm">
+//                   +91 9121582497
+//                 </Typography>
+//               </div>
+//               <div className="flex items-center space-x-3">
+//                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+//                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+//                 </svg>
+//                 <Typography className="text-gray-300 text-sm">
+//                   info@datapanthersolutions.com
+//                 </Typography>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Bottom bar */}
+//       <div className="border-t border-gray-800">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+//           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+//             <Typography className="text-gray-400 text-sm">
+//               © 2025 Data Panther. All rights reserved.
+//             </Typography>
+//             <div className="flex space-x-6">
+//               <Typography
+//                 as="a"
+//                 href="#"
+//                 className="text-gray-400 hover:text-white transition-colors text-sm"
+//               >
+//                 Privacy Policy
+//               </Typography>
+//               <Typography
+//                 as="a"
+//                 href="#"
+//                 className="text-gray-400 hover:text-white transition-colors text-sm"
+//               >
+//                 Terms of Service
+//               </Typography>
+//               <Typography
+//                 as="a"
+//                 href="#"
+//                 className="text-gray-400 hover:text-white transition-colors text-sm"
+//               >
+//                 Cookie Policy
+//               </Typography>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+
+
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -27,146 +379,26 @@ function Typography<T extends React.ElementType = "span">({
 
 export default function ResponsiveFooter() {
   return (
-    <footer className="w-full bg-gray-900 text-white">
+    <footer className="w-full bg-[#03020A]  text-white">
   
-
-
-  
-
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-9">
 
         
-    {/* <section className=" dark:bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
-          className="mx-auto max-w-screen-md sm:text-center"
-        >
-          <h2 className="mb-4 text-3xl tracking-tight font-extraserif text-gray-900 sm:text-4xl dark:text-white">
-            Sign up for our newsletter
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
-            Stay up to date with the roadmap progress, announcements and
-            exclusive discounts. Feel free to sign up with your email.
-          </p>
-
-          <form action="#">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0"
-            >
-              <div className="relative w-full">
-                <label
-                  htmlFor="email"
-                  className="hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                  Email address
-                </label>
-                <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                  <svg
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                  </svg>
-                </div>
-                <input
-                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="Enter your email"
-                  type="email"
-                  id="email"
-                  required
-                />
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  className="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 sm:rounded-none sm:rounded-r-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer dark:text-gray-300"
-            >
-              We care about the protection of your data.{" "}
-              <a
-                href="#"
-                className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
-              >
-                Read our Privacy Policy
-              </a>
-              .
-            </motion.div>
-          </form>
-        </motion.div>
-      </div>
-    </section> */}
-
-
-
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
-
-
-
           
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-4">
               <img 
-                src="/dplogowb3.png" 
+                src="/dpnew.png" 
                 alt="Data Panther Logo" 
                 className="h-auto w-auto mr-3"
               />
-              {/* <Typography as="h3" className="text-5xl font-serif text-white">
-                DATA <br/> PANTHER
-              </Typography> */}
+            
             </div>
-            {/* <Typography className="text-gray-300 text-sm leading-relaxed mb-4">
-              Empowering businesses with intelligent data solutions and analytics 
-              to drive growth and make informed decisions.
-            </Typography> */}
-            {/* Social Links */}
-            {/* <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.747.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z"/>
-                </svg>
-              </a>
-            </div> */}
+           
           </div>
 
           {/* Quick Links */}
@@ -193,15 +425,7 @@ export default function ResponsiveFooter() {
                   Our Services
                 </Typography>
               </li>
-              {/* <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors text-sm"
-                >
-                  Case Studies
-                </Typography>
-              </li> */}
+             
               <li>
                 <Typography
                   as="a"

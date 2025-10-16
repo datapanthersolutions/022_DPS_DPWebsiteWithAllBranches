@@ -1,230 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, useInView } from "motion/react";
 
-// Utility function
+
+import React, { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+
+// Utility class combiner
 const cn = (...classes: (string | undefined | null | false)[]) => {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 };
 
-// Floating Particles Component
-const FloatingParticles = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(50)].map((_, i) => {
-        const width = typeof window !== "undefined" ? window.innerWidth : 1920;
-        const height = typeof window !== "undefined" ? window.innerHeight : 1080;
-        return (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-green-400/30 rounded-full"
-            initial={{
-              x: Math.random() * width,
-              y: Math.random() * height,
-            }}
-            animate={{
-              x: Math.random() * width,
-              y: Math.random() * height,
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-// Animated Icon Component
-type AnimatedIconProps = {
-  children: React.ReactNode;
-  delay?: number;
-};
-
-const AnimatedIcon = ({ children, delay = 0 }: AnimatedIconProps) => {
-  return (
-    <motion.div
-      className="relative"
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ 
-        duration: 0.8, 
-        delay,
-        type: "spring",
-        stiffness: 260,
-        damping: 20 
-      }}
-      whileHover={{ 
-        scale: 1.1,
-        rotate: 360,
-        transition: { duration: 0.6 }
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// Service Card Component
-type Service = {
-  title: string;
-  // icon: React.ReactNode;
-  icon:string;
-  color: string;
-  description: string;
-  features: string[];
-};
-
-type ServiceCardProps = {
-  service: Service;
-  index: number;
-  isActive: number | null;
-  onHover: (index: number | null) => void;
-};
-
-const ServiceCard = ({ service, index, isActive, onHover }: ServiceCardProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="relative group cursor-pointer"
-      initial={{ opacity: 0, y: 100 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      onMouseEnter={() => onHover(index)}
-      onMouseLeave={() => onHover(null)}
-      whileHover={{ y: -20 }}
-    >
-      {/* Background Glow */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: `radial-gradient(circle at center, ${service.color}20 0%, transparent 70%)`,
-          filter: "blur(20px)",
-        }}
-      />
-      
-      {/* Main Card */}
-      <motion.div
-        className={cn(
-          "relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 h-full",
-          "transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20",
-          isActive === index && "bg-white/10 border-white/20"
-        )}
-        whileHover={{ 
-          boxShadow: `0 25px 50px ${service.color}30`,
-        }}
-      >
-        {/* Service Icon */}
-        <div className="flex justify-center mb-8">
-          <motion.div
-            className={cn(
-              "w-20 h-20 rounded-2xl flex items-center justify-center text-4xl",
-              "bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm",
-              "border border-white/20 group-hover:border-white/30",
-              "transition-all duration-500"
-            )}
-            whileHover={{ 
-              scale: 1.2,
-              rotateY: 180,
-              background: `linear-gradient(135deg, ${service.color}40, ${service.color}20)`
-            }}
-          >
-            <AnimatedIcon delay={index * 0.3}>
-              {/* {service.icon} */}
-               <img
-    src={service.icon}
-    alt={service.title + " icon"}
-    className="w-12 h-12 object-contain"
-  />
-            </AnimatedIcon>
-          </motion.div>
-        </div>
-
-        {/* Service Content */}
-        <div className="text-center space-y-6">
-          <motion.h3
-            className="text-2xl font-serif text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-500"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
-          >
-            {service.title}
-          </motion.h3>
-
-          <motion.p
-            className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-500"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: index * 0.2 + 0.5 }}
-          >
-            {service.description}
-          </motion.p>
-
-          {/* Features List */}
-          <motion.ul
-            className="space-y-3 text-left"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 + 0.7 }}
-          >
-            {service.features.map((feature, idx) => (
-              <motion.li
-                key={idx}
-                className="flex items-center space-x-3 text-gray-400 group-hover:text-gray-200 transition-colors duration-500"
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, delay: index * 0.2 + 0.8 + idx * 0.1 }}
-              >
-                <motion.div
-                  className={cn(
-                    "w-2 h-2 rounded-full",
-                    `bg-gradient-to-r from-${service.color.replace('#', '')} to-${service.color.replace('#', '')}`
-                  )}
-                  style={{ backgroundColor: service.color }}
-                  whileHover={{ scale: 1.5 }}
-                />
-                <span className="text-sm">{feature}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          {/* CTA Button */}
-          <motion.button
-            className={cn(
-              "w-full py-3 px-6 rounded-xl font-medium transition-all duration-500",
-              "bg-gradient-to-r from-white/10 to-white/5 border border-white/20",
-              "hover:from-white/20 hover:to-white/10 hover:border-white/30",
-              "text-white hover:text-white group-hover:shadow-lg"
-            )}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: `0 10px 30px ${service.color}40`
-            }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: index * 0.2 + 1 }}
-          >
-            Learn More
-          </motion.button>
-        </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-          <div className="w-16 h-16 border border-white/20 rounded-full" />
-          <div className="absolute top-2 left-2 w-12 h-12 border border-white/10 rounded-full" />
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-// Stats Counter Component
+// Stats Counter
 type StatsCounterProps = {
   end: number;
   duration?: number;
@@ -255,14 +39,101 @@ const StatsCounter = ({ end, duration = 2, suffix = "" }: StatsCounterProps) => 
 
   return (
     <span ref={ref} className="text-4xl font-serif">
-      {count}{suffix}
+      {count}
+      {suffix}
     </span>
+  );
+};
+
+// Service Type
+type Service = {
+  title: string;
+  icon: string;
+  color: string;
+  description: string;
+  features: string[];
+};
+
+// ServiceCard (Alternating Half Layout, Fullscreen)
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      ref={ref}
+      className="w-full h-screen flex flex-col md:flex-row items-stretch justify-between m-0"
+      initial={{ opacity: 0, y: 100 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+    >
+      {/* Image Half */}
+      <div
+        className={cn(
+          "w-full md:w-1/2 h-1/2 md:h-full overflow-hidden",
+          isEven ? "order-1" : "order-2"
+        )}
+      >
+        <motion.img
+          src={service.icon}
+          alt={service.title}
+          className="w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        />
+      </div>
+
+      {/* Content Half */}
+      <div
+        className={cn(
+          "w-full md:w-1/2 h-1/2 md:h-full px-6 md:px-16",
+          isEven ? "order-2" : "order-1",
+          "flex flex-col justify-center items-start"
+        )}
+      >
+        <motion.h3
+          className="text-4xl font-serif text-white mb-4"
+          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          {service.title}
+        </motion.h3>
+
+        <motion.p
+          className="text-gray-300 leading-relaxed text-lg mb-4"
+          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          {service.description}
+        </motion.p>
+
+        <motion.ul
+          className="space-y-2 text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {service.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start space-x-3">
+              <div
+                className="w-2 h-2 mt-2 rounded-full"
+                style={{ backgroundColor: service.color }}
+              />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </motion.ul>
+      </div>
+    </motion.div>
   );
 };
 
 // Main Component
 export default function FancyWhatWeDo() {
-  const [activeService, setActiveService] = useState<number | null>(null);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -272,100 +143,107 @@ export default function FancyWhatWeDo() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-  const services = [
-    {
-      title: "Automate Customer Support",
-      icon: "/ai-support.svg",
-      color: "#4CAF50",
-      description: "Transform your customer service with AI-powered automation that provides instant, accurate responses 24/7.",
-      features: [
-        "Intelligent chatbots with natural language processing",
-        "Automated ticket routing and prioritization",
-        "Real-time sentiment analysis and escalation",
-        "Multi-language support and translation",
-        "Integration with existing CRM systems"
-      ]
-    },
+  const services: Service[] = [
     {
       title: "Accelerate Decision Making",
-      icon: "/noun-power-6798387.svg",
+      icon: "/aidecisionmaking.png",
       color: "#4CAF50",
-      description: "Leverage real-time data analytics and AI insights to make faster, more informed business decisions.",
+      description:
+        "Leverage real-time data analytics and AI insights to make faster, more informed business decisions.",
       features: [
-        "Real-time data visualization dashboards",
-        "Predictive analytics and forecasting",
-        "Automated report generation",
-        "Risk assessment and mitigation tools",
-        "Collaborative decision-making platforms"
+        "Use real-time data analytics and AI insights to make business decisions more quickly and intelligently.",
+        
+       " Dashboards for the visualisation of data in real time.",
+        
+        "Analytical forecasting and prediction", 
+        
+       " Automatic generation of reports.", 
+        
+        "Tools for risk assessment and mitigation.", 
+        
+       " Platforms for collaborative decision-making." 
+        
+ 
       ]
     },
     {
       title: "Integrate Advanced LLMs",
-      icon: "/noun-artificial-intelligence-6498786.svg",
+      icon: "/advimgllm.png",
       color: "#4CAF50",
-      description: "Seamlessly integrate cutting-edge Large Language Models to enhance your applications and workflows.",
+      description:
+        "Advanced Large Language Models can be seamlessly integrated to optimise processes and applications. ",
       features: [
-        "Custom model fine-tuning and training",
-        "API integration and deployment",
-        "Content generation and optimization",
-        "Code generation and documentation",
-        "Multilingual processing capabilities"
+        "Training and fine-tuning custom models.",
+
+"Integrating and deploying APIs.",
+
+"Automated code generation and documentation.",
+
+"Multilingual processing and support.",
+
+"Content creation and optimisation."
       ]
-    }
+    },
+    {
+      title: "Automate Customer Support",
+      icon: "/ACS.png",
+      color: "#4CAF50",
+      description:
+        "Use automation driven by artificial intelligence to revolutionize customer service by giving immediate, accurate, and constant feedback. ",
+      features: [
+        "Artificial intelligence-driven natural language processing-intelligent chatbot. ",
+        "Automated prioritization and routing of tickets. ",
+        "Real-time sentiment analysis and real-time escalation controls.",
+        "Support for multiple languages and seamless translation.",
+        "Integration with existing CRM systems."
+      ]
+    },
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-green-900 via-black to-white-800 relative overflow-hidden">
-      {/* Floating Particles */}
-      <FloatingParticles />
-      
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-[#03020A] relative overflow-hidden text-white"
+    >
       {/* Animated Background */}
-      <motion.div
-        className="absolute inset-0 opacity-30"
-        style={{ y: backgroundY }}
-      >
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-green-500/20 rounded-full blur-3xl" />
+      <motion.div className="absolute inset-0 opacity-30" style={{ y: backgroundY }}>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#06923E]/20 rounded-full blur-3xl" />
+        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-[#06923E]/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-[#06923E]/20 rounded-full blur-3xl" />
       </motion.div>
 
-      {/* Header Section */}
+      {/* Header */}
       <motion.div
-        className="relative z-10 pt-20 pb-16"
+        className="relative z-10 pt-20 pb-16 text-center mb-24"
         style={{ y: textY }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h1
+            className="text-5xl md:text-7xl font-serif text-white mb-6"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
-            <motion.h1
-              className="text-5xl md:text-7xl font-serif text-white mb-6"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              What We{" "}
-              <span className="bg-green-500 bg-clip-text text-transparent">
-                Do
-              </span>
-            </motion.h1>
-            
-            <motion.p
-              className="text-xl text-gray-300 max-w-3xl mx-auto mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Empowering businesses with cutting-edge AI solutions that transform operations, 
-              accelerate growth, and unlock unlimited potential.
-            </motion.p>
-          </motion.div>
+            What We{" "}
+            <span className="bg-[#06923E] bg-clip-text text-transparent">
+              Do
+            </span>
+          </motion.h1>
 
-          {/* Stats Section */}
+          <motion.p
+            className="text-xl text-gray-300 max-w-3xl mx-auto mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Empowering businesses with cutting-edge AI solutions that
+            transform operations, accelerate growth, and unlock unlimited
+            potential.
+          </motion.p>
+
+          {/* Stats */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+            className="grid grid-cols-1 md:grid-cols-3  gap-8 mb-0"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -392,69 +270,12 @@ export default function FancyWhatWeDo() {
         </div>
       </motion.div>
 
-      {/* Services Section */}
-      <div className="relative z-10 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h2 className="text-4xl font-serif text-green-500 mb-4">Our Core Services</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Discover how our AI-powered solutions can revolutionize your business operations
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                service={service}
-                index={index}
-                isActive={activeService}
-                onHover={setActiveService}
-              />
-            ))}
-          </div>
-        </div>
+      {/* Services */}
+      <div className="relative z-10">
+        {services.map((service, index) => (
+          <ServiceCard key={index} service={service} index={index} />
+        ))}
       </div>
-
-      {/* CTA Section */}
-      <motion.div
-        className="relative z-10 py-20"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        {/* <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            className="bg-black/3 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
-            whileHover={{
-              boxShadow: "0 25px 50px rgba(144, 230, 123, 0.3)",
-              y: -10
-            }}
-          >
-            <h3 className="text-3xl text-green-500 font-serif mb-4">
-              Ready to Transform Your Business?
-            </h3>
-            <p className="text-gray-300 mb-8 text-lg">
-              Let's discuss how our AI solutions can accelerate your growth and innovation.
-            </p>
-            <motion.button
-              className="bg-slate-500 hover:shadow-2xl   text-white font-serif py-4 px-8 rounded-xl shadow-lg"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(9, 48, 8, 0.4)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Started Today
-            </motion.button>
-          </motion.div>
-        </div> */}
-      </motion.div>
     </div>
   );
 }
