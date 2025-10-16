@@ -2,6 +2,8 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+export const dynamic = 'force-static';
+
 // console.log('Gmail Email API loaded');
 // console.log('Environment check:');
 // console.log('- GMAIL_USER:', process.env.GMAIL_USER ? 'SET' : 'NOT SET');

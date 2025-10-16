@@ -17,6 +17,16 @@ deployment:
     # Build-time env + reproducible installs
 
     - export APPDIR="$(pwd)"
+    
+    # Install dependencies
+    - npm ci
+    
+    # Build the project
+    - npm run build
+    
+    # Deploy to public_html
+    - rm -rf /home/$USER/public_html/*
+    - cp -r out/* /home/$USER/public_html/
 
     - export OUTDIR="$APPDIR/out"
 

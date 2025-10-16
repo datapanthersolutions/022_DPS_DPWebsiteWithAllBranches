@@ -17,6 +17,7 @@ import {
   Calendar,
 } from "lucide-react";
 import SolutionsSection from "@/components/SolutionsSection";
+// Remove the getImagePath import and use direct paths
 
 const useCases = [
   {
