@@ -91,31 +91,21 @@ export default function SolutionsPage() {
       </Head>
 
       <main className=" min-h-screen">
-        {/* Header Section */}
-        <section className="py-20  mt-12 px-6 md:px-16">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            {/* Left - Text */}
-            <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-montserrat mb-6 text-transparent bg-gradient-to-r from-black to-black/90 bg-clip-text">
-                Explore Our Smart Solutions
-              </h1>
-              <span className="block w-24 h-1 bg-green-600 rounded mb-6"></span>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                Empowering businesses with real-time analytics, AI-powered
-                automation, and personalized support systems.
-              </p>
-            </div>
-
-            {/* Right - Image */}
-            <div className="w-full">
-              <img
-                src="/datasolutions.jpeg"
-                alt="Smart Solutions"
-                className="rounded-xl w-full object-cover"
-              />
-            </div>
-          </div>
-        </section>
+        
+    <section className="relative w-full flex items-center justify-center text-center text-white">
+  <div className="relative w-full overflow-hidden" style={{ paddingTop: "56.25%" }}>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover"
+    >
+      <source src="/sol.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
 
         {/* Use Cases */}
         <section className=" py-20 px-6 md:px-12">
@@ -133,7 +123,7 @@ export default function SolutionsPage() {
               {useCases.map((useCase, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col bg-black overflow-hidden shadow-sm hover:shadow-xl hover:border hover:border-green-200 transition-all duration-300 h-[520px]"
+                  className="flex flex-col bg-white overflow-hidden  hover:  hover:border-green-200 transition-all duration-300 h-[520px]"
                 >
                   <div className="w-full h-64 overflow-hidden flex-shrink-0">
                     <img
@@ -144,10 +134,10 @@ export default function SolutionsPage() {
                   </div>
 
                   <div className="flex flex-col p-6 flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-200 mb-2">
+                    <h3 className="text-2xl font-montserrat  mb-2">
                       {useCase.title}
-                    </h3>
-                    <p className="text-gray-400 flex-grow overflow-hidden">
+                    </h3> 
+                    <p className="text-gray-600 flex-grow overflow-hidden">
                       {useCase.description}
                     </p>
                   </div>
@@ -162,7 +152,7 @@ export default function SolutionsPage() {
 
         {/* CTA Section */}
         <section className="mt-12 py-12 px-6 text-center mx-auto max-w-5xl">
-          <h2 className="text-3xl font-montserrat text-gray-800 mb-4">
+          <h2 className="text-3xl font-montserrat font-semibold text-gray-800 mb-4">
             Ready to Transform Your Data?
           </h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">

@@ -263,7 +263,7 @@ export default function ContactPage() {
               <div className="bg-white  overflow-hidden border border-gray-100">
                 <div className="grid lg:grid-cols-2">
                   {/* Contact Image */}
-                  <div className="hidden lg:block relative h-full min-h-[600px]">
+                  {/* <div className="hidden lg:block relative h-full min-h-[600px]">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#06923E]/90 to-[#1C352D]/90"></div>
                     <img
                       src="/C.png"
@@ -281,7 +281,26 @@ export default function ContactPage() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+                  <div className="hidden lg:block relative h-full min-h-[600px]">
+  <img
+    src="/C.png"
+    alt="Customer Support"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 flex flex-col justify-end p-10">
+    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+        <span className="text-white font-semibold">We're Online</span>
+      </div>
+      <p className="text-white/90 text-sm leading-relaxed">
+        Our team is ready to assist you. Get in touch and we'll respond as soon as possible.
+      </p>
+    </div>
+  </div>
+</div>
+
 
                   {/* Contact Form */}
                   <div className="p-10">

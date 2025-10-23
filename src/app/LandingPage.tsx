@@ -62,11 +62,25 @@ export default function LandingPage() {
               />
             </div>
           </div>
-          <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#D3ECCD" fillOpacity="1"
+          {/* <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#03020A" fillOpacity="1"
       d="M0,192L48,202.7C96,213,192,235,288,218.7C384,203,480,149,576,144C672,139,768,181,864,208C960,235,1056,245,1152,218.7C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
     </path>
-  </svg>
+  </svg> */}
+           <div className="absolute bottom-0 left-0 w-full">
+    <svg
+      className="block w-full h-[330px]"
+      viewBox="0 0 1440 330"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#03020A"
+        d="M0,192L48,202.7C96,213,192,235,288,218.7C384,203,480,149,576,144C672,139,768,181,864,208C960,235,1056,245,1152,218.7C1248,192,1344,128,1392,96L1440,64V330H0Z"
+      />
+    </svg>
+  </div>
+  
         </div>
       </div>
     </div>

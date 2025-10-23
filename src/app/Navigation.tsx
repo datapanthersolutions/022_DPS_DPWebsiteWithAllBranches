@@ -1,10 +1,11 @@
 
+
 // "use client";
 
 // import React, { useState, useEffect } from "react";
 // import Link from "next/link";
 // import { usePathname } from "next/navigation";
-// import { Menu, X, Search } from "lucide-react";
+// import { Menu, X } from "lucide-react";
 
 // const ModernNavbar = () => {
 //   const pathname = usePathname();
@@ -20,25 +21,35 @@
 //   }, []);
 
 //   const navItems = [
-//     {name:"Home", href:"/"},
+//     { name: "Home", href: "/" },
 //     { name: "About Us", href: "/AboutUs" },
-//     { name: "Our Services", href: "/Services" }, 
-//     {name: "Solutions", href:"/Solutions"},
+//     { name: "Our Services", href: "/Services" },
+//     { name: "Solutions", href: "/Solutions" },
 //     { name: "Contact Us", href: "/ContactUs" },
 //   ];
 
 //   return (
-//     <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200/50 transition-all duration-300">
+//     <nav
+//       className={`fixed w-full z-50 backdrop-blur-lg shadow-lg transition-all duration-300 ${
+//         scrolled
+//           ? "bg-white/85 border-b-0"
+//           : "bg-white/80 border-b-0"
+//       }`}
+//     >
+//       {/* Gradient green-black edge */}
+//       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-green-500"></div>
+
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between items-center h-16">
+//         <div className="flex justify-between items-center h-20"> {/* Increased height */}
 //           <Link href="/" className="flex items-center space-x-3">
 //             <img
 //               src="/dplatest.png"
 //               alt="Data Panther Logo"
-//               className="h-12 w-auto object-contain"
+//               className="h-14 w-auto object-contain" // Slightly larger logo
 //             />
 //           </Link>
 
+//           {/* Desktop Menu */}
 //           <div className="hidden lg:flex items-center space-x-1">
 //             {navItems.map((item, index) => (
 //               <Link
@@ -46,7 +57,7 @@
 //                 href={item.href}
 //                 className={`px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
 //                   pathname === item.href
-//                     ? "text-green-600 font-semiserif"
+//                     ? "text-green-600 font-semibold"
 //                     : scrolled
 //                     ? "text-[#212121] hover:text-green-600 hover:bg-green-50"
 //                     : "text-[#212121] hover:text-green-300 hover:bg-white/10"
@@ -58,17 +69,7 @@
 //             ))}
 //           </div>
 
-//           <div className="hidden lg:flex items-center space-x-3">
-//             <button
-//               className={`p-2 rounded-xl transition-all duration-300 ${
-//                 scrolled
-//                   ? "text-gray-600 hover:text-green-600 hover:bg-green-50"
-//                   : "text-gray-500 hover:text-green-300 hover:bg-white/10"
-//               }`}
-//             >
-//             </button>
-//           </div>
-
+//           {/* Mobile Menu Button */}
 //           <button
 //             onClick={() => setIsMenuOpen(!isMenuOpen)}
 //             className={`lg:hidden p-2 rounded-xl transition-all duration-300 ${
@@ -77,12 +78,13 @@
 //                 : "text-black hover:text-slate-600 hover:bg-white/10"
 //             }`}
 //           >
-//             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+//             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
 //           </button>
 //         </div>
 
+//         {/* Mobile Dropdown */}
 //         {isMenuOpen && (
-//           <div className="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-gray-200/50 shadow-lg animate-fade-in">
+//           <div className="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg animate-fade-in">
 //             <div className="px-4 py-6 space-y-4">
 //               {navItems.map((item, index) => (
 //                 <Link
@@ -99,6 +101,7 @@
 //         )}
 //       </div>
 
+//       {/* Fade-in animation */}
 //       <style jsx>{`
 //         @keyframes fade-in {
 //           from {
@@ -134,9 +137,7 @@ const ModernNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -151,22 +152,18 @@ const ModernNavbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 backdrop-blur-lg shadow-lg transition-all duration-300 ${
-        scrolled
-          ? "bg-white/85 border-b-0"
-          : "bg-white/80 border-b-0"
-      }`}
+      className={`fixed w-full z-50 shadow-md transition-all duration-300 bg-white`}
     >
-      {/* Gradient green-black edge */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-green-500"></div>
+      {/* Optional thin green line at bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-green-500"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20"> {/* Increased height */}
+        <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center space-x-3">
             <img
               src="/dplatest.png"
               alt="Data Panther Logo"
-              className="h-14 w-auto object-contain" // Slightly larger logo
+              className="h-14 w-auto object-contain"
             />
           </Link>
 
@@ -179,9 +176,7 @@ const ModernNavbar = () => {
                 className={`px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
                   pathname === item.href
                     ? "text-green-600 font-semibold"
-                    : scrolled
-                    ? "text-[#212121] hover:text-green-600 hover:bg-green-50"
-                    : "text-[#212121] hover:text-green-300 hover:bg-white/10"
+                    : "text-[#212121] hover:text-green-600 hover:bg-green-50"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -193,11 +188,7 @@ const ModernNavbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden p-2 rounded-xl transition-all duration-300 ${
-              scrolled
-                ? "text-gray-600 hover:text-green-600 hover:bg-green-50"
-                : "text-black hover:text-slate-600 hover:bg-white/10"
-            }`}
+            className="lg:hidden p-2 rounded-xl text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300"
           >
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -205,7 +196,7 @@ const ModernNavbar = () => {
 
         {/* Mobile Dropdown */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg animate-fade-in">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-lg animate-fade-in">
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
                 <Link

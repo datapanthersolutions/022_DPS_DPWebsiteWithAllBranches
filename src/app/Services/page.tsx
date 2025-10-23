@@ -178,111 +178,85 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
-    
-      {/* Hero Section
-      <header className="relative min-h-[80vh] bg-white overflow-hidden flex items-center">
-        <div className="absolute inset-0  pointer-events-none"></div>
+ 
 
-        <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
-  <img
-    src="/analyticsdash.png"
-    alt="Data Panther Services"
-    className="w-1/2 h-auto object-cover"
-  />
-</div>
-
-
-        <div className="relative z-20 max-w-4xl px-6 md:px-12 mx-auto text-center md:text-left">
-          
-          <h1 className="text-5xl sm:text-6xl font-montserrat font-semibold text-gray-900 leading-tight mb-6">
-            Empowering Businesses with <span className="text-green-600">Data-Driven</span> Solutions
-          </h1>
-
-          <p className="text-lg text-gray-600 max-w-xl mb-8 leading-relaxed">
-            Intelligent analytics, automation, and AI solutions tailored to drive your business forward — built with precision, performance, and purpose.
-          </p>
-        </div>
-      </header> */}
-      {/* Hero Section */}
-{/* Hero Section */}
-<header className="relative min-h-[80vh] bg-white overflow-hidden flex flex-col md:flex-row items-center">
   
-  {/* Left Side - Text Section */}
-  <div className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-12 text-center md:text-left z-20 py-12 md:py-0">
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-montserrat font-semibold text-gray-900 leading-tight mb-6">
-      Empowering Businesses with <span className="text-green-600">Data-Driven</span> Solutions
-    </h1>
-
-    <p className="text-base sm:text-lg text-gray-600 max-w-xl mb-8 leading-relaxed mx-auto md:mx-0">
-      Intelligent analytics, automation, and AI solutions tailored to drive your business forward — built with precision, performance, and purpose.
-    </p>
+    <section className="relative w-full flex items-center justify-center text-center text-white">
+  <div className="relative w-full overflow-hidden" style={{ paddingTop: "56.25%" }}>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover"
+    >
+      <source src="/servicesvideo1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
-
-  {/* Right Side - Image Section */}
-  <div className="w-full md:w-1/2 h-[60vh] md:h-[60vh] relative">
-    <img
-      src="/infographics.png"
-      alt="Data Panther Services"
-      className="w-full h-full object-cover object-center"
-    />
-  </div>
-</header>
+</section>
 
 
 
-      {/* Wave Divider */}
-      <div className="relative">
-        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="#212121"/>
-        </svg>
-      </div>
+      
+{/* Stats Section */}
+<section className="relative overflow-hidden text-gray-900 bg-[url('/whychooseus.png')] bg-cover bg-center bg-no-repeat min-h-screen flex items-center">
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-[#212121] text-gray-900 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full opacity-20 blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-200 rounded-full opacity-20 blur-3xl -z-10"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl text-[#D3ECCD] font-montserrat mb-4">
-              Why Choose <span className="text-green-500">Data Panther?</span>
-            </h2>
-            <div className="w-48 h-1 bg-red-500 mx-auto mb-6"></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              We specialize in cutting-edge solutions in <strong>Data Science</strong>, <strong>Analytics</strong>, and <strong>Generative AI</strong>. From automation systems to advanced analytics, we deliver innovation that moves your business forward.
+  {/* Content */}
+  <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20 md:py-28 text-left">
+    {/* Heading */}
+    <div className="mb-12 sm:mb-16 max-w-3xl">
+      <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-[#D3ECCD] font-montserrat mb-4">
+        Why Choose Data Panther
+      </h2>
+      <div className="w-32 sm:w-48 h-1 bg-red-500 mb-4 sm:mb-6"></div>
+      <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+        We specialize in cutting-edge solutions in <strong>Data Science</strong>,{" "}
+        <strong>Analytics</strong>, and <strong>Generative AI</strong>. From automation
+        systems to advanced analytics, we deliver innovation that moves your
+        business forward.
+      </p>
+    </div>
+
+    {/* Stats Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
+      {stats.map((stat, index) => (
+        <div
+          key={index}
+          className="group relative bg-white/10 border border-white/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 
+                     shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 sm:hover:-translate-y-3 overflow-hidden"
+        >
+          {/* Gradient hover effect */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/40 via-green-400/20 to-transparent 
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <div className="relative z-10">
+            <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-4 sm:mb-6 rounded-xl 
+                            bg-green-500/10 text-green-400 group-hover:bg-green-500 group-hover:text-white 
+                            transition-colors duration-500">
+              {stat.icon}
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-1 sm:mb-2 text-center 
+                           transition-colors duration-500 group-hover:text-green-100">
+              {stat.value}
+            </h3>
+
+            <p className="text-sm sm:text-base text-gray-300 text-center leading-relaxed 
+                          group-hover:text-green-50 transition-colors duration-500">
+              {stat.label}
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-[#EEEEEE]   p-8 shadow-lg hover: transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-600  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10">
-                  <div className="text-green-600 group-hover:text-white mb-4 transition-colors duration-300">
-                    {stat.icon}
-                  </div>
-                  <h3 className="text-3xl font-bold text-gray-800 group-hover:text-white mb-2 transition-colors duration-300">
-                    {stat.value}
-                  </h3>
-                  <p className="text-gray-600 group-hover:text-green-50 transition-colors duration-300">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Wave Divider */}
-      <div className="relative">
-        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z" fill="#212121"/>
-        </svg>
-      </div>
+
+
 
       {/* Deliverables Section */}
       <section className="py-20 bg-white relative overflow-hidden">
@@ -331,96 +305,109 @@ We don't just deliver code — we deliver complete, production-ready solutions. 
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="none"
   >
-    <path d="M0,0 L1440,60 L1440,120 L0,120 Z" fill="#212121" />
+    <path d="M0,0 L1440,60 L1440,120 L0,120 Z" fill="#000000ff" />
   </svg>
 </div>
 
 {/* Industries Section */}
-<section className="py-16 bg-[#212121] relative z-10">
-  <div className="max-w-6xl mx-auto px-4 text-center">
+<section
+  className="py-16 relative z-10 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/dark.png')" }}
+> 
+  {/* Dim overlay */}
+  <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+  {/* Content */}
+  <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
     <h2 className="text-3xl sm:text-4xl font-montserrat text-[#D3ECCD] mb-6">
       Industries We Transform
     </h2>
     <div className="w-24 h-1 bg-red-500 rounded mx-auto mb-6"></div>
     <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-We've built transformative solutions across diverse sectors enabling innovation in healthcare, boosting operational efficiency in logistics, streamlining financial systems, and enhancing user experiences in e-commerce and beyond.     </p>
+      We've built transformative solutions across diverse sectors enabling innovation in healthcare, boosting operational efficiency in logistics, 
+      streamlining financial systems, and enhancing user experiences in e-commerce and beyond.
+    </p>
   </div>
 </section>
 
 
+
+
       {/* Slanted Divider */}
-      <div className="relative bg-[#212121]">
+      <div className="relative bg-[#000000ff]">
         <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,100 L1440,0 L1440,100 Z" fill="white"/>
         </svg>
       </div>
 
       {/* Services Section */}
-      <section className="py-20 bg-[#212121] relative overflow-hidden">
-       
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-           
-            <h2 className="text-4xl md:text-5xl font-montserrat mb-4 text-[#D3ECCD]">
-              What We <span className="text-green-400">Offer</span>
-            </h2>
-            <div className="w-24 h-1 bg-red-500 rounded mx-auto mb-6"></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              From strategy to execution—empowering your team with data-driven capabilities.
-            </p>
-          </div>
+     <section
+  className="py-20 relative overflow-hidden bg-[#212121]"
+  style={{
+    backgroundImage: "url('/blackandwhite.png')", // 🔹 replace with your image
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  {/* Dark overlay for dim effect */}
+  <div className="absolute inset-0 bg-black/80 z-0"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                onMouseEnter={() => setHoveredService(service.id)}
-                onMouseLeave={() => setHoveredService(null)}
-                className="group relative cursor-pointer "
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-green-600/20  opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
-                
-                <div className="relative  p-8 h-full  border border-gray-700 group-hover:border-green-500/50 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500">
-                 
-                  <div className="mb-6">
-                    <div className="p-4 w-fit bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl text-[#E1FFC2] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                      {service.icon}
-                    </div>
-                  </div>
+  {/* Main content */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-montserrat mb-4 text-[#D3ECCD]">
+        What We <span className="text-green-400">Offer</span>
+      </h2>
+      <div className="w-24 h-1 bg-red-500 rounded mx-auto mb-6"></div>
+      <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        From strategy to execution—empowering your team with data-driven
+        capabilities.
+      </p>
+    </div>
 
-                  <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-green-400 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
-
-                  <div className="space-y-3 mb-4">
-                    {service.features.map((feature, index) => (
-                      <div key={index} className="flex items-center text-[#CCEABB] group-hover:translate-x-1 transition-transform duration-300" style={{transitionDelay: `${index * 50}ms`}}>
-                        <CheckCircle className="w-4 h-4 mr-2 flex-shrink-0 text-green-500" />
-                        <span className="text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-gray-700">
-                    {/* <button className="text-green-400 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
-                      Learn More
-                      <ArrowRight className="w-4 h-4" />
-                    </button> */}
-                  </div>
-                </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div
+          key={service.id}
+          onMouseEnter={() => setHoveredService(service.id)}
+          onMouseLeave={() => setHoveredService(null)}
+          className="group relative cursor-pointer"
+        >
+          <div className="relative p-8 h-full border border-gray-700 group-hover:border-green-500/50 shadow-lg group-hover:shadow-2xl group-hover:-translate-y-2 transition-all duration-500 bg-[#1b1b1b]/70 backdrop-blur-sm">
+            <div className="mb-6">
+              <div className="p-4 w-fit bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-xl text-[#E1FFC2] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                {service.icon}
               </div>
-            ))}
+            </div>
+
+            <h3 className="text-xl font-montserrat mb-3 text-gray-100 group-hover:text-green-400 transition-colors duration-300">
+              {service.title}
+            </h3>
+            <p className="text-gray-400 font-montserrat mb-6 leading-relaxed">
+              {service.description}
+            </p>
+
+            <div className="space-y-3 mb-4">
+              {service.features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="flex items-center text-[#CCEABB] group-hover:translate-x-1 transition-transform duration-300"
+                  style={{ transitionDelay: `${index * 50}ms` }}
+                >
+                  <span className="text-sm">{feature}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Curved Divider to White */}
-      <div className="relative bg-[#212121]">
-        <svg className="w-full h-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="#212121"/>
-        </svg>
-      </div>
+
+      
 
       {/* CTA Section */}
       <section className="py-20  relative overflow-hidden">
@@ -430,7 +417,7 @@ We've built transformative solutions across diverse sectors enabling innovation 
           <h2 className="text-4xl md:text-5xl font-montserrat mb-6 text-gray-900">
             Ready to Transform Your <span className="text-green-600">Data Strategy?</span>
           </h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className=" text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             Let's discuss how Data Panther can help you unlock insights, scale with confidence, and achieve your business goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
