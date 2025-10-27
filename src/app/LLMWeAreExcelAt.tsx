@@ -35,9 +35,9 @@ export default function LLMWeAreExcelAt() {
         <p className="text-lg text-[#1E5128] md:text-xl mb-10 max-w-2xl mx-auto py-8">
           Elite AI solutions powered by cutting-edge language models and advanced RAG technology
         </p>
-        <button className="bg-[#1E5128] text-[#D8E9A8] px-30 py-3 text-4xl rounded-full font-semibold uppercase tracking-wide transition-all duration-300 hover:scale-105 shadow-xl">
+        {/* <button className="bg-[#1E5128] text-[#D8E9A8] px-30 py-3 text-4xl rounded-full font-semibold uppercase tracking-wide transition-all duration-300 hover:scale-105 shadow-xl">
           Explore Excellence
-        </button>
+        </button> */}
       </div>
 
       {/* LLM Cards Section */}
