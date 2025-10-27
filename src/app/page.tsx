@@ -12,12 +12,14 @@ import GenerativeAIImpact from "./GenAi";
 import IndustryUseCases from "./IndustryUseCase";
 import LLMWeAreExcelAt from "./LLMWeAreExcelAt";
 import CompaniesSection from "./Testimonials";
+import TechnologiesPage from "./TechnologiesPage";
 
 export default function Home() {
   return (
     <>
     <section><LandingPage /></section>
     <section> <AIML/></section>
+    <section><TechnologiesPage/></section>
     <section><LLMWeAreExcelAt/></section>
     <section><GenerativeAIImpact/></section>
     <section><FancyWhatWeDo/></section>

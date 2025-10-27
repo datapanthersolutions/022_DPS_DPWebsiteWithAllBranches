@@ -219,7 +219,7 @@ export default function ContactPage() {
                   <h3 className="text-lg font-semibold text-[#1C352D] mb-1">Call Us</h3>
                   <p className="text-gray-600 text-sm mb-2">Mon-Fri from 9am to 6pm</p>
                   <a href="tel:+1234567890" className="text-[#06923E] font-semibold hover:text-[#1C352D] text-sm transition-colors inline-flex items-center gap-1">
-                    +91 9121582497
+                    +91 9948531867
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
