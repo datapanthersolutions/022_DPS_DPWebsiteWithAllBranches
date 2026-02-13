@@ -549,9 +549,10 @@ export default function ContactPage() {
       });
 
 
+
       const result = await response.json();
       if (response.ok) {
-        setSuccess(result.message || "Your message was sent successfully.");
+        setSuccess(result.message || "Your message was sent successfully..");
         setFormData({ fullName: "", email: "", message: "" });
         setTimeout(() => setSuccess(null), 5000);
       } else {
