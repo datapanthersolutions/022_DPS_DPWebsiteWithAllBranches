@@ -545,8 +545,10 @@ export default function ContactPage() {
           name: formData.fullName,
           email: formData.email,
           message: formData.message,
+          recaptchaToken
         }),
       });
+
 
 
 
