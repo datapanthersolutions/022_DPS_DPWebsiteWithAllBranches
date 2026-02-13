@@ -90,15 +90,25 @@
 //         }
 //       }
 
-//       const response = await fetch("/api/contact", {
+//       const response = await fetch("/send-mail.php", {
 //         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ ...formData, recaptchaToken }),
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           name: formData.fullName,
+//           email: formData.email,
+//           message: formData.message,
+//           recaptchaToken
+//         }),
 //       });
+
+
+
 
 //       const result = await response.json();
 //       if (response.ok) {
-//         setSuccess(result.message || "Your message was sent successfully.");
+//         setSuccess(result.message || "Your message was sent successfully..");
 //         setFormData({ fullName: "", email: "", message: "" });
 //         setTimeout(() => setSuccess(null), 5000);
 //       } else {
@@ -114,29 +124,14 @@
 
 //   return (
 //     <div className="relative min-h-screen overflow-hidden bg-white">
-
-//       <section className="relative min-h-[70vh] bg-gradient-to-br from-[#D3ECCD] via-[#BBF1C8] to-[#41B06E] overflow-hidden pt-28 md:pt-32">
-//         {/* Floating Icons */}
+//       <section className="relative h-[50vh] min-h-[400px] bg-gradient-to-br from-[#D3ECCD] via-[#BBF1C8] to-[#41B06E] overflow-hidden">
 //         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-//           <Mail
-//             className="absolute top-20 left-6 w-14 h-14 text-white opacity-20 animate-pulse"
-//             style={{ animationDuration: "3s" }}
-//           />
-//           <Phone
-//             className="absolute top-40 right-8 w-10 h-10 text-white opacity-15 animate-pulse"
-//             style={{ animationDuration: "4s" }}
-//           />
-//           <MessageSquare
-//             className="absolute bottom-20 left-1/4 w-16 h-16 text-white opacity-10 animate-pulse"
-//             style={{ animationDuration: "5s" }}
-//           />
-//           <Send
-//             className="absolute top-1/3 right-1/4 w-12 h-12 text-white opacity-15 animate-pulse"
-//             style={{ animationDuration: "3.5s" }}
-//           />
+//           <Mail className="absolute top-20 left-10 w-16 h-16 text-white opacity-20 animate-pulse" style={{ animationDuration: '3s' }} />
+//           <Phone className="absolute top-40 right-20 w-12 h-12 text-white opacity-15 animate-pulse" style={{ animationDuration: '4s' }} />
+//           <MessageSquare className="absolute bottom-20 left-1/4 w-20 h-20 text-white opacity-10 animate-pulse" style={{ animationDuration: '5s' }} />
+//           <Send className="absolute top-1/3 right-1/4 w-14 h-14 text-white opacity-15 animate-pulse" style={{ animationDuration: '3.5s' }} />
 //         </div>
 
-//         {/* Decorative SVG Wave */}
 //         <svg
 //           className="absolute bottom-0 left-0 w-full"
 //           viewBox="0 0 1440 120"
@@ -149,46 +144,37 @@
 //           />
 //         </svg>
 
-//         {/* Main Content */}
-//         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 h-full flex items-center">
-//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center w-full">
-//             {/* Left: Text Content */}
-//             <div className="text-center lg:text-left">
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-[#1C352D] mb-6 leading-tight">
-//                 Let's Start a <br className="hidden sm:block" />
+//         <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
+//           <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+//             {/* Left: Hero Text */}
+//             <div>
+//               <h1 className="text-5xl lg:text-7xl font-bold text-[#1C352D] mb-6 my-9 leading-tight">
+//                 Let's Start a<br />
 //                 <span className="text-[#06923E]">Conversation</span>
 //               </h1>
-//               <p className="text-base sm:text-lg text-[#342B38] mb-8 max-w-xl mx-auto lg:mx-0">
-//                 We're here to help and answer any question you might have.
-//                 We look forward to hearing from you!
+//               <p className="text-lg text-[#342B38] mb-8 max-w-xl">
+//                 We're here to help and answer any question you might have. We look forward to hearing from you!
 //               </p>
-
-//               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-//                 {/* Email */}
-//                 <div className="flex items-center gap-3 bg-white/40 backdrop-blur-lg px-5 py-3 rounded-full w-full sm:w-auto">
+//               <div className="flex flex-wrap gap-4">
+//                 <div className="flex items-center gap-3 bg-white/30 backdrop-blur-lg px-5 py-3 rounded-full">
 //                   <div className="w-10 h-10 bg-[#06923E] rounded-full flex items-center justify-center">
 //                     <Mail className="w-5 h-5 text-white" />
 //                   </div>
-//                   <span className="text-[#1C352D] font-medium text-sm sm:text-base">
-//                     info@datapanthersolutions.com
-//                   </span>
+//                   <span className="text-[#1C352D] font-medium">info@datapanthersolutions.com</span>
 //                 </div>
-
-//                 {/* Phone */}
-//                 <div className="flex items-center gap-3 bg-white/40 backdrop-blur-lg px-5 py-3 rounded-full w-full sm:w-auto">
+//                 <div className="flex items-center gap-3 bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full">
 //                   <div className="w-10 h-10 bg-[#06923E] rounded-full flex items-center justify-center">
 //                     <Phone className="w-5 h-5 text-white" />
 //                   </div>
-//                   <span className="text-[#1C352D] font-medium text-sm sm:text-base">
-//                     +91 9948531867
-//                   </span>
+//                   <span className="text-[#1C352D] font-medium">+91 9121582497</span>
 //                 </div>
 //               </div>
 //             </div>
+
+
 //           </div>
 //         </div>
 //       </section>
-
 
 
 //       <section className="relative py-20 bg-white">
@@ -272,30 +258,10 @@
 //               </div>
 //             </div>
 
-//             {/* Right: Single Form Box with Image */}
 //             <div className="lg:col-span-3">
 //               <div className="bg-white  overflow-hidden border border-gray-100">
 //                 <div className="grid lg:grid-cols-2">
-//                   {/* Contact Image */}
-//                   {/* <div className="hidden lg:block relative h-full min-h-[600px]">
-//                     <div className="absolute inset-0 bg-gradient-to-br from-[#06923E]/90 to-[#1C352D]/90"></div>
-//                     <img
-//                       src="/C.png"
-//                       alt="Customer Support"
-//                       className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
-//                     />
-//                     <div className="absolute inset-0 flex flex-col justify-end p-10">
-//                       <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-//                         <div className="flex items-center gap-3 mb-4">
-//                           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-//                           <span className="text-white font-semibold">We're Online</span>
-//                         </div>
-//                         <p className="text-white/90 text-sm leading-relaxed">
-//                           Our team is ready to assist you. Get in touch and we'll respond as soon as possible.
-//                         </p>
-//                       </div>
-//                     </div>
-//                   </div> */}
+
 //                   <div className="hidden lg:block relative h-full min-h-[600px]">
 //                     <img
 //                       src="/C.png"
@@ -443,8 +409,6 @@
 // }
 
 
-
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -475,7 +439,7 @@ export default function ContactPage() {
         process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
       ) {
         const script = document.createElement("script");
-        script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+        script.src = "https://www.google.com/recaptcha/api.js";
         script.async = true;
         script.defer = true;
         script.onload = () => setRecaptchaLoaded(true);
@@ -521,20 +485,17 @@ export default function ContactPage() {
       setSuccess(null);
 
       let recaptchaToken = null;
-      if (
-        recaptchaLoaded &&
-        window.grecaptcha &&
-        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-      ) {
-        try {
-          recaptchaToken = await window.grecaptcha.execute(
-            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-            { action: "contact_form" }
-          );
-        } catch (err) {
-          console.warn("reCAPTCHA error:", err);
-        }
+
+      if (window.grecaptcha) {
+        recaptchaToken = window.grecaptcha.getResponse();
       }
+
+      if (!recaptchaToken) {
+        setError("Please complete the reCAPTCHA.");
+        setIsLoading(false);
+        return;
+      }
+
 
       const response = await fetch("/send-mail.php", {
         method: "POST",
@@ -617,17 +578,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right: Hero Image */}
-            {/* <div className="hidden lg:flex justify-center items-center">
-              <div className="relative">
-                <div className="absolute   rounded-full   animate-pulse"></div>
-                <img
-                  src="/contactglobally.png"
-                  alt="Contact Us"
-                  className="relative w-full max-w-2xl  object-cover"
-                />
-              </div>
-            </div> */}
+
           </div>
         </div>
       </section>
@@ -714,30 +665,10 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right: Single Form Box with Image */}
             <div className="lg:col-span-3">
               <div className="bg-white  overflow-hidden border border-gray-100">
                 <div className="grid lg:grid-cols-2">
-                  {/* Contact Image */}
-                  {/* <div className="hidden lg:block relative h-full min-h-[600px]">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#06923E]/90 to-[#1C352D]/90"></div>
-                    <img
-                      src="/C.png"
-                      alt="Customer Support"
-                      className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
-                    />
-                    <div className="absolute inset-0 flex flex-col justify-end p-10">
-                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                          <span className="text-white font-semibold">We're Online</span>
-                        </div>
-                        <p className="text-white/90 text-sm leading-relaxed">
-                          Our team is ready to assist you. Get in touch and we'll respond as soon as possible.
-                        </p>
-                      </div>
-                    </div>
-                  </div> */}
+
                   <div className="hidden lg:block relative h-full min-h-[600px]">
                     <img
                       src="/C.png"
@@ -838,6 +769,10 @@ export default function ContactPage() {
                           className="w-full px-4 py-3 border-2 border-gray-200 focus:ring-2 focus:ring-[#06923E] focus:border-transparent transition-all duration-200 resize-none disabled:bg-gray-50 disabled:cursor-not-allowed"
                         ></textarea>
                       </div>
+                      <div
+                        className="g-recaptcha my-4"
+                        data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      ></div>
 
                       <button
                         type="button"
@@ -883,4 +818,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
