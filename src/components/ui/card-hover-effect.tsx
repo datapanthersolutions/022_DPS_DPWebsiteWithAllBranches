@@ -57,15 +57,15 @@ export const HoverEffect: React.FC<HoverEffectProps> = ({
   const [currentAutoIndex, setCurrentAutoIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  
+
   // Auto-play functionality
   useEffect(() => {
     if (!autoPlay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentAutoIndex((prev) => (prev + 1) % items.length);
     }, autoPlayInterval);
-    
+
     return () => clearInterval(interval);
   }, [autoPlay, autoPlayInterval, items.length]);
 
@@ -76,14 +76,14 @@ export const HoverEffect: React.FC<HoverEffectProps> = ({
     const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    
+
     oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
     gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-    
+
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.1);
   };
@@ -107,9 +107,9 @@ export const HoverEffect: React.FC<HoverEffectProps> = ({
         hidden: { opacity: 0 },
         visible: {
           opacity: 1,
-          transition: { 
+          transition: {
             staggerChildren: animationDelay,
-            delayChildren: 0.2 
+            delayChildren: 0.2
           },
         },
       }}
@@ -171,7 +171,7 @@ const CardWrapper: React.FC<CardWrapperProps> = ({
   const mouseY = useMotionValue(0);
   const rotateX = useTransform(mouseY, [-300, 300], [10, -10]);
   const rotateY = useTransform(mouseX, [-300, 300], [-10, 10]);
-  
+
   const isActive = hoveredIndex === index || focusedIndex === index || (autoPlay && currentAutoIndex === index);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -195,24 +195,24 @@ const CardWrapper: React.FC<CardWrapperProps> = ({
       onBlur={onLeave}
       onMouseMove={handleMouseMove}
       variants={{
-        hidden: { 
-          opacity: 0, 
+        hidden: {
+          opacity: 0,
           y: 50,
           scale: 0.9,
           filter: "blur(10px)"
         },
-        visible: { 
-          opacity: 1, 
+        visible: {
+          opacity: 1,
           y: 0,
           scale: 1,
           filter: "blur(0px)",
-          transition: { 
+          transition: {
             duration: 0.6,
             ease: [0.25, 0.46, 0.45, 0.94]
           }
         },
       }}
-      whileHover={{ 
+      whileHover={{
         y: -12,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
@@ -238,10 +238,10 @@ const CardWrapper: React.FC<CardWrapperProps> = ({
               scale: 1,
               transition: { duration: 0.4, ease: "easeOut" },
             }}
-            exit={{ 
-              opacity: 0, 
-              scale: 0.85, 
-              transition: { duration: 0.3 } 
+            exit={{
+              opacity: 0,
+              scale: 0.85,
+              transition: { duration: 0.3 }
             }}
           />
         )}
@@ -269,7 +269,7 @@ const getBackgroundClass = (variant: string): string => {
     neon: "bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-cyan-500/20 border border-purple-500/30 shadow-lg shadow-purple-500/25",
     minimal: "bg-gray-100 dark:bg-gray-800 shadow-xl",
     gradient: "bg-gradient-to-br from-green-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-white/20",
-    modern: "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/20",
+    modern: "bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-[#29235B]/20",
     default: "bg-neutral-200 dark:bg-slate-800/90 shadow-xl"
   };
   return backgrounds[variant as keyof typeof backgrounds] || backgrounds.default;
@@ -283,7 +283,7 @@ const Card: React.FC<{
 }> = ({ children, variant, isActive, item }) => (
   <motion.div
     className={cn(
-      "rounded-2xl h-full w-full p-6 overflow-hidden relative z-20 transition-all duration-500",
+      " h-full w-full p-6 overflow-hidden relative z-20 transition-all duration-500",
       getCardClass(variant)
     )}
     animate={{
@@ -303,7 +303,7 @@ const Card: React.FC<{
 
 const getCardClass = (variant: string): string => {
   const classes = {
-    default: "bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700",
+    default: "bg-[#29235B] border border-transparent dark:border-white/[0.2] group-hover:border-slate-700",
     glass: "bg-white/5 backdrop-blur-xl border border-white/10 group-hover:border-white/20",
     neon: "bg-gray-900 border border-purple-500/20 group-hover:border-purple-500/40",
     minimal: "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 group-hover:border-gray-300 dark:group-hover:border-gray-600 shadow-sm",
@@ -315,7 +315,7 @@ const getCardClass = (variant: string): string => {
 
 const getShadow = (variant: string, isActive: boolean): string => {
   if (!isActive) return "0 4px 6px rgba(0, 0, 0, 0.05)";
-  
+
   const shadows = {
     neon: "0 25px 50px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.2)",
     glass: "0 25px 50px rgba(255, 255, 255, 0.1)",
@@ -333,18 +333,18 @@ const FeaturedBadge: React.FC<{ variant: string }> = ({ variant }) => (
     animate={{ scale: 1, rotate: 0 }}
     transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
   >
-    <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+    <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-light px-3 py-1 rounded-full shadow-lg">
       ⭐ Featured
     </div>
   </motion.div>
 );
 
-const CardImage: React.FC<{ 
-  src: string; 
-  alt: string; 
+const CardImage: React.FC<{
+  src: string;
+  alt: string;
   variant: string;
 }> = ({ src, alt, variant }) => (
-  <motion.div 
+  <motion.div
     className="w-full h-48 mb-4 rounded-xl overflow-hidden relative"
     whileHover={{ scale: 1.05 }}
     transition={{ duration: 0.3 }}
@@ -355,7 +355,7 @@ const CardImage: React.FC<{
       className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
       loading="lazy"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="absolute inset-0 bg-gradient-to-t from-[#29235B]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
   </motion.div>
 );
 
@@ -392,7 +392,7 @@ const CardIcon: React.FC<{ children: React.ReactNode; variant: string }> = ({ ch
       "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
       getIconClass(variant)
     )}
-    whileHover={{ 
+    whileHover={{
       rotate: 360,
       scale: 1.1,
       transition: { duration: 0.6, ease: "easeInOut" }
@@ -420,13 +420,13 @@ const getIconClass = (variant: string): string => {
 const CardTitle: React.FC<{ children: React.ReactNode; variant: string }> = ({ children, variant }) => (
   <motion.h4
     className={cn(
-      "font-bold tracking-tight mb-3 text-xl lg:text-2xl",
+      "font-light tracking-tight mb-3 text-xl lg:text-2xl",
       getTitleClass(variant)
     )}
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: 0.4, duration: 0.5 }}
-    whileHover={{ 
+    whileHover={{
       scale: 1.02,
       transition: { duration: 0.2 }
     }}
@@ -512,7 +512,7 @@ const getTagClass = (variant: string): string => {
 
 const CardMeta: React.FC<{ item: HoverEffectItem; variant: string }> = ({ item, variant }) => {
   if (!item.date && !item.author) return null;
-  
+
   return (
     <motion.div
       className={cn(
@@ -561,9 +561,9 @@ const getMetaTextClass = (variant: string): string => {
   return classes[variant as keyof typeof classes] || classes.default;
 };
 
-const CardStats: React.FC<{ 
-  stats: { views?: number; likes?: number; comments?: number }; 
-  variant: string 
+const CardStats: React.FC<{
+  stats: { views?: number; likes?: number; comments?: number };
+  variant: string
 }> = ({ stats, variant }) => (
   <motion.div
     className="flex items-center gap-4 text-xs mb-4"

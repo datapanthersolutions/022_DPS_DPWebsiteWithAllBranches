@@ -1,115 +1,99 @@
+"use client";
 
 import {
-  IconAdjustmentsBolt,
-  IconCloud,
-  IconCurrencyDollar,
-  IconEaseInOut,
-  IconHeart,
-  IconHelp,
-  IconRouteAltLeft,
   IconTerminal2,
+  IconEaseInOut,
+  IconCurrencyDollar,
+  IconCloud,
+  IconRouteAltLeft,
+  IconHelp,
 } from "@tabler/icons-react";
-import { motion } from "motion/react";
 
-export function FeaturesSectionDemo() {
+export default function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Engineered for Developers",
-      description: "Data Panther provides the flexibility, scalability, and tools required to develop and implement cutting-edge data and AI solutions, making it ideal for engineers, innovators, and problem-solvers.",
-      icon: <IconTerminal2 size={32} />,
+      title: "Agentic AI & Autonomous Systems",
+      description:
+        "Multi-agent pipelines and autonomous workflow systems built on Vertex AI ADK, LangChain, and CrewAI.",
+      icon: <IconTerminal2 size={32} stroke={1.5} />,
     },
     {
-      title: "Effortless Usability",
-      description: "Discover a user-friendly platform built for optimal effectiveness. There is no steep learning curve and only smooth productivity.",
-      icon: <IconEaseInOut size={32} />,
+      title: "Custom ML Model Engineering",
+      description:
+        "Predictive analytics, demand forecasting, churn modeling, and classification systems built for production.",
+      icon: <IconEaseInOut size={32} stroke={1.5} />,
     },
     {
-      title: "Flexible & Transparent Pricing",
-      description: "Experience straightforward, value-driven pricing that scales with your needs and has no unexpected or hidden fees. ",
-      icon: <IconCurrencyDollar size={32} />,
+      title: "GenAI & LLM Integration",
+      description:
+        "RAG systems, enterprise copilots, document intelligence, and GPT-powered applications.",
+      icon: <IconCurrencyDollar size={32} stroke={1.5} />,
     },
     {
-      title: "Rock-Solid Uptime",
-      description: "Reliability is assured with Data Panther. Take advantage of constant service with almost 100% uptime, wherever you are and at any time. ",
-      icon: <IconCloud size={32} />,
+      title: "Intelligent Process Automation",
+      description:
+        "Replace repetitive manual tasks with AI-driven automation using Azure Durable Functions.",
+      icon: <IconCloud size={32} stroke={1.5} />,
     },
     {
-      title: "Multi-Tenant Ready",
-      description: "Facilitate smooth collaboration by providing a single workspace that can safely and effectively accommodate several teams. ",
-      icon: <IconRouteAltLeft size={32} />,
+      title: "Data Pipelines & Analytics",
+      description:
+        "End-to-end data infrastructure including ETL pipelines and real-time dashboards.",
+      icon: <IconRouteAltLeft size={32} stroke={1.5} />,
     },
     {
-      title: "24/7 Live Support",
-      description: "Get assistance whenever you need it. Our team of experts and AI agents are on call 24/7 to guarantee continuous assistance. ",
-      icon: <IconHelp size={32} />,
-    },
-    {
-      title: "Risk-Free Guarantee",
-      description: "Try Data Panther without taking risks of any kind. We're sure you'll stay. ",
-      icon: <IconAdjustmentsBolt size={32} />,
-    },
-    {
-      title: "Constant Innovation",
-      description: "We're just getting started, but we're constantly improving our platform to satisfy your evolving needs. ",
-      icon: <IconHeart size={32} />,
+      title: "AI Deployment & MLOps",
+      description:
+        "Scalable AI infrastructure with CI/CD for ML, drift detection, and model governance.",
+      icon: <IconHelp size={32} stroke={1.5} />,
     },
   ];
 
   return (
-    <section className="relative z-10 py-24 bg-gradient-to-b from-white to-neutral-100 dark:from-black dark:to-neutral-900">
-      {/* Fancy Heading */}
-      <div className="text-center mb-20 px-6">
-        <h2 className="text-4xl  sm:text-5xl font-serif text-neutral-900 dark:text-green-500 tracking-tight">
-          Why Choose Data Panther
-        </h2>
-                          <div className="w-48 h-1 bg-red-500 mt-4 mx-auto rounded-full"></div>
+    <section className="py-8 bg-white">
 
-        <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-          Everything you need to build, scale, and automate your data operations.
+      {/* Heading */}
+      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
+        <p className="uppercase tracking-[0.3em] text-sm text-dp-magenta font-medium mb-4">
+          What We Build
+        </p>
+
+        <h2 className="text-4xl md:text-5xl font-light text-dp-navy leading-tight">
+          AI & ML Services Engineered for Impact
+        </h2>
+
+        <p className="mt-6 text-dp-navy/70 text-lg">
+          From strategy to production — delivering across the full AI lifecycle.
         </p>
       </div>
 
-      {/* Feature Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-6">
+      {/* Grid */}
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
         {features.map((feature, index) => (
-          <FeatureCard key={index} {...feature} />
+          <div
+            key={index}
+            className="group relative bg-white border border-dp-navy/15 p-10 rounded-xl overflow-hidden transition-all duration-300 hover:border-dp-magenta/40 hover:shadow-lg hover:-translate-y-1"
+          >
+            {/* gradient top edge */}
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-dp-gradient" />
+
+            {/* gradient icon tile */}
+            <div className="w-14 h-14 rounded-xl bg-dp-gradient flex items-center justify-center text-white mb-6">
+              {feature.icon}
+            </div>
+
+            <h3 className="text-xl font-semibold text-dp-navy mb-4">
+              {feature.title}
+            </h3>
+
+            <p className="text-dp-navy/70 text-sm leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
         ))}
+
       </div>
     </section>
   );
 }
-
-const FeatureCard = ({
-  title,
-  description,
-  icon,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}) => {
-  return (
-    <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="relative group bg-white/80 dark:bg-white/5 backdrop-blur-lg  p-6  shadow-md transition-transform duration-300 hover:-translate-y-2 "
-    >
-        {/* Icon */}
-        <div className="mb-4 text-green-600 dark:text-green-400">{icon}</div>
-
-        {/* Title */}
-        <h3 className="text-lg font-semiserif text-neutral-800 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-gray-400 transition-colors">
-            {title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm text-neutral-600 dark:text-neutral-300">
-            {description}
-        </p>
-
-       
-    </motion.div>
-  );
-};

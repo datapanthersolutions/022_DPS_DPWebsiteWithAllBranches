@@ -45,14 +45,14 @@ export const AnimatedTestimonials = ({
       <div className="flex flex-col md:flex-row gap-50">
         {/* Left Box - Heading */}
         <div className="w-full md:w-1/3 flex items-start justify-start">
-        <div className="flex flex-col gap-6">
-            <h2 className="text-7xl font-extraserif text-black dark:text-white">
-                Meet Our Experts
+          <div className="flex flex-col gap-6">
+            <h2 className="text-7xl font-extraserif text-[#29235B] dark:text-white">
+              Meet Our Experts
             </h2>
             <p className="text-lg text-gray-600 dark:text-neutral-400">
-                Discover insights and experiences from our team of industry-leading professionals.
+              Discover insights and experiences from our team of industry-leading professionals.
             </p>
-        </div>
+          </div>
         </div>
 
         {/* Right Box - Testimonials */}
@@ -109,7 +109,7 @@ export const AnimatedTestimonials = ({
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.2, ease: "easeInOut" }}
               >
-                <h3 className="text-2xl font-serif text-black dark:text-white">
+                <h3 className="text-2xl font-serif text-[#29235B] dark:text-white">
                   {testimonials[active].name}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-neutral-500">
@@ -139,13 +139,13 @@ export const AnimatedTestimonials = ({
                   onClick={handlePrev}
                   className="group/button flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
                 >
-                  <IconArrowLeft className="h-5 w-5 text-black group-hover/button:rotate-12 transition-transform duration-300 dark:text-neutral-400" />
+                  <IconArrowLeft className="h-5 w-5 text-[#29235B] group-hover/button:rotate-12 transition-transform duration-300 dark:text-neutral-400" />
                 </button>
                 <button
                   onClick={handleNext}
                   className="group/button flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
                 >
-                  <IconArrowRight className="h-5 w-5 text-black group-hover/button:-rotate-12 transition-transform duration-300 dark:text-neutral-400" />
+                  <IconArrowRight className="h-5 w-5 text-[#29235B] group-hover/button:-rotate-12 transition-transform duration-300 dark:text-neutral-400" />
                 </button>
               </div>
             </div>
@@ -155,7 +155,7 @@ export const AnimatedTestimonials = ({
       <div className="flex flex-col gap-10 mt-30 text-center">
         <h1 className="text-5xl">Work with us now!</h1>
         <p className="text-lg text-gray-600 dark:text-neutral-400">
-          Automating routine tasks, enabling smarter decision-making and unlocking <br/> new possibilities every single day
+          Automating routine tasks, enabling smarter decision-making and unlocking <br /> new possibilities every single day
         </p>
       </div>
     </div>

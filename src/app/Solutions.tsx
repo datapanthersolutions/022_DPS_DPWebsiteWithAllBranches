@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  Database, 
-  BarChart3, 
-  Brain, 
-  Cloud, 
-  Shield, 
+import {
+  Database,
+  BarChart3,
+  Brain,
+  Cloud,
+  Shield,
   Zap,
   Target,
   Users,
@@ -260,7 +260,7 @@ const SolutionsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-black/20 backdrop-blur-md border-b border-purple-500/20">
+      <header className="bg-[#29235B]/20 backdrop-blur-md border-b border-purple-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
@@ -332,7 +332,7 @@ const SolutionsPage = () => {
 
           <div className="grid lg:grid-cols-2 gap-8">
             {filteredSolutions.map((solution) => (
-              <div key={solution.id} className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
+              <div key={solution.id} className="bg-white/5 backdrop-blur-sm  p-8 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl flex items-center justify-center group-hover:from-purple-600/30 group-hover:to-pink-600/30 transition-all">
                     <solution.icon className="w-8 h-8 text-purple-400" />
@@ -342,9 +342,9 @@ const SolutionsPage = () => {
                     <p className="text-purple-300 font-medium">{solution.subtitle}</p>
                   </div>
                 </div>
-                
+
                 <p className="text-gray-300 mb-6">{solution.description}</p>
-                
+
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h4 className="text-white font-semiserif mb-3">Key Features</h4>
@@ -369,7 +369,7 @@ const SolutionsPage = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="text-2xl font-serif text-white">{solution.pricing}</div>
                   <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-700 hover:to-pink-700 transition-all flex items-center space-x-2">
@@ -384,7 +384,7 @@ const SolutionsPage = () => {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#29235B]/20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif text-white mb-4">Industry Solutions</h2>
@@ -437,8 +437,8 @@ const SolutionsPage = () => {
                 </div>
                 <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
                 <div className="flex items-center space-x-4">
-                  <img 
-                    src={testimonial.avatar} 
+                  <img
+                    src={testimonial.avatar}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full"
                   />
@@ -457,7 +457,7 @@ const SolutionsPage = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm rounded-2xl p-12 border border-purple-500/20 text-center">
+          <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/50 backdrop-blur-sm  p-12 border border-purple-500/20 text-center">
             <Rocket className="w-16 h-16 text-purple-400 mx-auto mb-6" />
             <h2 className="text-4xl font-serif text-white mb-4">Ready to Transform Your Data?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -478,7 +478,7 @@ const SolutionsPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black/20 backdrop-blur-md border-t border-purple-500/20">
+      <footer className="bg-[#29235B]/20 backdrop-blur-md border-t border-purple-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div>

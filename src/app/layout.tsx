@@ -1,26 +1,14 @@
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import ModernNavbar from "./Navigation";
 import ResponsiveFooter from "./Footer";
-import { Montserrat } from "next/font/google";
+import CookieBanner from "@/components/cookieBanner";
+import WhatsAppFloat from "@/app/whatsappfloat";
 
-
-// Font setups
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"], // ✅ Required
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-
+// Google fonts (Geist retained for the .geist-font utility)
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,25 +19,77 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Local font — Champagne & Limousines (headings)
+const champagne = localFont({
+  src: [
+    {
+      path: "./fonts/Champagne-Limousines.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Champagne-Limousines-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Champagne-Limousines-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Champagne-Limousines-Bold-Italic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-champagne",
+  display: "swap",
+});
+
+// Local font — Gilroy (body)
+const gilroy = localFont({
+  src: [
+    {
+      path: "./fonts/Gilroy-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gilroy",
+  display: "swap",
+});
+
 // Metadata
 export const metadata: Metadata = {
   title: "Data Panther",
   description: "Your AI-powered data analysis platform",
   icons: {
-    icon: "/dpnew.png",
+    icon: "/dpfavicon.png",
   },
 };
 
 // Root layout
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${poppins.variable}`}>
-      <body className={`${poppins.variable} ${geistMono.variable} min-h-screen flex flex-col`}>
+    <html
+      lang="en"
+      className={`${champagne.variable} ${gilroy.variable} ${geistSans.variable} ${geistMono.variable}`}
+    >
+      <body className="min-h-screen flex flex-col">
         <ModernNavbar />
         <main className="flex-grow">{children}</main>
+
         <ResponsiveFooter />
+
+        <CookieBanner />
+
+        <WhatsAppFloat
+          phoneNumber="7075928464"
+          message="Hi Data Panther, I'd like to know more about your services."
+          label="Chat with us"
+        />
       </body>
     </html>
   );
 }
-

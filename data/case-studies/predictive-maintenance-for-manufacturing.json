@@ -1,0 +1,32 @@
+{
+    "slug": "predictive-maintenance-for-manufacturing",
+    "title": "Predictive Maintenance for Smart Manufacturing",
+    "subtitle": "How Data Panther helped a global manufacturer cut unplanned downtime by 55% using ML-powered asset monitoring",
+    "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    "category": "Machine Learning",
+    "date": "March 2026",
+    "readTime": "8 min read",
+    "featured": false,
+    "summary": "A global automotive parts manufacturer partnered with Data Panther to build a predictive maintenance platform that reduced unplanned downtime by 55% and extended equipment lifespan by an average of 4 years.",
+    "challenge": "A global automotive parts manufacturer with 18 production plants across Europe and Asia was haemorrhaging revenue through unplanned equipment failures. Each major production line stoppage cost an average of £380,000 in lost throughput and emergency maintenance costs. The maintenance team relied entirely on fixed-interval preventive maintenance schedules — a one-size-fits-all approach that resulted in over-servicing some assets while leaving others to fail unexpectedly. Critically, more than 65% of unplanned failures occurred on assets that had only recently received scheduled maintenance. The company lacked any mechanism to differentiate between a machine operating at the edge of acceptable tolerance and one with years of service life remaining.",
+    "solution": "Data Panther deployed a comprehensive Industrial IoT (IIoT) and machine learning platform across the three highest-value production lines, covering 214 individual assets. The team retrofitted each machine with vibration, temperature, pressure, and current-draw sensors connected via an OPC-UA edge gateway. Sensor data streams were ingested at 100Hz into an Azure IoT Hub and processed in near-real-time through an Azure Stream Analytics pipeline. Data Panther engineers trained ensemble anomaly detection models (combining Isolation Forest, LSTM autoencoders, and gradient-boosted classifiers) on 24 months of historical sensor data, aligned with annotated maintenance logs. The resulting models could identify the characteristic sensor signatures of 32 distinct failure modes — including bearing wear, seal degradation, and coolant pump cavitation — an average of 17 days before failure occurrence. Maintenance teams received prioritised work orders through an integration with the client's existing SAP Plant Maintenance module, complete with recommended remediation actions and parts lists.",
+    "results": [
+        "Unplanned downtime reduced by 55% across the three instrumented production lines within 12 months",
+        "Mean time between failures (MTBF) increased by an average of 4.2 years across monitored assets",
+        "Maintenance cost per asset reduced by 31% through elimination of unnecessary scheduled interventions",
+        "34 imminent failures predicted and safely averted in the first year, preventing an estimated £8.9M in emergency downtime costs",
+        "ROI of 680% achieved within the first 18 months of deployment",
+        "Platform subsequently scaled to all 18 manufacturing plants globally"
+    ],
+    "technologies": [
+        "Azure IoT Hub",
+        "Azure Stream Analytics",
+        "OPC-UA",
+        "Python",
+        "scikit-learn",
+        "TensorFlow",
+        "SAP Plant Maintenance",
+        "Power BI"
+    ],
+    "industry": "Manufacturing / Automotive"
+}
