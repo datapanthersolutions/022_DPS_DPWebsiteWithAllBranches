@@ -36,7 +36,7 @@ const SolutionsSection: FC = () => {
   return (
     <section
       className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat flex items-center"
-      style={{ backgroundImage: "url('/oursol.png')" }} // Replace with your image
+      style={{ backgroundImage: "url('/oursol.webp')" }} // Replace with your image
       id="solutions"
     >
       {/* Overlay for readability */}

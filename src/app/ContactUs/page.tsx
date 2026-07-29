@@ -506,7 +506,7 @@ export default function ContactPage() {
       <section className="relative w-full min-h-screen flex items-center justify-end">
 
         <img
-          src="/contact-bg.png"
+          src="/contact-bg.webp"
           alt="Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -600,10 +600,10 @@ export default function ContactPage() {
                       Monday – Friday
                     </p>
                     <a
-                      href="tel:+917075928464"
+                      href="tel:917075928464"
                       className="text-dp-magenta font-medium text-sm hover:underline"
                     >
-                      +91 7075928464
+                      917075928464
                     </a>
                   </div>
                 </div>

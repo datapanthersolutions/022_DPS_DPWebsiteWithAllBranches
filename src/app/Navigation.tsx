@@ -44,7 +44,7 @@ const NAV_ITEMS: NavItem[] = [
         links: [
           { name: "Our Story", href: "/OurStory", description: "Discover how we started and our journey." },
           { name: "Mission & Vision", href: "/MissionAndVision", description: "Our core values and where we're heading." },
-          { name: "Leadership", href: "/Leadership", description: "Meet the team driving Data Panther." },
+          // { name: "Leadership", href: "/Leadership", description: "Meet the team driving Data Panther." },
           { name: "About Us", href: "/AboutUs", description: "Discover how we started and our journey." },
 
         ]

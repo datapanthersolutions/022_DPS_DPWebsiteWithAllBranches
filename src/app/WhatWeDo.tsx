@@ -148,7 +148,7 @@ export default function FancyWhatWeDo() {
   const services: Service[] = [
     {
       title: "Accelerate Decision Making",
-      icon: "/aidecisionmaking.png",
+      icon: "/aidecisionmaking.webp",
       color: "#4CAF50",
       description:
         "Leverage real-time data analytics and AI insights to make faster, more informed business decisions.",
@@ -163,7 +163,7 @@ export default function FancyWhatWeDo() {
     },
     {
       title: "Integrate Advanced LLMs",
-      icon: "/advimgllm.png",
+      icon: "/advimgllm.webp",
       color: "#4CAF50",
       description:
         "Advanced Large Language Models can be seamlessly integrated to optimise processes and applications.",
@@ -177,7 +177,7 @@ export default function FancyWhatWeDo() {
     },
     {
       title: "Automate Customer Support",
-      icon: "/ACS.png",
+      icon: "/ACS.webp",
       color: "#4CAF50",
       description:
         "Use automation driven by AI to revolutionize customer service with immediate, accurate, and consistent feedback.",

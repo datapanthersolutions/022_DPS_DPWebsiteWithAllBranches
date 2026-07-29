@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     {
         slug: "ai-business-growth-across-industries",
         title: "How AI Can Accelerate Business Growth Across Industries",
-        image: "/Blog5.png",
+        image: "/Blog5.webp",
         excerpt:
             "AI is no longer a future technology — it's a growth technology. See how manufacturing, supply chain, healthcare, retail, and real estate turn data into faster, more profitable growth.",
         author: { name: "Rajesh Verma", role: "AI Strategy Consultant" },
@@ -40,7 +40,7 @@ const blogPosts: BlogPost[] = [
     {
         slug: "25-reasons-hospitals-should-use-ai",
         title: "25 Reasons Hospitals Should Use AI More (With Real-World Examples)",
-        image: "/Blog4.jpg",
+        image: "/Blog4.webp",
         excerpt:
             "AI in healthcare is no longer experimental — it's operational. 25 real-world reasons hospitals should accelerate AI adoption to improve outcomes, cut costs, and scale care.",
         author: { name: "Dr. Aisha Rahman", role: "Healthcare AI Lead" },
@@ -52,7 +52,7 @@ const blogPosts: BlogPost[] = [
     {
         slug: "ai-transforming-business",
         title: "How AI is Transforming Modern Business Operations",
-        image: "/Blog1.png",
+        image: "/Blog1.webp",
         excerpt:
             "Artificial intelligence is redefining operational efficiency, enabling predictive decision-making and reshaping enterprise strategy.",
         author: { name: "Ali Hassan", role: "AI Strategy Lead" },
@@ -64,7 +64,7 @@ const blogPosts: BlogPost[] = [
     {
         slug: "data-driven-decision-making",
         title: "The Art and Science of Data-Driven Decision Making",
-        image: "/AdvanceBI.png",
+        image: "/AdvanceBI.webp",
         excerpt:
             "How leading enterprises leverage analytics to accelerate insight and competitive advantage.",
         author: { name: "Priya Sharma", role: "Data Analytics Director" },
@@ -76,7 +76,7 @@ const blogPosts: BlogPost[] = [
     {
         slug: "future-of-llms",
         title: "The Future of Large Language Models",
-        image: "/ETHICALAI.png",
+        image: "/ETHICALAI.webp",
         excerpt:
             "Understanding the enterprise impact of next-generation language AI systems.",
         author: { name: "Ahmed Khan", role: "ML Research Engineer" },
@@ -118,7 +118,7 @@ export default function BlogPage() {
             {/* HERO */}
             <section
                 className="relative pt-40 pb-28 text-center overflow-hidden bg-cover bg-center"
-                style={{ backgroundImage: "url('/blogbg.png')" }}
+                style={{ backgroundImage: "url('/blogbg.webp')" }}
             >
                 {/* brand wash over the photo */}
                 <div className="absolute inset-0 bg-dp-navy/80 mix-blend-multiply"></div>
@@ -290,7 +290,7 @@ export default function BlogPage() {
             </section>
 
             {/* NEWSLETTER */}
-            <section className="relative bg-[url('/subscribe.png')] bg-cover bg-center py-24">
+            <section className="relative bg-[url('/subscribe.webp')] bg-cover bg-center py-24">
 
                 {/* brand wash */}
                 <div className="absolute inset-0 bg-dp-navy/80 mix-blend-multiply"></div>

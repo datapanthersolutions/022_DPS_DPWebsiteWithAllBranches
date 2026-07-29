@@ -41,7 +41,7 @@ const insights: Insight[] = [
     date: "2025-07-10",
     featured: true,
     trending: true,
-    image: "/RTA.jpeg",
+    image: "/RTA.webp",
     views: 12500,
     tags: ["Real-time", "Analytics", "Enterprise", "AI"],
   },
@@ -54,7 +54,7 @@ const insights: Insight[] = [
       "Discover the key strategies for deploying machine learning models efficiently in large-scale production environments.",
     readTime: "12 min read",
     date: "2025-07-08",
-    image: "/MLMDAS.jpeg",
+    image: "/MLMDAS.webp",
     views: 8900,
     tags: ["ML", "Deployment", "DevOps", "Scale"],
   },
@@ -68,7 +68,7 @@ const insights: Insight[] = [
     readTime: "6 min read",
     date: "2025-07-05",
     trending: true,
-    image: "/DPRFB.jpeg",
+    image: "/DPRFB.webp",
     views: 15200,
     tags: ["Privacy", "GDPR", "Compliance"],
   },
@@ -81,7 +81,7 @@ const insights: Insight[] = [
       "Learn how advanced analytics techniques are redefining customer insights and improving engagement strategies.",
     readTime: "10 min read",
     date: "2025-07-02",
-    image: "/ACABTM.jpeg",
+    image: "/ACABTM.webp",
     views: 9800,
     tags: ["Analytics", "Customer", "Strategy"],
   },
@@ -94,7 +94,7 @@ const insights: Insight[] = [
       "See how edge computing is reshaping data processing with reduced latency and real-time decision-making.",
     readTime: "7 min read",
     date: "2025-06-28",
-    image: "/REC.jpeg",
+    image: "/REC.webp",
     views: 6700,
     tags: ["Edge", "IoT", "Processing"],
   },
@@ -107,7 +107,7 @@ const insights: Insight[] = [
       "Understand the importance of ethical AI, bias detection, and fairness in machine learning development.",
     readTime: "9 min read",
     date: "2025-06-25",
-    image: "/ETHICALAI.png",
+    image: "/ETHICALAI.webp",
     views: 11400,
     tags: ["Ethics", "AI", "Bias"],
   },
@@ -178,7 +178,7 @@ export default function ProfessionalInsightsPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/blogbg.png"
+            src="/blogbg.webp"
             alt="Insights Background"
             className="w-full h-full object-cover"
           />

@@ -49,7 +49,7 @@ export default function RiskManagement() {
                         className="relative h-[400px] rounded-xl overflow-hidden shadow-2xl"
                     >
                         <img
-                            src="/riskmanagementai.png"
+                            src="/riskmanagementai.webp"
                             alt="Risk Management AI"
                             className="w-full h-full object-cover"
                         />

@@ -71,7 +71,7 @@ We specialize in **data analytics, business intelligence, big data solutions, an
 ## 📞 Contact
 - **Website:** [datapanthersolutions.com](https://datapanthersolutions.com)  
 - **Email:** info@datapanthersolutions.com 
-- **Phone:** +91 7075928464  
+- **Phone:** 917075928464  
 - **LinkedIn:** [Data Panther Solutions](https://www.linkedin.com/company/data-panther/about/)
 
 ---

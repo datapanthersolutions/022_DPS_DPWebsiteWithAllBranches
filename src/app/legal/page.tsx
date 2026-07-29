@@ -10,7 +10,7 @@ export default function LegalPage() {
             <section
                 className="relative py-28 text-center text-white"
                 style={{
-                    backgroundImage: "url('/blogbg.png')",
+                    backgroundImage: "url('/blogbg.webp')",
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                 }}

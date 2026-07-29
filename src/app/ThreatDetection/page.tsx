@@ -316,7 +316,7 @@ export default function ThreatDetection() {
                         className="rounded-xl overflow-hidden border border-dp-navy/15"
                     >
                         <Image
-                            src="/cyberthreatdetection.png"
+                            src="/cyberthreatdetection.webp"
                             alt="Cyber threat detection"
                             width={700}
                             height={500}

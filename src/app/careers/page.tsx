@@ -221,7 +221,7 @@ export default function CareersPage() {
                         {/* Right Image */}
                         <div className="relative">
                             <img
-                                src="/careers.png"
+                                src="/careers.webp"
                                 alt="Team collaboration"
                                 className="object-cover w-full h-full"
                             />
@@ -259,7 +259,7 @@ export default function CareersPage() {
                     </div>
 
                     <div className="relative">
-                        <img src="/lifeatdp.jpg" alt="Life at Company" />
+                        <img src="/lifeatdp.webp" alt="Life at Company" />
                     </div>
 
                 </div>
@@ -395,7 +395,7 @@ export default function CareersPage() {
                 {/* Background Image */}
                 <div
                     className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/talentcommunity.png')" }} // replace with your image
+                    style={{ backgroundImage: "url('/talentcommunity.webp')" }} // replace with your image
                 />
 
 

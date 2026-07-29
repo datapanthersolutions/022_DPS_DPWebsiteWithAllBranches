@@ -215,7 +215,7 @@ export default function CloudMigration() {
 
                 <div className="rounded-xl overflow-hidden border border-dp-navy/15 shadow-sm">
                     <Image
-                        src="/cloud-migration.png"
+                        src="/cloud-migration.webp"
                         alt="Cloud infrastructure"
                         width={1200}
                         height={600}

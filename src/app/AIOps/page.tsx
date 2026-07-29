@@ -88,7 +88,7 @@ export default function AIOps() {
 
                     <div className="mt-14 rounded-xl overflow-hidden border border-dp-navy/15 shadow-sm">
                         <Image
-                            src="/aiop.png"
+                            src="/aiop.webp"
                             alt="AIOps monitoring"
                             width={1200}
                             height={700}
@@ -137,7 +137,7 @@ export default function AIOps() {
                         className="rounded-xl overflow-hidden border border-dp-navy/15"
                     >
                         <Image
-                            src="/aiopdashboard.png"
+                            src="/aiopdashboard.webp"
                             alt="AI IT operations dashboard"
                             width={700}
                             height={500}

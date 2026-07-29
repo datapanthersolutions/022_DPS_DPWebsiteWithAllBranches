@@ -11,7 +11,7 @@ export default function CTA() {
             {/* Background Image */}
             <div className="absolute inset-0">
                 <Image
-                    src="/cta.jpg"
+                    src="/cta.webp"
                     alt="AI Background"
                     fill
                     priority

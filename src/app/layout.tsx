@@ -60,12 +60,21 @@ const gilroy = localFont({
   display: "swap",
 });
 
-// Metadata
+
 export const metadata: Metadata = {
   title: "Data Panther",
   description: "Your AI-powered data analysis platform",
   icons: {
-    icon: "/dpfavicon.png",
+    icon: [
+      {
+        url: "/dpfavicon.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/dpfavicondark.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
   },
 };
 
@@ -85,7 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CookieBanner />
 
         <WhatsAppFloat
-          phoneNumber="7075928464"
+          phoneNumber="917075928464"
           message="Hi Data Panther, I'd like to know more about your services."
           label="Chat with us"
         />

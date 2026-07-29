@@ -59,7 +59,7 @@ export default function AISolution() {
                     {/* RIGHT IMAGE */}
                     <div className="relative w-full h-[500px]">
                         <Image
-                            src="/solutions.jpg"
+                            src="/solutions.webp"
                             alt="AI Solutions"
                             fill
                             className="object-cover rounded-xl"

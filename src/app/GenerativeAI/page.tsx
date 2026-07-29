@@ -87,7 +87,7 @@ export default function GenerativeAI() {
 
                     <div className="mt-14 rounded-xl overflow-hidden border border-dp-navy/15 shadow-sm">
                         <Image
-                            src="/genaiimg.png"
+                            src="/genaiimg.webp"
                             alt="Generative AI"
                             width={1200}
                             height={700}
@@ -135,7 +135,7 @@ export default function GenerativeAI() {
                         className="rounded-xl overflow-hidden"
                     >
                         <Image
-                            src="/aitech.png"
+                            src="/aitech.webp"
                             alt="AI Technology"
                             width={700}
                             height={500}

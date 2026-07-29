@@ -256,7 +256,7 @@ export default function DataModernisation() {
                         className="rounded-xl overflow-hidden border border-dp-navy/15 shadow-sm"
                     >
                         <Image
-                            src="/datamodernizationarchitecture.jpg"
+                            src="/datamodernizationarchitecture.webp"
                             alt="Data modernization architecture"
                             width={1200}
                             height={700}
@@ -446,7 +446,7 @@ export default function DataModernisation() {
                         className="rounded-xl overflow-hidden border border-dp-navy/15"
                     >
                         <Image
-                            src="/moderndataplatform.jpg"
+                            src="/moderndataplatform.webp"
                             alt="Modern data platform"
                             width={600}
                             height={400}

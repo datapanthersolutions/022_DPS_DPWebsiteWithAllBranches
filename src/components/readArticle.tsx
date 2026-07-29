@@ -87,7 +87,7 @@ export default function ReadArticle({ data }: { data: ArticleData }) {
       <section className="relative bg-[#29235B] pt-36 pb-24 text-center overflow-hidden">
         <div
           className="absolute inset-0 opacity-20 bg-cover bg-center"
-          style={{ backgroundImage: "url('/blogbg.png')" }}
+          style={{ backgroundImage: "url('/blogbg.webp')" }}
         />
 
         <div className="relative max-w-4xl mx-auto px-4">

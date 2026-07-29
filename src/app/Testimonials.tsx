@@ -6,8 +6,8 @@ import Image from "next/image";
 const companyLogos = [
   { name: "Tecverse", src: "/tecversenew.png" },
   { name: "Kanoons", src: "/kanoons.png" },
-  { name: "Digiting", src: "/digiting.png" },
-  { name: "Axartechs", src: "/axar.png" },
+  { name: "Digiting", src: "/digiting.webp" },
+  { name: "Axartechs", src: "/axar.webp" },
 ];
 
 const CompaniesSection = () => {

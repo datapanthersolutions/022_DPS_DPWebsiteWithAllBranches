@@ -78,7 +78,7 @@ export default function MainframeModernisation() {
                     >
 
                         <Image
-                            src="/modernisationTransformLegacy.jpg"
+                            src="/modernisationTransformLegacy.webp"
                             alt="Mainframe modernization infrastructure"
                             width={700}
                             height={500}

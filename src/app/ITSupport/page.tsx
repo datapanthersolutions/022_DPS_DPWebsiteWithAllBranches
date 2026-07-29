@@ -132,10 +132,10 @@ export default function ITSupport() {
                     <motion.div
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="rounded-xl overflow-hidden border border-dp-navy/15"
+                        className="rounded-xl overflow-hidden"
                     >
                         <Image
-                            src="/ITSupportService.png"
+                            src="/ITSupportService.webp"
                             alt="IT support services"
                             width={700}
                             height={500}

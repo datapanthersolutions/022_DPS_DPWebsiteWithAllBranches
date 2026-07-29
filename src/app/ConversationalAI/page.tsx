@@ -77,7 +77,7 @@ export default function ConversationalAI() {
                         className="rounded-xl overflow-hidden"
                     >
                         <Image
-                            src="/convoai.png"
+                            src="/convoai.webp"
                             alt="Conversational AI"
                             width={700}
                             height={500}
@@ -102,7 +102,7 @@ export default function ConversationalAI() {
                         className="rounded-xl overflow-hidden border border-dp-navy/15"
                     >
                         <Image
-                            src="/humanlikeaiconv.png"
+                            src="/humanlikeaiconv.webp"
                             alt="AI chatbot interface"
                             width={700}
                             height={500}

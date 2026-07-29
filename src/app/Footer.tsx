@@ -19,7 +19,7 @@ export default function ModernLightFooter() {
 
             {/* Logo */}
             <img
-              src="/bglessdp.png"
+              src="/bglessdp.webp"
               alt="Data Panther"
               className="w-48 sm:w-40 flex-shrink-0"
             />

@@ -10,7 +10,7 @@ const featuredCaseStudies = [
         title: "Automating Global IT Operations with AIOps",
         category: "AIOps",
         readTime: "8 min read",
-        img: "/globalautoaiop.png",
+        img: "/globalautoaiop.webp",
         summary:
             "A leading global enterprise partnered with Data Panther to implement an AIOps solution that autonomously remediated 75% of level-1 support tickets and saved over $2M annually.",
     },
@@ -19,7 +19,7 @@ const featuredCaseStudies = [
         title: "Accelerating Software Delivery through Generative AI",
         category: "Generative AI",
         readTime: "7 min read",
-        img: "softwaredeliver.png",
+        img: "softwaredeliver.webp",
         summary:
             "A major financial services firm integrated Generative AI into its DevOps workflows via Data Panther, realising a 40% reduction in deployment failures.",
     },
@@ -28,7 +28,7 @@ const featuredCaseStudies = [
         title: "Establishing a Data-Driven Decision Ecosystem",
         category: "Data Modernisation",
         readTime: "9 min read",
-        img: "/datamodern.png",
+        img: "/datamodern.webp",
         summary:
             "Data Panther engineered a scalable cloud-native operational intelligence platform for a top-tier retail chain.",
     },

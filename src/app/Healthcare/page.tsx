@@ -285,10 +285,10 @@ export default function Healthcare() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
-                        className="relative h-64 sm:h-80 md:h-[400px] rounded-xl overflow-hidden border border-dp-navy/15"
+                        className="relative h-64 sm:h-80 md:h-[400px] rounded-xl overflow-hidden"
                     >
                         <img
-                            src="/healthcareai.png"
+                            src="/healthcareai.webp"
                             alt="Healthcare AI"
                             className="w-full h-full object-cover"
                         />

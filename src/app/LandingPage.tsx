@@ -13,21 +13,21 @@ const slides = [
     title: "Turning Complex Data Into Clear Business Strategy",
     description:
       "From infrastructure to intelligence, we design ecosystems that unlock impact.",
-    image: "/slide2.jpg",
+    image: "/slide2.webp",
   },
   {
     tag: "FOR SCALABLE GROWTH",
     title: "Secure, Intelligent & Future-Ready Data Solutions",
     description:
       "Build resilient systems that reduce risk and enhance performance.",
-    image: "/test.jpg",
+    image: "/test.webp",
   },
   {
     tag: "FOR ENTERPRISE LEADERS",
     title: "Strategic Insights for Modern Data-Driven Organizations",
     description:
       "We empower decision-makers with advanced analytics and scalable AI systems.",
-    image: "/moderndata.jpg",
+    image: "/moderndata.webp",
   },
 ];
 

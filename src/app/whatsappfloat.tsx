@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 
 /**
- * WhatsAppFloat — a floating "chat on WhatsApp" button.
+ * WhatsAppFloat — a floating "
+ *  WhatsApp" button.
  *
  * Usage (in app/layout.tsx or any page):
  *
