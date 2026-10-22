@@ -1,27 +1,24 @@
-"use client";
+import { caseStudies } from "@/content";
+import HomeHero from "@/components/home/HomeHero";
+import { LogoMarquee, Problem, OurSolution, WhatWeBuild, HomeCases, Capabilities } from "@/components/home/HomeSections";
+import { Cta } from "@/components/sections/Sections";
 
-import React from "react";
-import LandingPage from "./LandingPage";
-import FancyWhatWeDo from "./WhatWeDo";
-import AIML from "./AIML";
-import OurOfferings from "./Offerings";
-import CaseStudySection from "./CaseStudySection";
-import AISolution from "./oursolutions";
-import CTA from "./cta";
-import FeaturesSectionDemo from "./FeatureSection";
+const featured = ["automating-global-it-operations-with-aiops", "accelerating-software-delivery-through-generative-ai", "establishing-a-data-driven-decision-ecosystem"];
 
 export default function Home() {
+  const cases = featured.map((s) => caseStudies.find((c) => c.slug === s)!).filter(Boolean)
+    .map((c) => ({ ...c, summary: c.summary }));
   return (
     <>
-      <section><LandingPage /></section>
-      <section> <AIML /></section>
-      <section><AISolution /></section>
-      <section>< FeaturesSectionDemo /></section>
-      <section><CaseStudySection /></section>
-      <section><OurOfferings /></section>
-      <section><CTA /></section>
+      <HomeHero />
+      <LogoMarquee />
+      <Problem />
+      <OurSolution />
+      <WhatWeBuild />
+      <HomeCases cases={cases} />
+      <Capabilities />
+      <Cta s={{ type: "cta", title: "Ready to Build Intelligent Solutions?", text: ["Partner with Data Panther to unlock the power of AI, automation, and intelligent systems that drive measurable business impact."],
+        primary: { label: "Get Started", href: "/ContactUs/" }, secondary: { label: "Explore Services", href: "/Services/" } }} />
     </>
-
   );
 }
-

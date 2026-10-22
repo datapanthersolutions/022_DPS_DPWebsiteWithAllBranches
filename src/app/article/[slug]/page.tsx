@@ -1,27 +1,15 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { articles } from "@/content";
+import PostView from "@/components/PostView";
 
-// app/article/[slug]/page.tsx
-import fs from "fs/promises";
-import path from "path";
-import ReadArticle from "@/components/readArticle";
-
-export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), "data/article");
-  const files = await fs.readdir(dir);
-
-  return files.map(file => ({
-    slug: file.replace(".json", ""),
-  }));
+export function generateStaticParams() { return articles.map((p) => ({ slug: p.slug })); }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const p = articles.find((x) => x.slug === params.slug);
+  return p ? { title: `${p.title} | Data Panther`, description: p.excerpt } : {};
 }
-
-export default async function ArticlePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const resolvedParams = await params; // ✅ Await params directly
-  const filePath = path.join(process.cwd(), "data/article", `${resolvedParams.slug}.json`);
-  const fileContent = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(fileContent);
-
-  return <ReadArticle data={data} />;
+export default function Page({ params }: { params: { slug: string } }) {
+  const p = articles.find((x) => x.slug === params.slug);
+  if (!p) notFound();
+  return <PostView post={p} back={{ label: "Back to Insights", href: "/Insights/" }} related={articles.filter((x) => x.slug !== p.slug).slice(0, 3)} />;
 }

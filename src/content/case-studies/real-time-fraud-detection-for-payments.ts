@@ -1,0 +1,50 @@
+import type { CaseStudy } from "../types";
+
+const data: CaseStudy = {
+  slug: "real-time-fraud-detection-for-payments",
+  category: "Machine Learning",
+  date: "December 2025",
+  readTime: "8 min read",
+  title: "Real-Time Fraud Detection for a Payments Platform",
+  subtitle: "Reducing fraud losses by 68% and false-positive declines by 41% for a high-volume digital payments provider",
+  summary: "Data Panther reimagined the fraud detection architecture of a digital payments provider processing 50 million daily transactions, achieving a 68% reduction in fraud losses while dramatically lowering false-positive customer declines.",
+  sections: [
+    {
+      eyebrow: "THE CHALLENGE",
+      heading: "The Challenge",
+      paragraphs: [
+        "A fast-growing digital payments provider processing over 50 million transactions per day was facing a dual crisis. Fraud losses had increased by 140% over 18 months as criminals exploited gaps in the firm's legacy rule-based fraud detection system. Simultaneously, the system's aggressive fraud rules were declining a significant volume of legitimate transactions — an estimated 4.3% of all transactions, costing the business £31M annually in lost revenue and damaging customer trust. The fraud team was maintaining a library of over 2,200 business rules, each requiring manual tuning. The static, rules-based approach simply could not adapt quickly enough to evolving fraud patterns, particularly the rapid rise of authorised push payment (APP) fraud and account takeover attacks.",
+      ],
+    },
+    {
+      eyebrow: "OUR APPROACH",
+      heading: "Our Solution",
+      paragraphs: [
+        "Data Panther replaced the legacy rule engine with a multi-layered, real-time machine learning fraud detection platform designed to operate within a 35-millisecond decisioning budget. The architecture combined three complementary model types: a real-time gradient-boosted ensemble model (XGBoost + LightGBM) scoring individual transactions on 280 engineered features, a graph neural network analysing the network of relationships between accounts, devices, and merchants to detect organised fraud rings, and an LSTM sequence model monitoring account-level behavioural patterns to identify account takeover in progress. All three model outputs were fused by a meta-classifier that produced a final fraud probability score. The platform was deployed on a Kafka Streams processing pipeline capable of handling 100,000 transactions per second with P99 latency of 28ms. An MLOps pipeline enabled weekly model retraining on fresh labelled data, ensuring the system continuously adapted to evolving fraud tactics. A feedback loop from the fraud operations team's case management system provided ground-truth labels for supervised retraining.",
+      ],
+    },
+  ],
+  results: [
+    "Fraud losses reduced by 68% in the 12 months following full deployment",
+    "False-positive transaction declines reduced by 41%, recovering £12.7M in annual revenue",
+    "System processes 50 million daily transactions with P99 latency of 28ms — within the required 35ms budget",
+    "Organised fraud ring detection capability added for the first time, leading to 23 major ring disruptions in year one",
+    "Fraud analyst productivity increased by 58% through AI-assisted case prioritisation and investigation tools",
+    "Model retraining cycle automated from 3 months (manual) to weekly (automated)",
+  ],
+  industry: "Payments / Fintech",
+  technologies: [
+    "Apache Kafka",
+    "Kafka Streams",
+    "XGBoost",
+    "LightGBM",
+    "PyTorch Geometric (GNN)",
+    "TensorFlow",
+    "Python",
+    "Kubernetes",
+    "MLflow",
+    "Redis",
+  ],
+};
+
+export default data;

@@ -1,30 +1,15 @@
-// app/blog/[slug]/page.tsx
-import fs from "fs/promises";
-import path from "path";
-import ReadBlogPost from "@/components/ReadBlogPost";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { blogPosts } from "@/content";
+import PostView from "@/components/PostView";
 
-export async function generateStaticParams() {
-    const dir = path.join(process.cwd(), "data/blog");
-    const files = await fs.readdir(dir);
-
-    return files.map((file) => ({
-        slug: file.replace(".json", ""),
-    }));
+export function generateStaticParams() { return blogPosts.map((p) => ({ slug: p.slug })); }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const p = blogPosts.find((x) => x.slug === params.slug);
+  return p ? { title: `${p.title} | Data Panther`, description: p.excerpt } : {};
 }
-
-export default async function BlogPostPage({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
-    const resolvedParams = await params;
-    const filePath = path.join(
-        process.cwd(),
-        "data/blog",
-        `${resolvedParams.slug}.json`
-    );
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const data = JSON.parse(fileContent);
-
-    return <ReadBlogPost data={data} />;
+export default function Page({ params }: { params: { slug: string } }) {
+  const p = blogPosts.find((x) => x.slug === params.slug);
+  if (!p) notFound();
+  return <PostView post={p} back={{ label: "All articles", href: "/blog/" }} related={blogPosts.filter((x) => x.slug !== p.slug).slice(0, 3)} />;
 }

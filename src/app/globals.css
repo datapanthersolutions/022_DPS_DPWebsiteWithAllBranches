@@ -1,279 +1,93 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
-@custom-variant dark (&:is(.dark *));
-
-/* =========================
-THEME VARIABLES
-========================= */
-
-@theme inline {
-  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
-
-  /* DP — brand color utilities: bg-dp-magenta, text-dp-navy, etc. */
-  --color-dp-magenta: var(--dp-magenta);
-  --color-dp-blue: var(--dp-blue);
-  --color-dp-navy: var(--dp-navy);
-
-  /* DP — heading font utility: font-heading */
-  --font-heading: var(--font-heading);
-
-  /* DP — body font utility: font-body */
-  --font-body: var(--font-body);
-
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-
-  --color-destructive: var(--destructive);
-
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-
-  --color-foreground: var(--foreground);
-  --color-background: var(--background);
-
-  @keyframes scroll {
-    to {
-      transform: translate(calc(-50% - 0.5rem));
-    }
-  }
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-}
-
-/* =========================
-AURORA ANIMATION
-========================= */
-
-@theme inline {
-  --animate-aurora: aurora 60s linear infinite;
-
-  @keyframes aurora {
-    from {
-      background-position: 50% 50%, 50% 50%;
-    }
-
-    to {
-      background-position: 350% 50%, 350% 50%;
-    }
-  }
-}
-
-/* =========================
-ROOT VARIABLES
-========================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  /* DP — body font, served via next/font/local (--font-gilroy) */
-  --font-body: var(--font-gilroy), sans-serif;
-
-  /* DP — brand palette (from style guide) */
-  --dp-magenta: #B13C96;
-  --dp-blue: #293D97;
-  --dp-navy: #29235B;
-  --dp-gradient: linear-gradient(135deg, #8C62AC 0%, #443B8E 45%, #29235B 100%);
-
-  /* DP — heading font, served via next/font/local (--font-champagne).
-     Falls back to Quicksand/sans-serif if the local font fails to load. */
-  --font-heading: var(--font-champagne), "Quicksand", sans-serif;
-
-  --radius: 0.625rem;
-
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-
-  /* DP — primary = navy (high contrast on white, WCAG-safe with white text) */
-  --primary: #29235B;
-  --primary-foreground: #FFFFFF;
-
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-
-  --destructive: oklch(0.577 0.245 27.325);
-
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: #B13C96; /* DP — magenta focus ring */
-
-  /* DP — charts use the brand palette */
-  --chart-1: #B13C96;
-  --chart-2: #293D97;
-  --chart-3: #29235B;
-  --chart-4: #C76FB6;
-  --chart-5: #5566C0;
-
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-
-  --sidebar-primary: #29235B; /* DP */
-  --sidebar-primary-foreground: #FFFFFF; /* DP */
-
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: #B13C96; /* DP */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* =========================
-GLOBAL FONTS
-========================= */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
 
 body {
-  font-family: var(--font-body);
+  @apply bg-paper text-ink font-sans;
+  text-rendering: optimizeLegibility;
 }
 
-/* DP — headings use the brand display font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-}
+::selection { background: #001aff; color: #fff; }
 
-.heading-font {
-  font-family: var(--font-heading); /* DP */
-}
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-12; }
 
-.body-font {
-  font-family: var(--font-body); /* DP */
-}
-
-.geist-font {
-  font-family: var(--font-geist-sans);
-}
-
-/* =========================
-DARK MODE
-========================= */
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-
-  /* DP — on dark, magenta pops better than navy */
-  --primary: #B13C96;
-  --primary-foreground: #FFFFFF;
-
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-
-  --destructive: oklch(0.704 0.191 22.216);
-
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: #B13C96; /* DP */
-
-  --chart-1: #B13C96; /* DP */
-  --chart-2: #5566C0;
-  --chart-3: #C76FB6;
-  --chart-4: #293D97;
-  --chart-5: #29235B;
-
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-
-  --sidebar-primary: #B13C96; /* DP */
-  --sidebar-primary-foreground: #FFFFFF; /* DP */
-
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #B13C96; /* DP */
-}
-
-/* =========================
-BASE LAYER
-========================= */
-
-@layer base {
-
-  * {
-    @apply border-border outline-ring/50;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-electric;
   }
+  .eyebrow::before {
+    content: ""; @apply inline-block h-1.5 w-1.5 rounded-full bg-current;
+    box-shadow: 0 0 0 4px rgb(0 26 255 / 0.12);
+  }
+  .on-dark .eyebrow { @apply text-electric-soft; }
+  .on-dark .eyebrow::before { box-shadow: 0 0 0 4px rgb(93 143 255 / 0.18); }
 
-  body {
-    @apply bg-background text-foreground;
+  .h-display { @apply font-display font-semibold tracking-[-0.035em] leading-[1.02]; }
+  .h-section { @apply font-display text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-[2.6rem] lg:text-[3.25rem]; }
+  .lead { @apply text-[1.05rem] leading-relaxed text-ink-soft sm:text-lg; }
+  .on-dark .lead { @apply text-white/70; }
+
+  .accent-serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3.5 text-[15px] font-medium transition-colors duration-300;
+  }
+  .btn-primary { @apply bg-ink text-white; }
+  .btn-primary:hover { @apply bg-electric; }
+  .btn-electric { @apply bg-electric text-white; }
+  .btn-electric:hover { @apply bg-ink; }
+  .btn-ghost { @apply border border-ink/15 bg-white/60 text-ink backdrop-blur; }
+  .btn-ghost:hover { @apply border-ink bg-ink text-white; }
+  .btn-light { @apply bg-white text-ink; }
+  .btn-light:hover { @apply bg-electric text-white; }
+  .btn-outline-light { @apply border border-white/25 text-white; }
+  .btn-outline-light:hover { @apply bg-white text-ink; }
+
+  .card {
+    @apply relative rounded-3xl border border-line bg-white transition-all duration-500;
+  }
+  .card-hover:hover { @apply -translate-y-1 border-electric/30; box-shadow: 0 30px 60px -30px rgb(0 26 255 / 0.35); }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgb(17 25 39 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(17 25 39 / 0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .grid-bg-dark {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .text-gradient {
+    background: linear-gradient(100deg, #001aff 0%, #5d8fff 35%, #c68fff 70%, #001aff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    @apply animate-shimmer;
+  }
+  .noise::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.07; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
 
-/* =========================
-DP — BRAND UTILITIES
-========================= */
+/* word-split helper used by GSAP text reveals */
+.split-word { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 0.04em 0.2em 0; margin: 0 -0.04em -0.2em 0; }
+.split-word > span { display: inline-block; will-change: transform; }
 
-@layer utilities {
-  .bg-dp-gradient {
-    background-image: var(--dp-gradient);
-  }
-  .text-dp-gradient {
-    background: var(--dp-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }

@@ -1,0 +1,48 @@
+import type { CaseStudy } from "../types";
+
+const data: CaseStudy = {
+  slug: "personalized-it-support-with-conversational-ai",
+  category: "Conversational AI",
+  date: "October 2025",
+  readTime: "5 min read",
+  title: "Personalised IT Support with Conversational AI",
+  subtitle: "Delivering contextual, intelligent IT helpdesk support at scale with a 91% user satisfaction score",
+  summary: "Data Panther built a conversational AI helpdesk assistant for a 25,000-employee professional services firm, resolving 68% of queries without human intervention and achieving a 91% user satisfaction score.",
+  sections: [
+    {
+      eyebrow: "THE CHALLENGE",
+      heading: "The Challenge",
+      paragraphs: [
+        "A global professional services firm with 25,000 employees across 30 countries was struggling to scale its IT helpdesk. With a support ratio of 1 agent per 500 employees, first-contact resolution rates were low (47%), average wait times exceeded 22 minutes during peak hours, and employee productivity losses due to IT friction were estimated at £6.5M per year. The existing self-service portal had poor adoption (11% usage rate) because its keyword-based search engine failed to understand natural language queries and returned irrelevant results. Multilingual support was non-existent, creating significant friction for non-English-speaking staff.",
+      ],
+    },
+    {
+      eyebrow: "OUR APPROACH",
+      heading: "Our Solution",
+      paragraphs: [
+        "Data Panther designed and built a conversational AI assistant — branded internally as 'Aria' — deployed across Microsoft Teams, the firm's intranet portal, and mobile. Aria was powered by a fine-tuned large language model trained on three years of historical helpdesk tickets, IT knowledge base articles, and standard IT procedures. The model was augmented with retrieval-augmented generation (RAG) to ensure answers were grounded in the firm's live knowledge base rather than generic internet knowledge. Integration with ServiceNow allowed Aria to raise, update, and close support tickets directly within the conversation. For issues requiring human escalation, Aria performed intelligent skills-based routing, attaching a full conversation transcript and diagnostic context to the routed ticket. Multilingual support was provided in 12 languages through Azure AI Translator integration.",
+      ],
+    },
+  ],
+  results: [
+    "68% of helpdesk queries resolved without human intervention, up from 11% with the previous self-service portal",
+    "Average employee wait time reduced from 22 minutes to under 90 seconds",
+    "First-contact resolution rate improved from 47% to 79%",
+    "User satisfaction score (CSAT) of 91%, measured across 50,000 monthly interactions",
+    "Annual helpdesk operational cost reduced by £1.8M through deflection of tier-1 tickets",
+    "Self-service adoption rate increased from 11% to 74% within 6 months of launch",
+  ],
+  industry: "Professional Services",
+  technologies: [
+    "Microsoft Azure OpenAI",
+    "Azure AI Translator",
+    "LangChain",
+    "RAG (Retrieval-Augmented Generation)",
+    "Microsoft Teams",
+    "ServiceNow",
+    "Python",
+    "Node.js",
+  ],
+};
+
+export default data;

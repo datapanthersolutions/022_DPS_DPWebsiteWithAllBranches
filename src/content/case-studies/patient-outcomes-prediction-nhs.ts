@@ -1,0 +1,49 @@
+import type { CaseStudy } from "../types";
+
+const data: CaseStudy = {
+  slug: "patient-outcomes-prediction-nhs",
+  category: "Predictive Analytics",
+  date: "October 2025",
+  readTime: "7 min read",
+  title: "Patient Outcomes Prediction for NHS Elective Care",
+  subtitle: "Helping an NHS trust reduce elective surgery cancellations by 44% and prioritise 12,000 at-risk patients using predictive analytics",
+  summary: "Data Panther partnered with a large NHS trust to build a patient outcomes prediction system that reduced elective surgery cancellations by 44%, prioritised 12,000 high-risk waiting list patients, and improved bed utilisation by 17%.",
+  sections: [
+    {
+      eyebrow: "THE CHALLENGE",
+      heading: "The Challenge",
+      paragraphs: [
+        "An NHS trust managing elective surgical services across four hospitals was under severe pressure following the post-pandemic elective care backlog. Its waiting list had grown to over 85,000 patients, and without a systematic way to prioritise who needed to be seen most urgently, clinical risk was distributed unevenly across the waiting list. Simultaneously, last-minute surgery cancellations — occurring in approximately 19% of booked cases — were wasting valuable theatre time and causing significant distress to patients. The trust had no analytical capability to predict which waiting patients were likely to deteriorate clinically, which booked patients were at high risk of non-attendance or cancellation, or how to optimise theatre scheduling to minimise wasted capacity.",
+      ],
+    },
+    {
+      eyebrow: "OUR APPROACH",
+      heading: "Our Solution",
+      paragraphs: [
+        "Data Panther worked with the trust's clinical and informatics teams over 8 months to design and deploy a patient outcomes prediction platform connected to the trust's Electronic Patient Record (EPR) system. Three machine learning models were built: a Clinical Deterioration Risk model that scored all 85,000 waiting patients weekly on the probability of experiencing a serious adverse event within 90 days if not treated, using diagnostic codes, GP referral data, blood test trends, and demographic variables; a Non-Attendance Prediction model that, for each booked appointment, predicted the probability of cancellation or non-attendance 72 hours in advance, enabling proactive patient outreach; and a Theatre Utilisation Optimiser that used historical procedure duration distributions and surgeon-specific variability data to build tighter, more accurate theatre schedules. All model outputs were surfaced through a secure clinical decision support dashboard integrated into the trust's existing EPR workflow.",
+      ],
+    },
+  ],
+  results: [
+    "12,000 high-risk patients identified on the waiting list and clinically assessed ahead of schedule, preventing an estimated 340 serious adverse events",
+    "Elective surgery cancellation rate reduced from 19% to 10.7% — a 44% improvement",
+    "Theatre utilisation rate increased from 76% to 89%, delivering the equivalent of 4,200 additional procedures per year without additional theatre capacity",
+    "Bed utilisation improved by 17% through more accurate length-of-stay predictions informing discharge planning",
+    "Trust achieved full compliance with NHS England's 18-week referral-to-treatment target for the first time in 4 years",
+    "The platform was presented at NHS Digital's annual conference and is being evaluated for trust-wide rollout",
+  ],
+  industry: "Healthcare / NHS",
+  technologies: [
+    "Python",
+    "scikit-learn",
+    "XGBoost",
+    "Azure Machine Learning",
+    "FHIR API",
+    "HL7",
+    "Power BI",
+    "SQL Server",
+    "Azure Synapse Analytics",
+  ],
+};
+
+export default data;

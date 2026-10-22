@@ -1,83 +1,46 @@
-# 🐆 Data Panther Solutions
+# Data Panther — website (revamped UI)
 
+Next.js 14 (static export) · Tailwind CSS 3 · GSAP + ScrollTrigger · Framer Motion · Three.js (React Three Fiber) · Lenis smooth scroll.
 
-**Tagline:** Empowering Businesses with Smart Data Solutions  
+All pages from datapanthersolutions.com, with the same URLs (`/AboutUs/`, `/Services/`, `/case-studies/...`, `/blog/...` and so on) and the same copy.
 
----
+## Run locally
+```bash
+npm ci
+npm run dev        # http://localhost:3000
+```
 
-## 🌟 Overview
-Data Panther Solutions is a leading provider of **innovative data solutions**, helping businesses harness the power of data for strategic decision-making. Our mission is to deliver **scalable, secure, and intelligent data-driven solutions** that drive business growth and efficiency.  
+## Build & deploy
+```bash
+npm run build      # writes static HTML to ./out
+npm start          # preview ./out locally
+```
+Upload the `out/` folder to any static host (cPanel, Hostinger, Netlify, Vercel, S3). You don't need a Node server.
+To host under a sub-folder, set `BASEPATH` (for example `BASEPATH=/nextjs-app-new`) at build time.
 
-We specialize in **data analytics, business intelligence, big data solutions, and AI-powered insights** for organizations of all sizes.  
+## Where things live
+| What | Where |
+|---|---|
+| Page copy (one file per page) | `src/content/pages/*.ts` |
+| Case studies / blog / insight articles | `src/content/case-studies`, `src/content/blog`, `src/content/articles` |
+| Menus, footer links, WhatsApp, LinkedIn | `src/content/nav.ts` |
+| Home page sections | `src/components/home/` |
+| Reusable animated sections (hero, cards, steps, stats…) | `src/components/sections/Sections.tsx` |
+| 3D data sphere (home + contact) | `src/components/three/DataSphere.tsx` |
+| 3D hero objects per page | `src/components/three/HeroObject.tsx`, picked per page in `src/lib/objects.ts` |
+| Intro loader & page transitions | `src/components/transition/` (links use `src/components/TLink.tsx`) |
+| Custom cursor, marquee bands | `src/components/motion/` |
+| Colors & fonts | `tailwind.config.ts`, `src/app/globals.css` |
+| Images | `public/img/` |
 
----
+After you add a new content file, run `python3 scripts/gen_index.py` to register it.
 
-## 🛠 Services
+The intro loader plays once per browser session (it is skipped on reloads until the tab is closed).
 
-### 📊 Data Analytics & Visualization
-- Transform raw data into actionable insights  
-- Create **interactive dashboards** and **custom reports**  
-- Tools: Power BI, Tableau, Excel, Looker  
+Dynamic routes (`[slug]`) must not export `dynamicParams = false`: with `output: "export"` that makes `next dev` return 500 on every page. The static export is the same without it.
 
-### 📈 Business Intelligence Solutions
-- Develop **data models and ETL pipelines** for seamless operations  
-- Enable **real-time reporting** for informed decision-making  
-- Integrate BI solutions with existing enterprise systems  
+## Contact form
+`src/components/ContactView.tsx` posts `{ name, email, message, turnstileToken }` as JSON to `/send-mail.php` on the host.
+Set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` at build time to enable Cloudflare Turnstile. It runs in "interaction-only" mode, so it only appears when Cloudflare needs the visitor to confirm.
 
-### 💾 Big Data Solutions
-- Implement **Hadoop, Spark, and cloud-based platforms**  
-- Handle **large-scale data storage and processing** efficiently  
-- Provide **predictive analytics** and trend forecasting  
-
-### 🤖 Artificial Intelligence & Machine Learning
-- Build **AI/ML models** tailored to business needs  
-- Perform **predictive analytics, customer segmentation, and recommendation engines**  
-- Optimize operations using **data-driven automation**  
-
-### 📂 Data Management & Strategy
-- Data cleaning, transformation, and governance  
-- Data migration and integration across multiple platforms  
-- Develop **data strategies** aligned with business objectives  
-
----
-
-## 🚀 Why Choose Us
-- **Experienced Team:** Skilled data engineers, analysts, and scientists  
-- **Customized Solutions:** Tailored to your business goals and industry  
-- **Scalable Architecture:** Solutions designed to grow with your business  
-- **Secure & Compliant:** Data solutions following industry standards  
-- **Insight-Driven Results:** Unlock actionable insights to drive ROI  
-
----
-
-## 🏭 Industries We Serve
-- Finance & Banking  
-- Healthcare & Life Sciences  
-- Retail & E-commerce  
-- Manufacturing & Logistics  
-- Technology & SaaS  
-
----
-
-## 🔧 Technologies & Tools
-- **Data Analytics:** Power BI, Tableau, Excel, Looker  
-- **Big Data:** Hadoop, Spark, Kafka  
-- **Database Management:** MySQL, PostgreSQL, MongoDB, Oracle  
-- **Cloud Platforms:** AWS, Azure, Google Cloud  
-- **AI & ML:** Python, R, TensorFlow, Scikit-learn  
-
----
-
-## 📞 Contact
-- **Website:** [datapanthersolutions.com](https://datapanthersolutions.com)  
-- **Email:** info@datapanthersolutions.com 
-- **Phone:** 917075928464  
-- **LinkedIn:** [Data Panther Solutions](https://www.linkedin.com/company/data-panther/about/)
-
----
-
-### 🔑 Keywords
-`data solutions`, `business intelligence`, `big data analytics`, `AI solutions`, `machine learning`, `data management`, `data visualization`, `predictive analytics`, `data-driven decision making`  
-
----
-
+The newsletter and talent-community forms are not connected yet.

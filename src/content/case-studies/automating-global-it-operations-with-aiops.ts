@@ -1,0 +1,50 @@
+import type { CaseStudy } from "../types";
+
+const data: CaseStudy = {
+  slug: "automating-global-it-operations-with-aiops",
+  category: "AIOps",
+  date: "February 2026",
+  readTime: "8 min read",
+  title: "Automating Global IT Operations with AIOps",
+  subtitle: "How Data Panther helped a global enterprise reduce operational costs by $2M and cut MTTR by 60%",
+  summary: "A leading global enterprise partnered with Data Panther to implement an AIOps solution that autonomously remediated 75% of level-1 support tickets and saved over $2M annually.",
+  image: "/img/globalautoaiop.webp",
+  featured: true,
+  sections: [
+    {
+      eyebrow: "THE CHALLENGE",
+      heading: "The Challenge",
+      paragraphs: [
+        "The client operated a sprawling IT infrastructure spanning 12 data centres across four continents, supporting over 50,000 employees. The IT operations team was overwhelmed by a daily avalanche of alerts — more than 30,000 per day — most of which were redundant or low priority. Manual triage consumed enormous engineering hours, causing genuine critical incidents to be detected late, and the mean time to resolution (MTTR) averaged 4.5 hours. The business impact was severe: unplanned downtime cost the organisation an estimated $2.5M annually, and customer satisfaction scores for internal IT services were declining.",
+      ],
+    },
+    {
+      eyebrow: "OUR APPROACH",
+      heading: "Our Solution",
+      paragraphs: [
+        "Data Panther designed and deployed a purpose-built AIOps platform that combined real-time streaming analytics with predictive machine learning models. The platform ingested telemetry from over 200 monitoring tools through a unified data lake, then applied unsupervised clustering and correlation engines to suppress redundant alerts by 87%. A supervised classification model, trained on three years of historical incident data, automatically triaged incoming alerts and routed genuine incidents to the appropriate on-call teams with full context. For common remediation patterns — such as service restarts, disk clean-ups, and certificate renewals — the platform executed automated runbooks, resolving issues without any human involvement. A natural-language-enabled chatbot interface allowed engineers to query infrastructure health, obtain root-cause analysis summaries, and approve automated remediation actions directly from their collaboration tools (Microsoft Teams and Slack).",
+      ],
+    },
+  ],
+  results: [
+    "75% of level-1 support tickets remediated autonomously, eliminating routine toil for engineers",
+    "MTTR reduced from 4.5 hours to 1.8 hours — a 60% improvement",
+    "Alert noise reduced by 87%, enabling the team to focus exclusively on genuine incidents",
+    "Annual operational cost savings of $2M against a total implementation cost of $450K",
+    "99.97% average uptime for mission-critical applications in the 12 months post-deployment",
+    "Engineer satisfaction scores increased by 34% due to elimination of repetitive manual tasks",
+  ],
+  industry: "Global Enterprise IT",
+  technologies: [
+    "Apache Kafka",
+    "Python",
+    "scikit-learn",
+    "TensorFlow",
+    "Elasticsearch",
+    "Grafana",
+    "Microsoft Azure",
+    "Ansible",
+  ],
+};
+
+export default data;
