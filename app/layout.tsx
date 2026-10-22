@@ -11,12 +11,7 @@ import Cursor from "@/components/motion/Cursor";
 export const metadata: Metadata = {
   title: "Data Panther",
   description: "Your AI-powered data analysis platform",
-  icons: {
-    icon: [
-      { url: "/img/dpfavicon.png", media: "(prefers-color-scheme: light)" },
-      { url: "/img/dpfavicondark.png", media: "(prefers-color-scheme: dark)" },
-    ],
-  },
+  icons: { icon: "/img/dpfavicon.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -27,8 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
       </head>
-      {/* GSAP ScrollTrigger leaves an empty style="" on <body> when it loads; ignore that one attribute during hydration. */}
-      <body suppressHydrationWarning>
+      <body>
         <TransitionProvider>
           <SmoothScroll />
           <Preloader />

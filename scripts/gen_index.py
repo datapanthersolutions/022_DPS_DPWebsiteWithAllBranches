@@ -4,7 +4,7 @@ def ident(d,f): return re.sub(r'[^A-Za-z0-9]','_',d+'_'+f)
 groups={'pages':'Page','case-studies':'CaseStudy','blog':'Post','articles':'Post'}
 names={}
 for d in groups:
-    fs=sorted(f[:-3] for f in os.listdir('src/content/'+d) if f.endswith('.ts'))
+    fs=sorted(f[:-3] for f in os.listdir('content/'+d) if f.endswith('.ts'))
     names[d]=fs
     for f in fs: out.append(f'import {ident(d,f)} from "./{d}/{f}";')
 out.append('')
@@ -12,4 +12,4 @@ out.append('export const pages: Page[] = ['+', '.join(ident('pages',f) for f in 
 out.append('export const caseStudies: CaseStudy[] = ['+', '.join(ident('case-studies',f) for f in names['case-studies'])+'];')
 out.append('export const blogPosts: Post[] = ['+', '.join(ident('blog',f) for f in names['blog'])+'];')
 out.append('export const articles: Post[] = ['+', '.join(ident('articles',f) for f in names['articles'])+'];')
-open('src/content/index.ts','w').write('\n'.join(out)+'\n')
+open('content/index.ts','w').write('\n'.join(out)+'\n')

@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import SplitHeading from "./motion/SplitHeading";
 import { Reveal, Stagger, StaggerItem } from "./motion/Reveal";
@@ -8,32 +8,6 @@ import TiltCard from "./motion/TiltCard";
 import LazySphere from "./three/LazySphere";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-// Cloudflare Turnstile + the existing PHP mailer on the host (same as the previous site).
-const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-const TURNSTILE_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-
-type Turnstile = {
-  render: (el: HTMLElement, opts: Record<string, unknown>) => string;
-  reset: (id?: string) => void;
-  remove: (id?: string) => void;
-};
-declare global { interface Window { turnstile?: Turnstile } }
-
-function loadTurnstile(): Promise<Turnstile> {
-  return new Promise((resolve, reject) => {
-    if (window.turnstile) return resolve(window.turnstile);
-    let s = document.querySelector<HTMLScriptElement>(`script[src="${TURNSTILE_SRC}"]`);
-    if (!s) {
-      s = document.createElement("script");
-      s.src = TURNSTILE_SRC;
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    s.addEventListener("load", () => (window.turnstile ? resolve(window.turnstile) : reject()));
-    s.addEventListener("error", () => reject());
-  });
-}
 
 const info = [
   { icon: Mail, title: "Email", text: "Send us your inquiry anytime", value: "info@datapanthersolutions.com", href: "mailto:info@datapanthersolutions.com" },
@@ -54,65 +28,6 @@ function Field({ label, name, type = "text", placeholder, area }: { label: strin
 
 export default function ContactView() {
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [token, setToken] = useState<string | null>(null);
-  const widgetEl = useRef<HTMLDivElement>(null);
-  const widgetId = useRef<string>();
-
-  // Invisible unless Cloudflare needs the visitor to interact, so the layout is unchanged.
-  useEffect(() => {
-    if (!TURNSTILE_SITE_KEY || sent) return;
-    let cancelled = false;
-    loadTurnstile().then((ts) => {
-      if (cancelled || !widgetEl.current) return;
-      widgetId.current = ts.render(widgetEl.current, {
-        sitekey: TURNSTILE_SITE_KEY,
-        appearance: "interaction-only",
-        callback: (t: string) => setToken(t),
-        "expired-callback": () => setToken(null),
-        "error-callback": () => setToken(null),
-      });
-    }).catch(() => {});
-    return () => {
-      cancelled = true;
-      if (widgetId.current) window.turnstile?.remove(widgetId.current);
-      widgetId.current = undefined;
-    };
-  }, [sent]);
-
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const name = String(fd.get("fullName") ?? "").trim();
-    const email = String(fd.get("email") ?? "").trim();
-    const message = String(fd.get("message") ?? "").trim();
-    if (!name || !email || !message) return setError("All fields are required.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError("Please enter a valid email address.");
-    if (TURNSTILE_SITE_KEY && !token) return setError("Please verify that you are human.");
-
-    setSending(true);
-    setError(null);
-    try {
-      const res = await fetch("/send-mail.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, turnstileToken: token }),
-      });
-      const result = await res.json().catch(() => ({}));
-      if (res.ok) setSent(true);
-      else {
-        setError(result.error || "Something went wrong. Please try again.");
-        if (widgetId.current) window.turnstile?.reset(widgetId.current);
-        setToken(null);
-      }
-    } catch {
-      setError("Network error. Please try again.");
-    } finally {
-      setSending(false);
-    }
-  };
-
   return (
     <>
       <section className="on-dark noise relative overflow-hidden bg-night pb-28 pt-36 text-white sm:pt-44">
@@ -156,19 +71,17 @@ export default function ContactView() {
               <div aria-hidden className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-soft/30 blur-3xl" />
               <AnimatePresence mode="wait">
                 {!sent ? (
-                  <motion.form key="form" exit={{ opacity: 0, y: -20 }} onSubmit={onSubmit} className="relative space-y-6">
+                  <motion.form key="form" exit={{ opacity: 0, y: -20 }} onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="relative space-y-6">
                     <div>
                       <h2 className="font-display text-3xl font-semibold tracking-tight">Send us a Message</h2>
                       <p className="mt-2 text-ink-soft">Fill out the form and we&apos;ll be in touch soon!</p>
-                      <div ref={widgetEl} />
                     </div>
                     <div className="grid gap-6 sm:grid-cols-2">
                       <Field label="Full Name" name="fullName" placeholder="Your Name" />
                       <Field label="Email Address" name="email" type="email" placeholder="Mail@example.com" />
                     </div>
                     <Field label="Your Message" name="message" placeholder="Tell us how we can help you..." area />
-                    {error && <p role="alert" className="text-sm text-ember">{error}</p>}
-                    <button disabled={sending} className="btn btn-electric group w-full !py-4 disabled:cursor-wait disabled:opacity-70">{sending ? "Sending..." : "Send Message"} <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></button>
+                    <button className="btn btn-electric group w-full !py-4">Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></button>
                     <p className="text-center text-xs text-ink-soft">Protected by Cloudflare Turnstile Privacy Policy and Terms of Service.</p>
                   </motion.form>
                 ) : (
