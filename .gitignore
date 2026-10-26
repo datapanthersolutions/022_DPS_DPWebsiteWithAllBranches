@@ -28,3 +28,11 @@ coverage/
 preview-dist/
 .vercel
 *.pem
+
+# Python (backend)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/

@@ -1,21 +1,24 @@
-# Runs lint, type check and the static build on every push and pull request,
-# so a broken build is caught before it reaches the deploy branch.
+# Runs on every push and pull request, so breakage is caught before it reaches the deploy branch.
 name: CI
 
 on:
   push:
-    branches: [DP-July-2026, master]
+    branches: [DP-July-2026, master, revamped]
   pull_request:
 
 jobs:
-  build:
+  frontend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: frontend/package-lock.json
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
@@ -23,5 +26,24 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: site
-          path: out
+          path: frontend/out
+          include-hidden-files: true   # keep .htaccess
           retention-days: 7
+
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pytest
+      - run: docker build -t datapanther-api .
