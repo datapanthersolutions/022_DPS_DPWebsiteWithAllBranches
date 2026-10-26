@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build",
     "images": "node scripts/optimize-images.mjs",
-    "content:index": "python3 scripts/gen_index.py"
+    "content:index": "node scripts/gen-index.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.0",

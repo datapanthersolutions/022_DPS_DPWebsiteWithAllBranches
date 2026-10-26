@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 // Public URL of the live site. Used for canonical links, sitemap.xml and social previews.
 export const SITE_URL = "https://datapanthersolutions.com";
 export const SITE_NAME = "Data Panther";
-export const SITE_DESCRIPTION =
+const SITE_DESCRIPTION =
   "Data Panther builds enterprise AI solutions: generative AI, AIOps, conversational AI, data modernisation, cloud migration and threat detection.";
-export const DEFAULT_OG_IMAGE = "/img/og-default.jpg";
+const DEFAULT_OG_IMAGE = "/img/og-default.jpg";
 
 type SeoInput = {
   title: string;

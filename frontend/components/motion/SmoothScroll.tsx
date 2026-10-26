@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 let lenisRef: Lenis | null = null;
-export const getLenis = () => lenisRef;
 
 // Lenis inertia scrolling, driven by GSAP's ticker so ScrollTrigger stays in sync.
 export default function SmoothScroll() {
@@ -15,7 +14,6 @@ export default function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     lenisRef = lenis;
-    (window as unknown as { __lenis: Lenis }).__lenis = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);

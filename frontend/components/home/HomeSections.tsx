@@ -13,7 +13,6 @@ import { Reveal, Stagger, StaggerItem } from "../motion/Reveal";
 import SplitHeading from "../motion/SplitHeading";
 import ScrubText from "../motion/ScrubText";
 import ParallaxImage from "../motion/ParallaxImage";
-import TiltCard from "../motion/TiltCard";
 import CaseCard from "../CaseCard";
 import Icon from "../Icon";
 import { gsap } from "@/lib/gsap";

@@ -9,4 +9,3 @@ export function onIntroDone(f: () => void) {
   const t = setTimeout(() => { if (subs.delete(f)) f(); }, 3500);
   return () => { subs.delete(f); clearTimeout(t); };
 }
-export function useIntroDone() { return done; }

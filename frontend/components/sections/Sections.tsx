@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLayoutEffect, useRef } from "react";
-import { Check, X, Quote as QuoteIcon, ShieldAlert, ArrowRight } from "lucide-react";
+import { Check, X, Quote as QuoteIcon, ShieldAlert } from "lucide-react";
 import type { Section as S, Item } from "@/content/types";
 import { Section, SectionHead, Btn, fillSpans } from "./Shared";
 import MarqueeBand from "../motion/MarqueeBand";
@@ -349,7 +349,7 @@ function QuoteBlock({ s }: { s: Extract<S, { type: "quote" }> }) {
 }
 
 // ---------------------------------------------------------------- Statement (dark, stacked lines lit on scroll)
-export function Statement({ s }: { s: Extract<S, { type: "statement" }> }) {
+function Statement({ s }: { s: Extract<S, { type: "statement" }> }) {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const el = ref.current;
@@ -531,5 +531,3 @@ function render(s: S, i: number, slug: string | undefined, nth: number, key?: st
     case "notice": return <Notice key={key} s={s} />;
   }
 }
-
-export { ArrowRight };

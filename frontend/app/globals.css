@@ -52,8 +52,6 @@ body {
   .btn-ghost:hover { @apply border-ink bg-ink text-white; }
   .btn-light { @apply bg-white text-ink; }
   .btn-light:hover { @apply bg-electric text-white; }
-  .btn-outline-light { @apply border border-white/25 text-white; }
-  .btn-outline-light:hover { @apply bg-white text-ink; }
 
   .card {
     @apply relative rounded-3xl border border-line bg-white transition-all duration-500;
