@@ -3,15 +3,15 @@
 | Folder | What | Docs |
 |---|---|---|
 | [`frontend/`](frontend/) | Website: Next.js 14 static export, deployed to cPanel | [frontend/README.md](frontend/README.md) |
-| [`backend/`](backend/) | API: FastAPI in Docker | [backend/README.md](backend/README.md) |
+| [`backend/`](backend/) | API: FastAPI + Postgres | [backend/README.md](backend/README.md) |
 
 ## Quick start
 ```bash
 # Website: http://localhost:3000
 cd frontend && npm install && npm run dev
 
-# API: http://localhost:8000/docs
-docker compose up --build
+# Database + API: http://localhost:8000/docs (see backend/README.md for first-time setup)
+cd backend && docker compose up -d && uvicorn app.main:app --reload
 ```
 
 ## Branches

@@ -2,21 +2,25 @@
 
 Python 3.13 · FastAPI · Uvicorn · pydantic-settings. Currently just a health check; features get added under `app/api/routes/`.
 
-## Run with Docker (recommended)
-From the repo root:
+## Run locally
+All commands run from this `backend/` folder.
 ```bash
-cp backend/.env.example backend/.env   # optional
-docker compose up --build
+cp .env.example .env
+docker compose up -d                     # starts Postgres on localhost:5432
+
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements-dev.txt
+uvicorn app.main:app --reload            # API on localhost:8000
 ```
 API: http://localhost:8000/api/v1/health · Docs: http://localhost:8000/docs
 
-## Run without Docker
-```bash
-cd backend
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements-dev.txt
-uvicorn app.main:app --reload
-```
+## Database
+`docker-compose.yml` runs only Postgres 17, for local development. Data is kept in the `pgdata` volume between restarts.
+- Stop it: `docker compose down`
+- Wipe the data: `docker compose down -v`
+- Connect: `docker compose exec db psql -U datapanther`
+
+The API reads the connection string from `DATABASE_URL` (see `.env.example`). No database driver is installed yet; add one when the first feature needs it.
 
 ## Checks
 ```bash
@@ -30,6 +34,7 @@ ruff format .        # format
 |---|---|
 | App setup (CORS, routers) | `app/main.py` |
 | Settings from env vars | `app/core/config.py` |
+| Local Postgres | `docker-compose.yml` |
 | Route registry | `app/api/router.py` |
 | Endpoints | `app/api/routes/*.py` |
 | Tests | `tests/` |

@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     # In .env, set as a JSON list: CORS_ORIGINS=["https://datapanthersolutions.com"]
     cors_origins: list[str] = ["http://localhost:3000"]
 
+    # Postgres connection. Matches the local database from docker-compose.yml.
+    database_url: str = "postgresql://datapanther:datapanther@localhost:5432/datapanther"
+
 
 @lru_cache
 def get_settings() -> Settings:
