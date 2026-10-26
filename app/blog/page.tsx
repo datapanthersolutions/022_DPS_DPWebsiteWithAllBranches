@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { blogPosts } from "@/content";
 import PageIntro from "@/components/sections/PageIntro";
 import PostGrid from "@/components/PostGrid";
 import FeaturedPost from "@/components/FeaturedPost";
 import { Subscribe } from "@/components/sections/Sections";
 
-export const metadata: Metadata = { title: "Blog | Data Panther", description: "Strategic thought leadership on artificial intelligence, analytics, and enterprise innovation." };
+export const metadata: Metadata = seo({ title: "Blog | Data Panther", description: "Strategic thought leadership on artificial intelligence, analytics, and enterprise innovation.", path: "/blog/" });
 
 const order = (d?: string) => (d ? Date.parse(d) : 0);
 

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { articles } from "@/content";
 import PageIntro from "@/components/sections/PageIntro";
 import PostGrid from "@/components/PostGrid";
 import FeaturedPost from "@/components/FeaturedPost";
 
-export const metadata: Metadata = { title: "Insights | Data Panther", description: "Explore how real-time analytics is transforming decision-making by enabling instant data insights and faster response times across industries." };
+export const metadata: Metadata = seo({ title: "Insights | Data Panther", description: "Explore how real-time analytics is transforming decision-making by enabling instant data insights and faster response times across industries.", path: "/Insights/" });
 
 const order = ["real-time-analytics", "ml-model-deployment", "data-privacy-regulations", "customer-analytics", "edge-computing-data-processing", "ethical-ai"];
 

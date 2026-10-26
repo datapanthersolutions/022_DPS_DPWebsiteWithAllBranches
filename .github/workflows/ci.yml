@@ -1,0 +1,27 @@
+# Runs lint, type check and the static build on every push and pull request,
+# so a broken build is caught before it reaches the deploy branch.
+name: CI
+
+on:
+  push:
+    branches: [DP-July-2026, master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: out
+          retention-days: 7

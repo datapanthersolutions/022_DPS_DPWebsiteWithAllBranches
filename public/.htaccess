@@ -1,0 +1,30 @@
+# Apache / cPanel config for the static export. Copied into out/ by `npm run build`.
+# HTTPS redirect is handled by Cloudflare in front of the site.
+
+Options -Indexes
+DirectoryIndex index.html
+
+# Real 404 page from the build (it also redirects wrong-case URLs like /aboutus/ to /AboutUs/).
+ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Next.js puts a content hash in every file name under /_next/static, so these never change.
+  <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <ElseIf "%{REQUEST_URI} =~ m#^/img/#">
+    Header set Cache-Control "public, max-age=2592000"
+  </ElseIf>
+  <ElseIf "%{REQUEST_URI} =~ m#(\.html|/)$#">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </ElseIf>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>

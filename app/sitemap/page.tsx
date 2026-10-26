@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import Link from "@/components/TLink";
 import { mainNav } from "@/content/nav";
 import { caseStudies, blogPosts, articles, pages } from "@/content";
 import PageIntro from "@/components/sections/PageIntro";
 
-export const metadata: Metadata = { title: "Sitemap | Data Panther" };
+export const metadata: Metadata = seo({ title: "Sitemap | Data Panther", path: "/sitemap/" });
 
 export default function Sitemap() {
   const groups: { title: string; links: { label: string; href: string }[] }[] = [

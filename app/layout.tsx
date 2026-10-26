@@ -7,11 +7,14 @@ import SmoothScroll from "@/components/motion/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
 import Preloader from "@/components/transition/Preloader";
 import Cursor from "@/components/motion/Cursor";
+import { SITE_URL, SITE_NAME, seo } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Data Panther",
-  description: "Your AI-powered data analysis platform",
-  icons: { icon: "/img/dpfavicon.png" },
+  metadataBase: new URL(SITE_URL),
+  ...seo({ title: SITE_NAME, path: "/" }),
+  alternates: undefined, // canonical is set per page, so the 404 page doesn't claim to be the home page
+  applicationName: SITE_NAME,
+  icons: { icon: "/img/dpfavicon.png", apple: "/img/dpfavicon.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

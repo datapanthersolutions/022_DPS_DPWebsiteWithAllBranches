@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/content";
 import PostView from "@/components/PostView";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() { return blogPosts.map((p) => ({ slug: p.slug })); }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const p = blogPosts.find((x) => x.slug === params.slug);
-  return p ? { title: `${p.title} | Data Panther`, description: p.excerpt } : {};
+  return p ? seo({ title: `${p.title} | Data Panther`, description: p.excerpt, path: `/blog/${p.slug}/`, type: "article" }) : {};
 }
 export default function Page({ params }: { params: { slug: string } }) {
   const p = blogPosts.find((x) => x.slug === params.slug);

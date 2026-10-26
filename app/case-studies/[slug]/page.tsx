@@ -4,11 +4,12 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { caseStudies } from "@/content";
 import CaseStudyView from "@/components/CaseStudyView";
+import { seo } from "@/lib/seo";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const c = caseStudies.find((x) => x.slug === params.slug);
-  return c ? { title: `${c.title} | Data Panther`, description: c.summary } : {};
+  return c ? seo({ title: `${c.title} | Data Panther`, description: c.summary, path: `/case-studies/${c.slug}/`, type: "article" }) : {};
 }
 
 export default function Page({ params }: { params: { slug: string } }) {

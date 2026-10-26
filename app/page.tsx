@@ -2,6 +2,9 @@ import { caseStudies } from "@/content";
 import HomeHero from "@/components/home/HomeHero";
 import { LogoMarquee, Problem, OurSolution, WhatWeBuild, HomeCases, Capabilities } from "@/components/home/HomeSections";
 import { Cta } from "@/components/sections/Sections";
+import { seo } from "@/lib/seo";
+
+export const metadata = seo({ title: "Data Panther | Enterprise AI & Data Solutions", path: "/" });
 
 const featured = ["automating-global-it-operations-with-aiops", "accelerating-software-delivery-through-generative-ai", "establishing-a-data-driven-decision-ecosystem"];
 

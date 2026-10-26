@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { seo } from "@/lib/seo";
 import { caseStudies } from "@/content";
 import PageIntro from "@/components/sections/PageIntro";
 import CaseCard from "@/components/CaseCard";
 import { Section, SectionHead } from "@/components/sections/Shared";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 
-export const metadata: Metadata = { title: "Case Studies | Data Panther", description: "Discover the strategies, technologies, and outcomes behind Data Panther's enterprise engagements across AI, data modernisation, AIOps, and cybersecurity." };
+export const metadata: Metadata = seo({ title: "Case Studies | Data Panther", description: "Discover the strategies, technologies, and outcomes behind Data Panther's enterprise engagements across AI, data modernisation, AIOps, and cybersecurity.", path: "/case-studies/" });
 
 const featuredOrder = ["accelerating-software-delivery-through-generative-ai", "automating-global-it-operations-with-aiops", "establishing-a-data-driven-decision-ecosystem"];
 
