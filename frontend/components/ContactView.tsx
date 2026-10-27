@@ -6,6 +6,8 @@ import SplitHeading from "./motion/SplitHeading";
 import { Reveal, Stagger, StaggerItem } from "./motion/Reveal";
 import TiltCard from "./motion/TiltCard";
 import LazySphere from "./three/LazySphere";
+import { submitLead } from "@/lib/api";
+import { track } from "@/lib/analytics";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -27,7 +29,28 @@ function Field({ label, name, type = "text", placeholder, area }: { label: strin
 }
 
 export default function ContactView() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const sent = status === "sent";
+
+  // Backend forwards to HubSpot and logs the GA4 conversion (docs/integrations/hubspot.md).
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    setStatus("sending");
+    try {
+      await submitLead("contact", {
+        full_name: String(f.get("fullName") ?? ""),
+        email: String(f.get("email") ?? ""),
+        message: String(f.get("message") ?? ""),
+        website: String(f.get("website") ?? ""),
+      });
+      track("generate_lead", { form_name: "contact" });
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <>
       <section className="on-dark noise relative overflow-hidden bg-night pb-28 pt-36 text-white sm:pt-44">
@@ -71,7 +94,7 @@ export default function ContactView() {
               <div aria-hidden className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-soft/30 blur-3xl" />
               <AnimatePresence mode="wait">
                 {!sent ? (
-                  <motion.form key="form" exit={{ opacity: 0, y: -20 }} onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="relative space-y-6">
+                  <motion.form key="form" exit={{ opacity: 0, y: -20 }} onSubmit={onSubmit} className="relative space-y-6">
                     <div>
                       <h2 className="font-display text-3xl font-semibold tracking-tight">Send us a Message</h2>
                       <p className="mt-2 text-ink-soft">Fill out the form and we&apos;ll be in touch soon!</p>
@@ -81,14 +104,24 @@ export default function ContactView() {
                       <Field label="Email Address" name="email" type="email" placeholder="Mail@example.com" />
                     </div>
                     <Field label="Your Message" name="message" placeholder="Tell us how we can help you..." area />
-                    <button className="btn btn-electric group w-full !py-4">Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></button>
+                    {/* Honeypot: hidden from people, bots fill it and get silently dropped by the API. */}
+                    <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+                    {status === "error" && (
+                      <p role="alert" className="rounded-2xl bg-ember/10 px-5 py-3 text-sm text-ink">
+                        Sorry, your message couldn&apos;t be sent. Please try again or email us at{" "}
+                        <a href="mailto:info@datapanthersolutions.com" className="font-medium text-electric underline">info@datapanthersolutions.com</a>.
+                      </p>
+                    )}
+                    <button disabled={status === "sending"} className="btn btn-electric group w-full !py-4 disabled:opacity-60">
+                      {status === "sending" ? "Sending…" : "Send Message"} <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </button>
                     <p className="text-center text-xs text-ink-soft">Protected by Cloudflare Turnstile Privacy Policy and Terms of Service.</p>
                   </motion.form>
                 ) : (
                   <motion.div key="ok" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ ease, duration: 0.6 }} className="relative py-16 text-center">
                     <CheckCircle2 className="mx-auto h-16 w-16 text-mint" strokeWidth={1.3} />
                     <h2 className="mt-6 font-display text-3xl font-semibold">Message sent</h2>
-                    <p className="mt-2 text-ink-soft">Fill out the form and we&apos;ll be in touch soon!</p>
+                    <p className="mt-2 text-ink-soft">Thanks for reaching out. We&apos;ll be in touch soon!</p>
                   </motion.div>
                 )}
               </AnimatePresence>

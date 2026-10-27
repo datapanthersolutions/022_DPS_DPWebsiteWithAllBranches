@@ -1,8 +1,22 @@
+import logging
+from contextlib import asynccontextmanager
+
+import httpx2
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import api_router
 from app.core.config import get_settings
+from app.core.http import TIMEOUT
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with httpx2.AsyncClient(timeout=TIMEOUT) as http:
+        app.state.http = http
+        yield
 
 
 def create_app() -> FastAPI:
@@ -12,6 +26,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.app_name,
         debug=settings.debug,
+        lifespan=lifespan,
         # Hide the interactive docs in production.
         docs_url=None if is_prod else "/docs",
         redoc_url=None,

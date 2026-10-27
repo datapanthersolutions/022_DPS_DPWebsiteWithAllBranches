@@ -3,17 +3,17 @@ import Link from "@/components/TLink";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { whatsapp } from "@/content/nav";
+import { hasConsent, setConsent } from "@/lib/analytics";
 
 // Scroll progress bar, WhatsApp chat button and the cookie consent banner.
+// The banner's choice controls every tracking tag via Consent Mode (docs/integrations/consent.md).
 export default function Floating() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  const [consent, setConsent] = useState<string | null>("pending");
+  const [consent, setChoice] = useState<boolean | null | "pending">("pending");
 
-  useEffect(() => {
-    try { setConsent(localStorage.getItem("dp-cookie-consent")); } catch { setConsent(null); }
-  }, []);
-  const decide = (v: string) => { try { localStorage.setItem("dp-cookie-consent", v); } catch {} setConsent(v); };
+  useEffect(() => { setChoice(hasConsent()); }, []);
+  const decide = (granted: boolean) => { setConsent(granted); setChoice(granted); };
 
   return (
     <>
@@ -34,8 +34,8 @@ export default function Floating() {
               <Link href="/cookies/" className="text-electric underline">Cookie Policy</Link> and <Link href="/privacy/" className="text-electric underline">Privacy Policy</Link>.
             </p>
             <div className="mt-5 flex gap-3">
-              <button onClick={() => decide("rejected")} className="btn btn-ghost !px-5 !py-2.5 !text-sm">Reject</button>
-              <button onClick={() => decide("accepted")} className="btn btn-electric !px-5 !py-2.5 !text-sm">Accept</button>
+              <button onClick={() => decide(false)} className="btn btn-ghost !px-5 !py-2.5 !text-sm">Reject</button>
+              <button onClick={() => decide(true)} className="btn btn-electric !px-5 !py-2.5 !text-sm">Accept</button>
             </div>
           </motion.div>
         )}

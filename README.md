@@ -4,6 +4,7 @@
 |---|---|---|
 | [`frontend/`](frontend/) | Website: Next.js 14 static export, deployed to cPanel | [frontend/README.md](frontend/README.md) |
 | [`backend/`](backend/) | API: FastAPI + Postgres | [backend/README.md](backend/README.md) |
+| [`docs/integrations/`](docs/integrations/) | GTM, GA4, LinkedIn, HubSpot, Apollo setup | [docs/integrations/README.md](docs/integrations/README.md) |
 
 ## Quick start
 ```bash

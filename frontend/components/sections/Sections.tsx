@@ -1,6 +1,6 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Check, X, Quote as QuoteIcon, ShieldAlert } from "lucide-react";
 import type { Section as S, Item } from "@/content/types";
 import { Section, SectionHead, Btn, fillSpans } from "./Shared";
@@ -10,6 +10,8 @@ import SplitHeading from "../motion/SplitHeading";
 import ScrubText from "../motion/ScrubText";
 import ParallaxImage from "../motion/ParallaxImage";
 import TiltCard from "../motion/TiltCard";
+import { submitLead } from "@/lib/api";
+import { track } from "@/lib/analytics";
 import Counter from "../motion/Counter";
 import Icon from "../Icon";
 import { gsap } from "@/lib/gsap";
@@ -448,7 +450,22 @@ export function Cta({ s, image = "/img/cta.webp" }: { s: Extract<S, { type: "cta
 }
 
 // ---------------------------------------------------------------- Subscribe
+// Email capture. `s.list` picks the HubSpot form (newsletter by default). Docs: docs/integrations/hubspot.md
 export function Subscribe({ s }: { s: Extract<S, { type: "subscribe" }> }) {
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const list = s.list ?? "newsletter";
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    setStatus("sending");
+    try {
+      await submitLead("subscribe", { email: String(f.get("email") ?? ""), list, website: String(f.get("website") ?? "") });
+      track("sign_up", { method: list });
+      setStatus("done");
+    } catch {
+      setStatus("error");
+    }
+  };
   return (
     <Section tone="cool">
       <div className="relative overflow-hidden rounded-[2rem] border border-line bg-white p-8 sm:p-14">
@@ -456,11 +473,15 @@ export function Subscribe({ s }: { s: Extract<S, { type: "subscribe" }> }) {
         <div className="relative grid items-center gap-10 lg:grid-cols-2">
           <SectionHead eyebrow={s.eyebrow} title={s.title} text={s.text} />
           <Reveal>
-            <form onSubmit={(e) => { e.preventDefault(); (e.currentTarget.querySelector("button") as HTMLButtonElement).textContent = "Subscribed ✓"; }}
-              className="flex flex-col gap-3 rounded-full sm:flex-row sm:border sm:border-line sm:bg-paper-cool sm:p-2">
-              <input type="email" required placeholder={s.placeholder} className="flex-1 rounded-full border border-line bg-white px-6 py-4 text-[15px] outline-none focus:border-electric sm:border-0 sm:bg-transparent" />
-              <button className="btn btn-electric">{s.button}</button>
+            <form onSubmit={onSubmit}
+              className="relative flex flex-col gap-3 rounded-full sm:flex-row sm:border sm:border-line sm:bg-paper-cool sm:p-2">
+              <input name="email" type="email" required aria-label="Email address" placeholder={s.placeholder} className="flex-1 rounded-full border border-line bg-white px-6 py-4 text-[15px] outline-none focus:border-electric sm:border-0 sm:bg-transparent" />
+              <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+              <button disabled={status === "sending" || status === "done"} className="btn btn-electric disabled:opacity-70">
+                {status === "done" ? "Subscribed ✓" : status === "sending" ? "Sending…" : s.button}
+              </button>
             </form>
+            {status === "error" && <p role="alert" className="mt-3 text-sm text-ember">Sorry, that didn&apos;t work. Please try again.</p>}
           </Reveal>
         </div>
       </div>

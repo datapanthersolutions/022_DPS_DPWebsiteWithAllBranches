@@ -104,6 +104,7 @@ const page: Page = {
       title: "Stay connected and learn more about Data Panther and career opportunities.",
       placeholder: "Email address",
       button: "Subscribe →",
+      list: "talent_community",
     },
     {
       type: "notice",

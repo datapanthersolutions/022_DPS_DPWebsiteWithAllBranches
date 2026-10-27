@@ -20,6 +20,25 @@ class Settings(BaseSettings):
     # Postgres connection. Matches the local database from docker-compose.yml.
     database_url: str = "postgresql://datapanther:datapanther@localhost:5432/datapanther"
 
+    # HubSpot (docs/integrations/hubspot.md). Forms are submitted server-side.
+    hubspot_portal_id: str = ""
+    hubspot_access_token: str = ""  # private app token, scope "forms"; optional but recommended
+    hubspot_contact_form_id: str = ""
+    hubspot_newsletter_form_id: str = ""
+    hubspot_talent_form_id: str = ""
+
+    # GA4 Measurement Protocol (docs/integrations/ga4.md). Server-side conversion events.
+    ga4_measurement_id: str = ""
+    ga4_api_secret: str = ""
+
+    @property
+    def hubspot_enabled(self) -> bool:
+        return bool(self.hubspot_portal_id)
+
+    @property
+    def ga4_enabled(self) -> bool:
+        return bool(self.ga4_measurement_id and self.ga4_api_secret)
+
 
 @lru_cache
 def get_settings() -> Settings:

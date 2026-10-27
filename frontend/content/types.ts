@@ -50,7 +50,8 @@ export type Section =
   // Closing call to action.
   | { type: "cta"; eyebrow?: string; title: string; text?: string[]; primary?: Link; secondary?: Link }
   // Email capture (newsletter / talent community).
-  | { type: "subscribe"; eyebrow?: string; title: string; text?: string[]; placeholder: string; button: string }
+  | { type: "subscribe"; eyebrow?: string; title: string; text?: string[]; placeholder: string; button: string;
+      list?: "newsletter" | "talent_community" }  // which HubSpot form receives the email
   // Highlighted notice box (e.g. careers fraud alert).
   | { type: "notice"; title: string; text: string };
 

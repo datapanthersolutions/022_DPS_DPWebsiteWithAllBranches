@@ -52,6 +52,12 @@ The site URL used for canonical links and social previews is set in `lib/seo.ts`
 
 After you add a new content file, run `npm run content:index` to register it.
 
-## Before going live
-- **Contact form** (`components/ContactView.tsx`): the form shows a success message but doesn't send anything yet. Connect it to your existing endpoint, or to Formspree, Web3Forms or similar, and add Cloudflare Turnstile.
-- **Newsletter / talent-community forms** also need connecting.
+## Forms, analytics & tracking
+- Forms post to the FastAPI backend (`lib/api.ts`), which forwards them to HubSpot.
+- Tracking tags (GA4, LinkedIn, HubSpot, Apollo) load through Google Tag Manager, behind the cookie banner.
+
+Build-time settings go in `.env.production` (see `.env.example`):
+- `NEXT_PUBLIC_GTM_ID`
+- `NEXT_PUBLIC_API_URL`
+
+Full setup: [docs/integrations](../docs/integrations/README.md).

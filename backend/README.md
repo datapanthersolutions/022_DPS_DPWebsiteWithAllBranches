@@ -1,6 +1,14 @@
 # Data Panther — API (FastAPI)
 
-Python 3.13 · FastAPI · Uvicorn · pydantic-settings. Currently just a health check; features get added under `app/api/routes/`.
+Python 3.13 · FastAPI · Uvicorn · pydantic-settings.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/v1/health` | Health check |
+| `POST /api/v1/leads/contact` | Contact form → HubSpot + GA4 conversion |
+| `POST /api/v1/leads/subscribe` | Newsletter / talent community → HubSpot + GA4 conversion |
+
+Integration setup (HubSpot, GA4): [docs/integrations](../docs/integrations/README.md).
 
 ## Run locally
 All commands run from this `backend/` folder.
@@ -37,6 +45,8 @@ ruff format .        # format
 | Local Postgres | `docker-compose.yml` |
 | Route registry | `app/api/router.py` |
 | Endpoints | `app/api/routes/*.py` |
+| Request/response models | `app/schemas/` |
+| Third-party clients (HubSpot, GA4) | `app/integrations/` |
 | Tests | `tests/` |
 
 ## Adding an endpoint
