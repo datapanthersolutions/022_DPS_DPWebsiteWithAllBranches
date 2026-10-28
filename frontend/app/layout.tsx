@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Floating from "@/components/layout/Floating";
+import ChatWidget from "@/components/chat/ChatWidget";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import TransitionProvider from "@/components/transition/TransitionProvider";
 import Preloader from "@/components/transition/Preloader";
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <Floating />
+          <ChatWidget />
           <Cursor />
         </TransitionProvider>
       </body>

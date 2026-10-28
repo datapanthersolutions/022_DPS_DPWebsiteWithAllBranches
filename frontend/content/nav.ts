@@ -62,3 +62,12 @@ export const legalLinks = [
 export const whatsapp = "https://wa.me/917075928464?text=Hi%20Data%20Panther%2C%20I'd%20like%20to%20know%20more%20about%20your%20services.";
 export const linkedin = "https://www.linkedin.com/company/data-panther/";
 export const copyright = "© 2026 Data Panther Solutions, Inc., including its subsidiaries and affiliates, is a technology and consulting firm providing data, AI, and digital transformation services. The information on this website is intended for general informational purposes only and does not constitute professional advice. All rights reserved.";
+
+// Used by the chat assistant (contact replies and its search index).
+export const contact = {
+  email: "info@datapanthersolutions.com",
+  phone: "+91 70759 28464",
+  whatsapp,
+  office: "Hyderabad, Telangana, India",
+  hours: "Monday to Friday, 9:00 AM – 6:00 PM IST",
+};
